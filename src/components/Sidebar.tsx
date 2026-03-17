@@ -12,7 +12,6 @@ import {
   IconBulb,
 } from "@tabler/icons-react";
 import { Box, Stack, UnstyledButton } from "@mantine/core";
-import styles from "./Sidebar.module.css";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavbarLinkProps {
@@ -38,16 +37,22 @@ function NavbarLink({
   return (
     <UnstyledButton
       onClick={onClick}
-      className={`${styles.link} ${expanded ? styles.expanded : ""}`}
+      className={`mt-0 flex h-12 items-center justify-center rounded-md text-white transition-colors ${
+        expanded ? "w-[280px]" : "w-[50px]"
+      } ${
+        active
+          ? "bg-blue-500 text-blue-50 shadow-sm hover:bg-blue-500"
+          : "hover:bg-zinc-900"
+      }`}
       data-active={active || undefined}
     >
       {expanded ? (
-        <Box className={styles.expandedLabel}>
-          <Icon size={20} stroke={1.5} className={styles.icon} />
-          <span className={styles.label}>{label}</span>
+        <Box className="flex w-[289px] items-center gap-2 px-5 py-1 text-left">
+          <Icon size={20} stroke={1.5} className="h-[30px] w-[30px]" />
+          <span className="ml-1 flex items-center">{label}</span>
         </Box>
       ) : (
-        <Icon size={20} stroke={1.5} className={styles.icon} />
+        <Icon size={20} stroke={1.5} className="h-[30px] w-[30px]" />
       )}
     </UnstyledButton>
   );
@@ -81,19 +86,29 @@ function Sidebar({ expanded, setExpanded }: SidebarProps) {
 
   return (
     <Box
-      className={`${styles.navbar} ${expanded ? styles.expanded : ""}`}
+      className={`fixed left-0 top-0 z-[400] flex h-full flex-col border-r border-zinc-700 bg-sidebar transition-[width] duration-200 ${
+        expanded ? "w-[300px]" : "w-[80px]"
+      }`}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >
-      <Box className={styles.logoContainer}>
+      <Box className="flex h-[70px] w-full items-center justify-center border-b border-zinc-700">
         {expanded ? (
-          <img src="/logo_dark.png" className={styles.expanded_logo} />
+          <img
+            src="/logo_dark.png"
+            className="h-[70px] w-[250px] object-contain"
+            alt="Inexture logo"
+          />
         ) : (
-          <img src="/logo.svg" className={styles.logo} />
+          <img
+            src="/logo.svg"
+            className="h-[70px] w-[45px] object-contain"
+            alt="Inexture logo"
+          />
         )}
       </Box>
 
-      <Box className={styles.linksContainer}>
+      <Box className="mt-5 flex w-full justify-center">
         <Stack gap={0}>{links}</Stack>
       </Box>
     </Box>

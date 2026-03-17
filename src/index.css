@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand */
+  --color-primary: #f59f00;
+  --color-primary-soft: #ffe8b3;
+
+  /* Backgrounds */
+  --color-bg: #111827;
+  --color-surface: #1f2933;
+  --color-surface-soft: #374151;
+
+  /* Text */
+  --color-text: #f9fafb;
+  --color-text-muted: #9ca3af;
+
+  /* Borders */
+  --color-border: #374151;
+}
+
+.dark {
+  --color-bg: #050816;
+  --color-surface: #111827;
+  --color-surface-soft: #1f2937;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-border: #4b5563;
+}
+

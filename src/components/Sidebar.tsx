@@ -89,6 +89,7 @@ function Sidebar({ expanded, setExpanded }: SidebarProps) {
       className={`fixed left-0 top-0 z-[400] flex h-full flex-col border-r border-zinc-700 bg-sidebar transition-[width] duration-200 ${
         expanded ? "w-[300px]" : "w-[80px]"
       }`}
+      style={{ backgroundColor: "#1f1f23", opacity: 1 }}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}
     >

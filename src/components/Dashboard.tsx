@@ -1,6 +1,7 @@
 import { Container, Grid, Skeleton } from "@mantine/core";
 import WeeklyTimeLog from "./WeeklyTimeLog";
 import DefaulterStatus from "./DefaulterStatus";
+import TeamStatus from "./TeamStatus";
 
 const child = <Skeleton height={140} radius="md" animate={false} />;
 
@@ -18,7 +19,7 @@ function Dashboard() {
           <DefaulterStatus />
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          {child}
+          <TeamStatus/>
         </Grid.Col>
       </Grid>
     </Container>

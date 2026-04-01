@@ -1,4 +1,4 @@
-import { Container, Text, Divider, Grid, Box, Flex } from "@mantine/core";
+import { Text, Divider, Box } from "@mantine/core";
 import { IconFileTime } from "@tabler/icons-react";
 
 const data = [
@@ -14,33 +14,43 @@ const data = [
 
 function DefaulterStatus() {
   return (
-    <Box className="border border-gray-300">
-      <Box className="flex items-center justify-between my-4">
+    <Box className="border border-zinc-700 p-4">
+      {/* Header */}
+      <Box className="flex items-center justify-between mb-4">
         <Text size="lg" fw={700} className="flex items-center gap-2">
           <IconFileTime size={24} />
           Your Defaulter Status
         </Text>
       </Box>
 
-      <Divider my="md" />
+      <Divider className="-mx-4" />
 
-      <Flex>
-        <Grid my="md">
-          {data.map((item, i) => (
-            <Grid.Col h={120} span={{ base: 12, xs: 3 }} key={i}>
-              <Container className="flex flex-col items-center justify-center border border-zinc-700 rounded-md overflow-hidden py-6 mx-2 my-2">
-                <Text size="xl" fw={900} className="text-cyan-400">
-                  {item.count}
-                </Text>
+      {/* Grid */}
+      <Box className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-4 my-4">
+        {data.map((item, i) => (
+          <Box
+            key={i}
+            className="flex flex-col items-center justify-center border border-zinc-700 rounded-md py-6"
+          >
+            <Text fw={900} className="text-2xl md:text-4xl text-cyan-400">
+              {item.count}
+            </Text>
 
-                <Text size="lg" fw={500} className="text-gray-300">
-                  {item.label}
-                </Text>
-              </Container>
-            </Grid.Col>
-          ))}
-        </Grid>
-      </Flex>
+            <Text size="lg" fw={500} className="text-gray-300">
+              {item.label}
+            </Text>
+          </Box>
+        ))}
+      </Box>
+
+      <Divider className="-mx-4" />
+
+      {/* Footer */}
+      <Box className="flex items-center justify-between mt-4">
+        <Text size="lg" className="flex items-center gap-2">
+          Well done for keeping things in order within the rules.
+        </Text>
+      </Box>
     </Box>
   );
 }

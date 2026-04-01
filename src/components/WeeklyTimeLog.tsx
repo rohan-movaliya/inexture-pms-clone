@@ -11,7 +11,7 @@ const data = [
 
 export function WeeklyTimeLog() {
   return (
-    <Container className="border border-gray-300" my="md">
+    <Container className="border border-zinc-700 rounded-md" my="md">
       <div className="flex items-center justify-between my-4">
         <Text size="lg" fw={700} className="flex items-center gap-2">
           <IconFileTime size={24} />

@@ -17,7 +17,6 @@ import {
   IconUser,
   IconLogout,
   IconLock,
-  IconBrightnessUp,
   IconLayoutGridAdd,
   IconBriefcase,
   IconCalendarTime,
@@ -25,6 +24,7 @@ import {
   IconDeviceGamepad,
 } from "@tabler/icons-react";
 import classes from "./Header.module.css";
+import BlackLightTheme from "./BlackLightTheme";
 
 export function Header() {
   return (
@@ -47,14 +47,7 @@ export function Header() {
       </div>
 
       <div className="flex items-center justify-end gap-2">
-        <ActionIcon
-          className="text-gray-300 hover:bg-white/10"
-          variant="subtle"
-          size="lg"
-          aria-label="Toggle theme"
-        >
-          <IconBrightnessUp size={22} stroke={1.5} />
-        </ActionIcon>
+        <BlackLightTheme />
 
         <Menu
           width={260}

@@ -1,0 +1,22 @@
+/* Hide both by default (optional safety) */
+.icon {
+  display: none;
+}
+
+/* Light mode */
+:root[data-mantine-color-scheme="light"] .light {
+  display: block;
+}
+
+:root[data-mantine-color-scheme="light"] .dark {
+  display: none;
+}
+
+/* Dark mode */
+:root[data-mantine-color-scheme="dark"] .dark {
+  display: block;
+}
+
+:root[data-mantine-color-scheme="dark"] .light {
+  display: none;
+}

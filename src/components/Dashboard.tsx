@@ -4,6 +4,7 @@ import DefaulterStatus from "./DefaulterStatus";
 import TeamStatus from "./TeamStatus";
 import Leaves from "./MyLeaves";
 import Insights from "./Insights";
+import BithDays from "./BirthDays";
 
 function Dashboard() {
   return (
@@ -55,23 +56,23 @@ function Dashboard() {
         </Grid.Col>
         {/* Employee of the Month */}
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          <TeamStatus />
+          <Insights />
         </Grid.Col>
         {/* Birthdays */}
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          <TeamStatus />
+          <BithDays />
         </Grid.Col>
         {/* Today's Work Anniversary */}
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          <TeamStatus />
+          <Insights />
         </Grid.Col>
         {/* New Joiners */}
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          <TeamStatus />
+          <Insights />
         </Grid.Col>
         {/* Holidays */}
         <Grid.Col span={{ base: 12, xs: 4 }}>
-          <TeamStatus />
+          <BithDays />
         </Grid.Col>
       </Grid>
     </Container>

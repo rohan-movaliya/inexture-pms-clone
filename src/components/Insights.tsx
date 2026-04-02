@@ -4,6 +4,9 @@ import { Carousel } from "@mantine/carousel";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import classes from "./Insights.module.css";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+
 
 interface CardProps {
   id: number;
@@ -65,6 +68,8 @@ function Insights() {
       <Card {...item} />
     </Carousel.Slide>
   ));
+  const autoplay = useRef(Autoplay({ delay: 3000 }));
+
 
   return (
     <Box className="border border-zinc-700 p-4">
@@ -84,6 +89,9 @@ function Insights() {
         slideGap="md"
         withControls
         emblaOptions={{ loop: true, align: "start" }}
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={() => autoplay.current.play()}
       >
         {slides}
       </Carousel>
@@ -92,3 +100,4 @@ function Insights() {
 }
 
 export default Insights;
+export { Carousel };

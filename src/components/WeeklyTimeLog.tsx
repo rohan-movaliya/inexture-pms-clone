@@ -1,5 +1,5 @@
-import { Container, Grid, Divider, Text } from "@mantine/core";
-import { IconFileTime, IconChevronLeft } from "@tabler/icons-react";
+import { Container, Grid, Divider, Text, UnstyledButton } from "@mantine/core";
+import { IconFileTime, IconChevronLeft, type TablerIcon } from "@tabler/icons-react";
 
 const data = [
   { date: "30 Mar", day: "Mon", time: "07:05:35", color: "text-red-500" },
@@ -9,22 +9,39 @@ const data = [
   { date: "03 Apr", day: "Fri", time: "0" },
 ];
 
-export function WeeklyTimeLog() {
+interface WeeklyTimeLogProps {
+  title?: string;
+  headerIcon?: TablerIcon;
+}
+
+function WeeklyTimeLog({
+  title = "Weekly Time Log",
+  headerIcon: HeaderIcon = IconFileTime,
+}: WeeklyTimeLogProps) {
   return (
-    <Container className="border border-zinc-700 rounded-md" my="md">
-      <div className="flex items-center justify-between my-4">
+    <Container
+      fluid
+      className="flex h-full min-h-0 flex-col rounded-md border border-zinc-700 p-4"
+    >
+      <div className="mb-4 flex shrink-0 items-center justify-between">
         <Text size="lg" fw={700} className="flex items-center gap-2">
-          <IconFileTime size={24} />
-          Weekly Time Log
+          <HeaderIcon size={24} />
+          {title}
         </Text>
 
-        <IconChevronLeft size={26} className="text-zinc-400 cursor-pointer" />
+        <UnstyledButton
+          type="button"
+          aria-label="Previous week"
+          className="flex text-zinc-400 hover:text-zinc-200"
+        >
+          <IconChevronLeft size={26} />
+        </UnstyledButton>
       </div>
 
-      <Divider my="md" />
-      <Grid my="md">
-        {data.map((item, i) => (
-          <Grid.Col span={{ base: 12, xs: 4 }} key={i}>
+      <Divider className="shrink-0" />
+      <Grid my="md" className="min-h-0 flex-1">
+        {data.map((item) => (
+          <Grid.Col span={{ base: 12, xs: 4 }} key={item.date}>
             <div className="flex border border-zinc-700 rounded-md overflow-hidden">
               <div className="bg-zinc-700 px-3 py-2 text-center text-lg text-white">
                 <div>{item.date}</div>

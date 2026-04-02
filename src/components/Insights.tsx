@@ -1,15 +1,11 @@
 import { Box, Text, Divider, Paper } from "@mantine/core";
 import { IconFileTime } from "@tabler/icons-react";
 import { Carousel } from "@mantine/carousel";
-import "@mantine/core/styles.css";
-import "@mantine/carousel/styles.css";
 import classes from "./Insights.module.css";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
-
 interface CardProps {
-  id: number;
   image: string;
 }
 
@@ -20,9 +16,6 @@ function Card({ image }: CardProps) {
       radius="md"
       style={{
         backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        height: 300,
       }}
       className={classes.card}
     />
@@ -62,29 +55,31 @@ const data = [
   },
 ];
 
-function Insights() {
+interface InsightsProps {
+  title?: string;
+}
+
+function Insights({ title = "Insights" }: InsightsProps) {
   const slides = data.map((item) => (
     <Carousel.Slide key={item.id}>
-      <Card {...item} />
+      <Card image={item.image} />
     </Carousel.Slide>
   ));
   const autoplay = useRef(Autoplay({ delay: 3000 }));
 
-
   return (
-    <Box className="border border-zinc-700 p-4">
-      {/* Header */}
-      <Box className="flex items-center justify-between mb-4">
+    <Box className="flex h-full min-h-0 flex-col border border-zinc-700 p-4">
+      <Box className="mb-4 flex shrink-0 items-center justify-between">
         <Text size="lg" fw={700} className="flex items-center gap-2">
           <IconFileTime size={24} />
-          Insights
+          {title}
         </Text>
       </Box>
 
-      <Divider className="-mx-4" />
+      <Divider className="-mx-4 shrink-0" />
 
       <Carousel
-        className="mt-4"
+        className="mt-4 min-h-0 flex-1"
         slideSize="100%"
         slideGap="md"
         withControls
@@ -100,4 +95,3 @@ function Insights() {
 }
 
 export default Insights;
-export { Carousel };

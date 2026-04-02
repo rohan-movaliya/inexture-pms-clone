@@ -17,9 +17,8 @@ const colorMap = {
 
 function TeamStatus() {
   return (
-    <Box className="border border-zinc-700 p-4">
-      {/* Header */}
-      <Box className="flex items-center justify-between mb-4">
+    <Box className="flex h-full min-h-0 flex-col border border-zinc-700 p-4">
+      <Box className="mb-4 flex shrink-0 items-center justify-between">
         <Text size="lg" fw={700} className="flex items-center gap-2">
           <IconFileTime size={24} />
           Your Team Status
@@ -29,14 +28,13 @@ function TeamStatus() {
         </Text>
       </Box>
 
-      <Divider className="-mx-4" />
+      <Divider className="-mx-4 shrink-0" />
 
-      {/* Grid */}
-      <Box className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 gap-4 mt-8 mb-4">
-        {data.map((item, i) => (
+      <Box className="mb-4 mt-8 grid min-h-0 flex-1 auto-rows-start grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 content-start">
+        {data.map((item) => (
           <Box
-            key={i}
-            className={`flex flex-col border-l-6 ${colorMap[item.color]} pl-4 py-3 rounded-md`}
+            key={item.name}
+            className={`flex flex-col border-l-[6px] ${colorMap[item.color]} pl-4 py-3 rounded-md`}
           >
             <Text size="md" fw={500}>
               {item.name}
@@ -55,10 +53,9 @@ function TeamStatus() {
         ))}
       </Box>
 
-      <Divider className="-mx-4" />
+      <Divider className="-mx-4 shrink-0" />
 
-      {/* Footer */}
-      <Box className="flex items-center justify-between mt-4">
+      <Box className="mt-4 flex shrink-0 items-center justify-between">
         <Text size="lg" className="flex items-center gap-2">
           Your overall team attendance is 100%.
         </Text>

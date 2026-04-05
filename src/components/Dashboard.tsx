@@ -51,6 +51,7 @@ function Dashboard() {
                 { label: "Used leave", value: "0" },
                 { label: "Remaining", value: "17" },
               ]}
+              iconSrc="/4_my_leaves.svg"
             />
           </DashboardCell>
         </Grid.Col>
@@ -63,6 +64,7 @@ function Dashboard() {
                 { label: "On leave", value: "0" },
                 { label: "Half day", value: "0" },
               ]}
+              iconSrc="/5_leave_today.svg"
             />
           </DashboardCell>
         </Grid.Col>
@@ -75,6 +77,7 @@ function Dashboard() {
                 { label: "This week", value: "1" },
                 { label: "Next week", value: "2" },
               ]}
+              iconSrc="6_upcoming_leaves.svg"
             />
           </DashboardCell>
         </Grid.Col>
@@ -87,6 +90,7 @@ function Dashboard() {
                 { label: "Team WFH", value: "2" },
                 { label: "Capacity", value: "87%" },
               ]}
+              iconSrc="7_wfh_today.svg"
             />
           </DashboardCell>
         </Grid.Col>
@@ -99,6 +103,7 @@ function Dashboard() {
                 { label: "Logged", value: "8h 00m" },
                 { label: "Status", value: "Complete" },
               ]}
+              iconSrc="7_prev_log_time.svg"
             />
           </DashboardCell>
         </Grid.Col>
@@ -111,6 +116,7 @@ function Dashboard() {
                 { label: "Pending", value: "0" },
                 { label: "Approved", value: "0" },
               ]}
+              iconSrc="8_time_compensation.png"
             />
           </DashboardCell>
         </Grid.Col>

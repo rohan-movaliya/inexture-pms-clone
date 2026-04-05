@@ -78,18 +78,23 @@ function Insights({ title = "Insights" }: InsightsProps) {
 
       <Divider className="-mx-4 shrink-0" />
 
-      <Carousel
-        className="mt-4 min-h-0 flex-1"
-        slideSize="100%"
-        slideGap="md"
-        withControls
-        emblaOptions={{ loop: true, align: "start" }}
-        plugins={[autoplay.current]}
+      <Box
+        className={`${classes.carouselWrap} mt-4 min-h-0 flex-1 flex flex-col`}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={() => autoplay.current.play()}
       >
-        {slides}
-      </Carousel>
+        <Carousel
+          className="min-h-0 flex-1"
+          classNames={{ controls: classes.carouselControls }}
+          slideSize="100%"
+          slideGap="md"
+          withControls
+          emblaOptions={{ loop: true, align: "start" }}
+          plugins={[autoplay.current]}
+        >
+          {slides}
+        </Carousel>
+      </Box>
     </Box>
   );
 }

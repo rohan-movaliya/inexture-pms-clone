@@ -11,7 +11,7 @@ function MyLeaves({
   title,
   headline,
   rows,
-  iconSrc = "/my_leaves.svg",
+  iconSrc = "/4_my_leaves.svg",
 }: MyLeavesProps) {
   return (
     <Box className="flex h-full min-h-0 flex-col rounded-md border border-zinc-700 p-4">

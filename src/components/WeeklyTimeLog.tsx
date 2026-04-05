@@ -21,7 +21,7 @@ function WeeklyTimeLog({
   return (
     <Container
       fluid
-      className="flex h-full min-h-0 flex-col rounded-md border border-zinc-700 p-4"
+      className="flex w-full h-full min-h-0 flex-col rounded-md border border-zinc-700 p-4  mt-4"
     >
       <div className="mb-4 flex shrink-0 items-center justify-between">
         <Text size="lg" fw={700} className="flex items-center gap-2">

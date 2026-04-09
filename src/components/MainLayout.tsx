@@ -1,10 +1,22 @@
-import { AppShell } from "@mantine/core";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Navigate, Outlet } from "react-router-dom";
+import { AppShell } from "@mantine/core";
 import { Header } from "./Header";
 import Sidebar from "./Sidebar";
-import { Outlet } from "react-router-dom";
+import type { RootState } from "../store/index.ts";
 
 function MainLayout() {
+  
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.auth.isAuthenticated
+  );
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
+  }
+
+
   const [expanded, setExpanded] = useState(false); // desktop expand/collapse
 
   return (

@@ -1,19 +1,25 @@
 import { useEffect, useRef } from "react";
 import type { Icon as TablerIcon } from "@tabler/icons-react";
 import {
-  IconChecklist,
-  IconLayoutDashboard,
-  IconBriefcase2,
-  IconCalendarTime,
-  IconCalendarDollar,
-  IconBuildingCommunity,
-  IconFileTime,
-  IconBox,
   IconBeach,
+  IconBox,
+  IconBriefcase2,
+  IconBuildingCommunity,
   IconBulb,
+  IconCalendarDollar,
+  IconCalendarTime,
+  IconChecklist,
+  IconFileTime,
+  IconLayoutDashboard,
 } from "@tabler/icons-react";
-import { Box, Stack, UnstyledButton, useComputedColorScheme } from "@mantine/core";
+import {
+  Box,
+  Stack,
+  UnstyledButton,
+  useComputedColorScheme,
+} from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
+import classes from "./Sidebar.module.css";
 
 interface NavbarLinkProps {
   icon: TablerIcon;
@@ -32,6 +38,7 @@ function isNavActive(pathname: string, to: string): boolean {
   if (to === "/") {
     return pathname === "/";
   }
+
   return pathname === to || pathname.startsWith(`${to}/`);
 }
 
@@ -45,22 +52,16 @@ function NavbarLink({
   return (
     <UnstyledButton
       onClick={onClick}
-      className={`mt-0 flex h-12 items-center justify-center rounded-md text-[var(--sidebar-fg)] transition-colors ${
-        expanded ? "w-[280px]" : "w-[50px]"
-      } ${
-        active
-          ? "bg-blue-500 text-blue-50 shadow-sm hover:bg-blue-500"
-          : "hover:bg-[var(--sidebar-link-hover)]"
-      }`}
+      className={`${classes.button} ${expanded ? classes.buttonExpanded : ""}`}
       data-active={active || undefined}
     >
       {expanded ? (
-        <Box className="flex w-full items-center gap-2 px-5 py-1 text-left">
-          <IconComponent size={20} stroke={1.5} className="h-[30px] w-[30px]" />
-          <span className="ml-1 flex items-center">{label}</span>
+        <Box className={classes.labelRow}>
+          <IconComponent size={20} stroke={1.5} className={classes.icon} />
+          <span className={classes.label}>{label}</span>
         </Box>
       ) : (
-        <IconComponent size={20} stroke={1.5} className="h-[30px] w-[30px]" />
+        <IconComponent size={20} stroke={1.5} className={classes.icon} />
       )}
     </UnstyledButton>
   );
@@ -101,6 +102,7 @@ function Sidebar({ expanded, setExpanded }: SidebarProps) {
 
     el.addEventListener("focusin", open);
     el.addEventListener("focusout", onFocusOut);
+
     return () => {
       el.removeEventListener("focusin", open);
       el.removeEventListener("focusout", onFocusOut);
@@ -114,11 +116,7 @@ function Sidebar({ expanded, setExpanded }: SidebarProps) {
   };
 
   const links = mockdata.map((link) => (
-    <Link
-      to={link.to}
-      key={link.label}
-      className="rounded-md text-inherit no-underline outline-none focus-visible:ring-2 focus-visible:ring-blue-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--sidebar-surface)]"
-    >
+    <Link to={link.to} key={link.label} className={classes.navLink}>
       <NavbarLink
         {...link}
         active={isNavActive(location.pathname, link.to)}
@@ -130,33 +128,27 @@ function Sidebar({ expanded, setExpanded }: SidebarProps) {
   return (
     <Box
       ref={sidebarRef}
-      className={`fixed left-0 top-0 z-[400] flex h-full flex-col border-r border-[var(--sidebar-border)] bg-[var(--sidebar-surface)] transition-[width] duration-200 ${
-        expanded ? "w-[300px]" : "w-[80px]"
-      }`}
+      className={`${classes.sidebar} ${expanded ? classes.expanded : ""}`}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={handleMouseLeave}
     >
-      <Box className="flex h-[70px] w-full items-center justify-center border-b border-[var(--sidebar-border)]">
+      <Box className={classes.logoContainer}>
         {expanded ? (
           <img
             src={expandedLogoSrc}
-            className="h-[70px] w-[250px] object-contain"
+            className={classes.expandedLogo}
             alt="Inexture logo"
           />
         ) : (
           <img
             src="/1_favicon.svg"
-            className="h-[70px] w-[45px] object-contain"
+            className={classes.collapsedLogo}
             alt="Inexture logo"
           />
         )}
       </Box>
 
-      <Box
-        component="nav"
-        aria-label="Main navigation"
-        className="mt-5 flex w-full justify-center"
-      >
+      <Box component="nav" aria-label="Main navigation" className={classes.nav}>
         <Stack gap={0}>{links}</Stack>
       </Box>
     </Box>

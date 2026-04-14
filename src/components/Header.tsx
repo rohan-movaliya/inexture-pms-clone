@@ -29,14 +29,14 @@ import BlackLightTheme from "./BlackLightTheme";
 export function Header() {
   return (
     <header className={classes.header}>
-      <div className="flex flex-1 items-center justify-center">
+      <div className={classes.inner}>
         <Group>
           <TextInput
-            className="w-[500px]"
+            className={classes.search}
             placeholder="Search"
             leftSection={<IconSearch size={16} stroke={1.5} />}
             rightSection={
-              <div className="pointer-events-none absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1 text-[12px] text-gray-300">
+              <div className={classes.shortcut}>
                 <Kbd size="xs">Ctrl</Kbd>
                 <span>+</span>
                 <Kbd size="xs">K</Kbd>
@@ -46,7 +46,7 @@ export function Header() {
         </Group>
       </div>
 
-      <div className="flex items-center justify-end gap-2">
+      <div className={classes.sideright}>
         <BlackLightTheme />
 
         <Menu
@@ -58,7 +58,7 @@ export function Header() {
         >
           <Menu.Target>
             <ActionIcon
-              className="text-gray-300 hover:bg-white/10"
+              className={classes.iconButton}
               variant="subtle"
               size="lg"
               aria-label="Quick links"
@@ -70,10 +70,10 @@ export function Header() {
               />
             </ActionIcon>
           </Menu.Target>
-          <Menu.Dropdown className="bg-[var(--color-surface)] border border-[var(--color-border)] shadow-lg">
-            <Menu.Label className="flex items-center gap-2 text-[var(--color-text)]">
+          <Menu.Dropdown className={classes.dropdown}>
+            <Menu.Label className={classes.menuLabel}>
               <IconLayoutGridAdd size={18} stroke={1.5} />
-              <span className="font-medium">Quick Links</span>
+              <span>Quick Links</span>
             </Menu.Label>
             <Menu.Divider />
             <Grid gutter="xs">
@@ -82,16 +82,16 @@ export function Header() {
                   p="md"
                   withBorder
                   radius="md"
-                  className="cursor-pointer bg-[var(--color-surface-soft)] border-[var(--color-border)] transition-colors hover:bg-[var(--color-border)]"
+                  className={classes.quickCard}
                 >
                   <Center>
                     <Stack align="center" gap={6}>
                       <IconBriefcase
                         size={26}
                         stroke={1.5}
-                        className="text-[var(--color-text)]"
+                        className={classes.menuIcon}
                       />
-                      <Text className="text-xs text-[var(--color-text-muted)]">
+                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
                         Projects
                       </Text>
                     </Stack>
@@ -104,16 +104,16 @@ export function Header() {
                   p="md"
                   withBorder
                   radius="md"
-                  className="cursor-pointer bg-[var(--color-surface-soft)] border-[var(--color-border)] transition-colors hover:bg-[var(--color-border)]"
+                  className={classes.quickCard}
                 >
                   <Center>
                     <Stack align="center" gap={6}>
                       <IconCalendarTime
                         size={26}
                         stroke={1.5}
-                        className="text-[var(--color-text)]"
+                        className={classes.menuIcon}
                       />
-                      <Text className="text-xs text-[var(--color-text-muted)]">
+                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
                         Time Entry
                       </Text>
                     </Stack>
@@ -126,16 +126,16 @@ export function Header() {
                   p="md"
                   withBorder
                   radius="md"
-                  className="cursor-pointer bg-[var(--color-surface-soft)] border-[var(--color-border)] transition-colors hover:bg-[var(--color-border)]"
+                  className={classes.quickCard}
                 >
                   <Center>
                     <Stack align="center" gap={6}>
                       <IconChecklist
                         size={26}
                         stroke={1.5}
-                        className="text-[var(--color-text)]"
+                        className={classes.menuIcon}
                       />
-                      <Text className="text-xs text-[var(--color-text-muted)]">
+                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
                         Tasks
                       </Text>
                     </Stack>
@@ -148,16 +148,16 @@ export function Header() {
                   p="md"
                   withBorder
                   radius="md"
-                  className="cursor-pointer bg-[var(--color-surface-soft)] border-[var(--color-border)] transition-colors hover:bg-[var(--color-border)]"
+                  className={classes.quickCard}
                 >
                   <Center>
                     <Stack align="center" gap={6}>
                       <IconDeviceGamepad
                         size={26}
                         stroke={1.5}
-                        className="text-[var(--color-text)]"
+                        className={classes.menuIcon}
                       />
-                      <Text className="text-xs text-[var(--color-text-muted)]">
+                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
                         Game Zone
                       </Text>
                     </Stack>

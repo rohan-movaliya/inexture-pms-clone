@@ -1,4 +1,5 @@
 import { Avatar, Box, Container, Text } from "@mantine/core";
+import classes from "./MyLeaves.module.css";
 
 export interface MyLeavesProps {
   title: string;
@@ -14,10 +15,10 @@ function MyLeaves({
   iconSrc = "/4_my_leaves.svg",
 }: MyLeavesProps) {
   return (
-    <Box className="flex h-full min-h-0 flex-col rounded-md border border-zinc-700 p-4">
-      <Container className="flex items-center justify-center mt-8">
+    <Box className={classes.card}>
+      <Container className={classes.iconWrap}>
         <Avatar
-          className="mb-4"
+          className={classes.avatar}
           variant="filled"
           radius="xs"
           size="lg"
@@ -31,12 +32,9 @@ function MyLeaves({
         {title}
       </Text>
 
-      <Box className="mt-4 space-y-3">
+      <Box className={classes.rows}>
         {rows.map((row) => (
-          <Box
-            key={row.label}
-            className="flex items-center justify-between border border-zinc-700 rounded-md px-4 py-1.5"
-          >
+          <Box key={row.label} className={classes.row}>
             <Text size="sm">{row.label}</Text>
             <Text c="orange.6" fw={600}>
               {row.value}

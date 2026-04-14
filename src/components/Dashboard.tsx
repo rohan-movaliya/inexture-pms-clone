@@ -7,24 +7,23 @@ import TeamStatus from "./TeamStatus";
 import MyLeaves from "./MyLeaves";
 import Insights from "./Insights";
 import BirthDays from "./BirthDays";
+import classes from "./Dashboard.module.css";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
-  return (
-    <Box className="flex min-h-0 w-full flex-1 flex-col">{children}</Box>
-  );
+  return <Box className={classes.cell}>{children}</Box>;
 }
 
 function Dashboard() {
   return (
     <Container fluid>
       <Grid align="stretch" grow>
-        <Grid.Col span={{ base: 12, xs: 6 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
           <DashboardCell>
             <WeeklyTimeLog />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 6 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
           <DashboardCell>
             <WeeklyTimeLog
               title="Weekly Work Log"
@@ -32,17 +31,17 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 8 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 8 }} className={classes.column}>
           <DashboardCell>
             <DefaulterStatus />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <TeamStatus />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="My Leaves"
@@ -55,7 +54,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="Leaves today"
@@ -68,7 +67,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="Upcoming leaves"
@@ -81,7 +80,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="WFH today"
@@ -94,7 +93,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="Time log — previous day"
@@ -107,7 +106,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
               title="My leave compensation"
@@ -120,32 +119,32 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <Insights />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <Insights title="Employee of the month" />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <BirthDays />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <Insights title="Today's work anniversary" />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <Insights title="New joiners" />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className="flex min-h-0 flex-col">
+        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <BirthDays variant="holidays" />
           </DashboardCell>

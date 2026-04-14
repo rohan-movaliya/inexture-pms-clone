@@ -1,5 +1,6 @@
 import { Text, Divider, Box } from "@mantine/core";
 import { IconFileTime } from "@tabler/icons-react";
+import classes from "./DefaulterStatus.module.css";
 
 const data = [
   { count: 0, label: "Working Hours & Flexibility" },
@@ -14,37 +15,34 @@ const data = [
 
 function DefaulterStatus() {
   return (
-    <Box className="flex h-full min-h-0 flex-col border border-zinc-700 p-4">
-      <Box className="mb-4 flex shrink-0 items-center justify-between">
-        <Text size="lg" fw={700} className="flex items-center gap-2">
+    <Box className={classes.card}>
+      <Box className={classes.header}>
+        <Text size="lg" fw={700} className={classes.title}>
           <IconFileTime size={24} />
           Your Defaulter Status
         </Text>
       </Box>
 
-      <Divider className="-mx-4 shrink-0" />
+      <Divider className={classes.divider} />
 
-      <Box className="my-4 grid min-h-0 flex-1 auto-rows-start grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 content-start">
+      <Box className={classes.grid}>
         {data.map((item) => (
-          <Box
-            key={item.label}
-            className="flex flex-col items-center justify-center border border-zinc-700 rounded-md py-6"
-          >
-            <Text fw={900} className="text-2xl md:text-4xl text-cyan-400">
+          <Box key={item.label} className={classes.item}>
+            <Text fw={900} className={classes.count}>
               {item.count}
             </Text>
 
-            <Text size="lg" fw={500} className="text-gray-300">
+            <Text size="lg" fw={500} className={classes.label}>
               {item.label}
             </Text>
           </Box>
         ))}
       </Box>
 
-      <Divider className="-mx-4 shrink-0" />
+      <Divider className={classes.divider} />
 
-      <Box className="mt-4 flex shrink-0 items-center justify-between">
-        <Text size="lg" className="flex items-center gap-2">
+      <Box className={classes.footer}>
+        <Text size="lg">
           Well done for keeping things in order within the rules.
         </Text>
       </Box>

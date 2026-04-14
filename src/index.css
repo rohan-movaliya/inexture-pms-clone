@@ -1,15 +1,3 @@
-@import "tailwindcss";
-
-/* Tailwind v4 reads theme from CSS; tailwind.config.ts theme.extend is not applied by default. */
-@theme {
-  --color-header: #1f1f23;
-  --color-brand: #3b82f6;
-}
-
-/*
- * Sidebar follows Mantine color scheme (html[data-mantine-color-scheme]).
- * Fixed `bg-sidebar` / `text-white` did not react to the theme toggle.
- */
 html {
   --sidebar-surface: #1f1f23;
   --sidebar-border: #3f3f46;
@@ -52,4 +40,3 @@ html[data-mantine-color-scheme="light"] {
   --color-text-muted: #9ca3af;
   --color-border: #4b5563;
 }
-

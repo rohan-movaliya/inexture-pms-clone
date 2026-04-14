@@ -68,23 +68,23 @@ function Insights({ title = "Insights" }: InsightsProps) {
   const autoplay = useRef(Autoplay({ delay: 3000 }));
 
   return (
-    <Box className="flex h-full min-h-0 flex-col border border-zinc-700 p-4">
-      <Box className="mb-4 flex shrink-0 items-center justify-between">
-        <Text size="lg" fw={700} className="flex items-center gap-2">
+    <Box className={classes.cardShell}>
+      <Box className={classes.header}>
+        <Text size="lg" fw={700} className={classes.heading}>
           <IconFileTime size={24} />
           {title}
         </Text>
       </Box>
 
-      <Divider className="-mx-4 shrink-0" />
+      <Divider className={classes.divider} />
 
       <Box
-        className={`${classes.carouselWrap} mt-4 min-h-0 flex-1 flex flex-col`}
+        className={classes.carouselWrap}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={() => autoplay.current.play()}
       >
         <Carousel
-          className="min-h-0 flex-1"
+          className={classes.carousel}
           classNames={{ controls: classes.carouselControls }}
           slideSize="100%"
           slideGap="md"

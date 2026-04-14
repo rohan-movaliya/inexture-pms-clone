@@ -1,4 +1,5 @@
 import { Tabs, Box, Text } from "@mantine/core";
+import classes from "./BirthDays.module.css";
 
 const VARIANT_COPY = {
   birthdays: {
@@ -23,12 +24,12 @@ function BirthDays({ variant = "birthdays" }: BirthDaysProps) {
   const copy = VARIANT_COPY[variant];
 
   return (
-    <Box className="flex h-full min-h-0 flex-col border border-zinc-700">
+    <Box className={classes.card}>
       <Tabs
         color="yellow"
         defaultValue="first"
-        className="flex min-h-0 flex-1 flex-col"
-        classNames={{ panel: "flex min-h-0 flex-1 flex-col" }}
+        className={classes.tabs}
+        classNames={{ panel: classes.panel }}
       >
         <Tabs.List grow justify="center">
           <Tabs.Tab value="first">
@@ -44,13 +45,13 @@ function BirthDays({ variant = "birthdays" }: BirthDaysProps) {
         </Tabs.List>
 
         <Tabs.Panel value="first">
-          <Box className="p-6">
+          <Box className={classes.content}>
             <Text>{copy.empty1}</Text>
           </Box>
         </Tabs.Panel>
 
         <Tabs.Panel value="second">
-          <Box className="p-6">
+          <Box className={classes.content}>
             <Text>{copy.empty2}</Text>
           </Box>
         </Tabs.Panel>

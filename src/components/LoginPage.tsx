@@ -1,20 +1,20 @@
 import {
   BackgroundImage,
-  Paper,
-  Flex,
-  Textarea,
-  Text,
-  Image,
   Button,
+  Flex,
+  Image,
+  Paper,
+  Text,
+  Textarea,
 } from "@mantine/core";
 import { useForm } from "react-hook-form";
-import type { AppDispatch } from "../store/index.ts";
-import { authActions } from "../store/authSlice.ts";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "../store/authSlice.ts";
+import type { AppDispatch } from "../store/index.ts";
 
 type FormData = {
-  accessToken: string;
+  refreshToken: string;
 };
 
 function LoginPage() {
@@ -27,12 +27,48 @@ function LoginPage() {
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    const token = data.accessToken.trim();
-    if (!token) return;
+  const onSubmit = async (data: FormData) => {
+    const refreshToken = data.refreshToken.trim();
+    if (!refreshToken) return;
 
-    dispatch(authActions.setAccessToken(token));
-    navigate("/", { replace: true });
+    const controller = new AbortController();
+
+    try {
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          refresh_token: refreshToken,
+        }),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        // handle API errors properly
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData?.detail || "Login failed");
+      }
+
+      const result = await response.json();
+      console.log("Login response:", result);
+
+      // dispatch full object (matches your fixed slice)
+      dispatch(setToken(result));
+
+      // redirect after login
+      navigate("/", { replace: true });
+    } catch (error: unknown) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        console.log("Request aborted");
+      } else if (error instanceof Error) {
+        console.error("Login error:", error.message);
+      } else {
+        console.error("Login error:", "Unknown error");
+      }
+    }
   };
 
   return (
@@ -47,15 +83,15 @@ function LoginPage() {
             <Textarea
               label={
                 <Text span size="lg">
-                  Access Token
+                  Refresh Token
                 </Text>
               }
               minRows={10}
               autosize
               size="md"
               mt="sm"
-              error={errors.accessToken && "Access token is required"}
-              {...register("accessToken", { required: true })}
+              error={errors.refreshToken && "Refresh token is required"}
+              {...register("refreshToken", { required: true })}
             />
 
             <Button

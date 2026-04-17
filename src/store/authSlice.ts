@@ -39,19 +39,43 @@ const initialState: AuthState = {
   refresh_expires_in: null,
 };
 
+export interface TokenPayload {
+  access_token: string;
+  refresh_token: string;
+  token_type?: string;
+  expires_in?: number;
+}
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setAccessToken: (state, action: PayloadAction<string>) => {
-      const token = action.payload.trim();
-      if (!token) return;
-      state.access_token = token;
+    setToken: (state, action: PayloadAction<TokenPayload>) => {
+      const { access_token, refresh_token, token_type, expires_in } =
+        action.payload;
+
+      if (!access_token || !refresh_token) return;
+
+      state.access_token = access_token;
+      state.refresh_token = refresh_token;
+      state.token_type = token_type || "Bearer";
+      state.expires_in = expires_in || null;
       state.isAuthenticated = true;
+    },
+
+    logout: (state) => {
+      state.isAuthenticated = false;
+      state.user = null;
+      state.access_token = null;
+      state.refresh_token = null;
+      state.token_type = null;
+      state.expires_in = null;
+      state.refresh_expires_in = null;
     },
   },
 });
 
-export const authActions = authSlice.actions;
+export const { setToken, logout } = authSlice.actions;
+
 
 export default authSlice;

@@ -8,6 +8,8 @@ import type { RootState } from "../store/index.ts";
 
 function MainLayout() {
   
+  const [expanded, setExpanded] = useState(false); // desktop expand/collapse
+  
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
   );
@@ -17,7 +19,6 @@ function MainLayout() {
   }
 
 
-  const [expanded, setExpanded] = useState(false); // desktop expand/collapse
 
   return (
     <>

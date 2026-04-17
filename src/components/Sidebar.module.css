@@ -64,7 +64,7 @@
   width: 50px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--mantine-radius-sm);
   color: var(--sidebar-fg);
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -74,17 +74,18 @@
 }
 
 .button:hover {
-  background: var(--sidebar-link-hover);
+  background: #111827;
 }
 
 .button[data-active] {
-  background: #3b82f6;
+  background: #111827;
   box-shadow: var(--mantine-shadow-sm);
   color: #eff6ff;
+  border: 1px solid #1d2f56;
 }
 
 .button[data-active]:hover {
-  background: #3b82f6;
+  background: #111827;
 }
 
 .labelRow {

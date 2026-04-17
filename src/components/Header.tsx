@@ -1,32 +1,39 @@
 import {
   ActionIcon,
-  TextInput,
+  Avatar,
+  Center,
+  Grid,
   Group,
   Kbd,
-  Avatar,
-  Grid,
   Menu,
-  UnstyledButton,
   Paper,
-  Center,
   Stack,
   Text,
+  TextInput,
+  UnstyledButton,
 } from "@mantine/core";
 import {
-  IconSearch,
-  IconUser,
-  IconLogout,
-  IconLock,
-  IconLayoutGridAdd,
   IconBriefcase,
   IconCalendarTime,
   IconChecklist,
   IconDeviceGamepad,
+  IconLayoutGridAdd,
+  IconLock,
+  IconLogout,
+  IconSearch,
+  IconUser,
 } from "@tabler/icons-react";
-import classes from "./Header.module.css";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logout } from "../store/authSlice.ts";
+import type { AppDispatch } from "../store/index.ts";
 import BlackLightTheme from "./BlackLightTheme";
+import classes from "./Header.module.css";
 
 export function Header() {
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
@@ -91,7 +98,9 @@ export function Header() {
                         stroke={1.5}
                         className={classes.menuIcon}
                       />
-                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
+                      <Text
+                        className={`${classes.linksText} ${classes.mutedText}`}
+                      >
                         Projects
                       </Text>
                     </Stack>
@@ -113,7 +122,9 @@ export function Header() {
                         stroke={1.5}
                         className={classes.menuIcon}
                       />
-                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
+                      <Text
+                        className={`${classes.linksText} ${classes.mutedText}`}
+                      >
                         Time Entry
                       </Text>
                     </Stack>
@@ -135,7 +146,9 @@ export function Header() {
                         stroke={1.5}
                         className={classes.menuIcon}
                       />
-                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
+                      <Text
+                        className={`${classes.linksText} ${classes.mutedText}`}
+                      >
                         Tasks
                       </Text>
                     </Stack>
@@ -157,7 +170,9 @@ export function Header() {
                         stroke={1.5}
                         className={classes.menuIcon}
                       />
-                      <Text className={`${classes.linksText} ${classes.mutedText}`}>
+                      <Text
+                        className={`${classes.linksText} ${classes.mutedText}`}
+                      >
                         Game Zone
                       </Text>
                     </Stack>
@@ -193,7 +208,14 @@ export function Header() {
             <Menu.Item leftSection={<IconLock size={25} stroke={1.5} />}>
               Change Password
             </Menu.Item>
-            <Menu.Item leftSection={<IconLogout size={25} stroke={1.5} />}>
+            <Menu.Item
+              onClick={() => {
+                console.log("Click on Logout.");
+                dispatch(logout());
+                navigate("/login"); // redirect after logout
+              }}
+              leftSection={<IconLogout size={25} stroke={1.5} />}
+            >
               Logout
             </Menu.Item>
           </Menu.Dropdown>

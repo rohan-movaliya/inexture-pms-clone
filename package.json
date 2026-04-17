@@ -18,6 +18,7 @@
     "@phosphor-icons/react": "github:phosphor-icons/react",
     "@reduxjs/toolkit": "^2.11.2",
     "@tabler/icons-react": "^3.37.1",
+    "async-mutex": "^0.5.0",
     "embla-carousel-autoplay": "^8.6.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

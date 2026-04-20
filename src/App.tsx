@@ -13,7 +13,16 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <MantineProvider defaultColorScheme="dark" theme={theme}>
+        <MantineProvider defaultColorScheme="dark" theme={theme}
+        
+          cssVariablesResolver={(theme: any) => ({
+            variables: {
+              "--mantine-color-blue-500": theme.other.blue,
+              
+            },
+            dark: {},
+            light: {},
+          })}>
           <RootApp />;
         </MantineProvider>
       </PersistGate>

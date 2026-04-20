@@ -10,6 +10,7 @@
   border-right: 1px solid var(--sidebar-border);
   background: var(--sidebar-surface);
   transition: width 0.2s ease;
+  /* background-color: var(--mantine-color-blue-500); */
 }
 
 .expanded {
@@ -41,7 +42,7 @@
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .navLink {
@@ -58,7 +59,6 @@
 }
 
 .button {
-  margin-top: 0;
   display: flex;
   height: 48px;
   width: 50px;
@@ -67,6 +67,7 @@
   border-radius: var(--mantine-radius-sm);
   color: var(--sidebar-fg);
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  margin: 2px 0;
 }
 
 .buttonExpanded {
@@ -75,11 +76,12 @@
 
 .button:hover {
   background: #111827;
+  border: 1px solid #1d2f56;
 }
 
 .button[data-active] {
   background: #111827;
-  box-shadow: var(--mantine-shadow-sm);
+  box-shadow: var(--mantine-shadow-xs);
   color: #eff6ff;
   border: 1px solid #1d2f56;
 }

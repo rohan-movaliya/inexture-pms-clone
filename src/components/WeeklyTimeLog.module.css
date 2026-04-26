@@ -4,18 +4,13 @@
   height: 100%;
   min-height: 0;
   flex-direction: column;
-  margin-top: 16px;
-  padding: 16px;
-  border: 1px solid var(--mantine-color-dark-4);
-  border-radius: var(--mantine-radius-md);
+  margin-top: 14px;
 }
 
 .header {
   display: flex;
-  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 16px;
 }
 
 .title {
@@ -34,10 +29,6 @@
   color: var(--mantine-color-gray-3);
 }
 
-.divider {
-  flex-shrink: 0;
-}
-
 .grid {
   min-height: 0;
   flex: 1;
@@ -47,7 +38,8 @@
   display: flex;
   overflow: hidden;
   border: 1px solid var(--mantine-color-dark-4);
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--mantine-radius-xs);
+  background-color: #212529;
 }
 
 .dateBlock {
@@ -56,10 +48,11 @@
   color: var(--mantine-color-white);
   text-align: center;
   font-size: 18px;
+  background-color: #343a40;
 }
 
 .day {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .time {
@@ -68,9 +61,9 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 12px;
-  color: var(--mantine-color-cyan-4);
   font-size: 18px;
   font-weight: 600;
+  color: #37b24d;
 }
 
 .totalCard {
@@ -81,17 +74,19 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--mantine-color-dark-4);
-  border-radius: var(--mantine-radius-md);
+  border-radius: var(--mantine-radius-xs);
   background: var(--mantine-color-dark-4);
   color: var(--mantine-color-gray-2);
+  background-color: #343a40;
 }
 
 .totalTime {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .totalLabel {
   color: var(--mantine-color-gray-5);
   font-size: 14px;
+  font-weight: 600;
 }

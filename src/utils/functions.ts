@@ -27,11 +27,15 @@ export function mapWeeklyTimeLog(payload: WeeklyTimeLogApiPayload | undefined): 
       month: "short",
     });
 
-    const day = parsed.toLocaleDateString("en-GB", {
+    let day = parsed.toLocaleDateString("en-GB", {
       weekday: "short",
     });
 
-    const time = item.total_duration ?? "00:00:00";
+    let time = item.total_duration ?? "0";
+    if (time === "00:00:00") {
+      time = "0";
+    }
+    console.log(time)
 
     return {
       date,

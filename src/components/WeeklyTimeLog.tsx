@@ -11,6 +11,7 @@ import { useDisclosure } from "@mantine/hooks";
 import {
   IconFileTime,
   IconChevronLeft,
+  IconChevronRight,
   type TablerIcon,
 } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
@@ -45,6 +46,7 @@ function WeeklyTimeLog({
     weekly: true,
     previous_week: previousWeek,
   });
+  console.log(data);
 
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedLog, setSelectedLog] = useState<WeeklyLogItem | null>(null);
@@ -85,7 +87,11 @@ function WeeklyTimeLog({
             className={classes.previousButton}
             onClick={() => setPreviousWeek((current) => !current)}
           >
-            <IconChevronLeft size={26} />
+            {previousWeek ? (
+              <IconChevronRight size={26} />
+            ) : (
+              <IconChevronLeft size={26} />
+            )}
           </UnstyledButton>
         </Box>
 
@@ -120,7 +126,15 @@ function WeeklyTimeLog({
                         <Box className={classes.day}>{item.day}</Box>
                       </Box>
 
-                      <Box className={classes.time}>{item.time}</Box>
+                      <Box
+                        c={item.time === "0" ? "#1098ad" : "#37b24d"}
+                        fz="20px"
+                        fw={600}
+                        pr="md"
+                        className={classes.time}
+                      >
+                        {item.time}
+                      </Box>
                     </Box>
                   </Grid.Col>
                 ))}

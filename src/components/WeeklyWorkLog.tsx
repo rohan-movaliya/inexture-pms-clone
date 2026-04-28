@@ -18,7 +18,12 @@ import {
 import { useMemo, useState } from "react";
 import { useGetWeeklyWorkLogQuery } from "../services/dashboard/dashboard.service";
 import { mapWeeklyWorkLog, formatDateToDayMonth } from "../utils/functions";
-import type { WeeklyWorkLogState } from "../types/weeklyWorkLog";
+import type {
+  WeeklyWorkLogState,
+  WeeklyWorkLogItem,
+} from "../types/weeklyWorkLog";
+import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
+import { useDisclosure } from "@mantine/hooks";
 
 interface WeeklyWorkLogProps {
   title?: string;
@@ -30,6 +35,10 @@ function WeeklyWorkLog({
   headerIcon: HeaderIcon = IconChecklist,
 }: WeeklyWorkLogProps) {
   const [previousWeek, setPreviousWeek] = useState(0);
+  const [opened, { open, close }] = useDisclosure(false);
+  const [selectedLog, setSelectedLog] = useState<WeeklyWorkLogItem | null>(
+    null,
+  );
 
   const { data, isLoading, isError } = useGetWeeklyWorkLogQuery({
     count: previousWeek,
@@ -46,8 +55,23 @@ function WeeklyWorkLog({
     );
   }, [data]);
 
+  const handleOpenModal = (item: WeeklyWorkLogItem) => {
+    if (item.workLog === "0") {
+      return; // modal will not open if time is zero
+    }
+
+    setSelectedLog(item);
+    open();
+  };
+
   return (
     <>
+      <WeeklyWorkLogModal
+        selectedLog={selectedLog}
+        opened={opened}
+        close={close}
+      />
+
       <Paper withBorder mt="md">
         <Group px="md" py="xs" justify="space-between" align="center">
           <Group gap={8}>
@@ -94,11 +118,17 @@ function WeeklyWorkLog({
                       withBorder
                       radius="xs"
                       bg="#212529"
+                      component="button"
+                      type="button"
                       p={0}
                       w="100%"
+                      onClick={() => handleOpenModal(item)}
+                      disabled={item.workLog === "0"}
                       style={(theme) => ({
                         overflow: "hidden",
                         borderColor: theme.colors.dark[4],
+                        cursor:
+                          item.workLog === "0" ? "default" : "pointer",
                       })}
                     >
                       <Flex>

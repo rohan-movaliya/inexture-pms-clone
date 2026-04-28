@@ -20,14 +20,6 @@ export function formatDateToDayMonthYear(dateString: string): string {
 }
 // ================ Common Mapping Function ================
 
-
-
-
-
-
-
-
-
 // ================ Weekly Time Log Mapping Function ================
 type WeeklyTimeLogApiResult = {
   log_date?: string;
@@ -94,13 +86,6 @@ export function mapWeeklyTimeLog(payload: WeeklyTimeLogApiPayload | undefined) {
 
 // ================ Weekly Time Log Mapping Function ================
 
-
-
-
-
-
-
-
 // ================ Weekly Work Log Mapping Function ================
 
 type WeeklyWorkLogApiResult = {
@@ -161,3 +146,52 @@ export function mapWeeklyWorkLog(payload: WeeklyWorkLogApiPayload | undefined) {
   };
 }
 // ================ Weekly Work Log Mapping Function ================
+
+
+
+
+// ================ Date-wise Work Log Mapping Function ================
+type WorkLogApiItem = {
+  task?: {
+    project_code?: string;
+    project_name?: string;
+    task_name?: string;
+  };
+  log_hours?: string;
+  work_description?: string;
+};
+
+type WorkLogApiPayload = {
+  data?: WorkLogApiItem[];
+  labels?: {
+    total_hours?: string;
+  };
+};
+
+type MappedDateWiseWorkLogItem = {
+  project_code: string;
+  project_name: string;
+  task_name: string;
+  log_hours: string;
+  work_description: string;
+};
+
+type MappedDateWiseWorkLogPayload = {
+  items: MappedDateWiseWorkLogItem[];
+};
+
+export function mapDateWiseWorkLog(
+  payload: WorkLogApiPayload,
+): MappedDateWiseWorkLogPayload {
+  return {
+    items:
+      payload.data?.map((item) => ({
+        project_code: item.task?.project_code ?? "",
+        project_name: item.task?.project_name ?? "",
+        task_name: item.task?.task_name ?? "",
+        log_hours: item.log_hours ?? "",
+        work_description: item.work_description ?? "",
+      })) ?? [],
+  };
+}
+// ================ Date-wise Work Log Mapping Function ================

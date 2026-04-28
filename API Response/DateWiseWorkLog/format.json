@@ -1,0 +1,18 @@
+{
+  "items": [
+    {
+      "project_code": "INX00291",
+      "project_name": "AI Delivery",
+      "task_name": "Development-Activity-Rohan",
+      "log_hours": "2.00",
+      "work_description": "<ul><li><p>Take update from Parth Varecha about Connect DB refactoring and Review the code.</p></li><li><p>Practice React JS</p></li></ul>"
+    },
+    {
+      "project_code": "INX00336",
+      "project_name": "Solvere",
+      "task_name": "Development Task - Rohan Movaliya",
+      "log_hours": "6.00",
+      "work_description": "<ul><li><p>Run Service Module test cases and fix Errors and Failed Cases</p></li><li><p>Compare local .env, env.example and server .env file Compare among all and Create organized env.example file</p></li><li><p>Fix docker file as per updated .env file with hepl of Vaibhav Soni</p></li><li><p>Run all test case and create coverage report of all modules.</p></li><li><p>Docmented updated .env.example file</p></li></ul>"
+    }
+  ]
+}

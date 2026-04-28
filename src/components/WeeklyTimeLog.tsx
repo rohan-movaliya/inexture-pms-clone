@@ -17,10 +17,10 @@ import {
 import { useMemo, useState } from "react";
 import { useGetWeeklyWorkLogQuery } from "../services/dashboard/dashboard.service";
 import { mapWeeklyTimeLog, formatDateToDayMonth } from "../utils/functions";
-import TimeEntryModal from "./TimeEntryModal";
 import classes from "./WeeklyTimeLog.module.css";
 
 import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
+import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
 
 interface WeeklyTimeLogProps {
   title?: string;
@@ -65,7 +65,7 @@ const handleOpenModal = (item: WeeklyLogItem) => {
 
   return (
     <>
-      <TimeEntryModal
+      <WeeklyTimeLogModal
         weeklyLog={workLog}
         selectedLog={selectedLog}
         opened={opened}

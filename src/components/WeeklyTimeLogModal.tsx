@@ -7,24 +7,25 @@ import {
   Table,
   Grid,
   Box,
+  Stack,
 } from "@mantine/core";
 
 import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
 import { formatDateToDayMonthYear } from "../utils/functions";
 
-type TimeEntryModalProps = {
+type WeeklyTimeLogModalProps = {
   opened: boolean;
   close: () => void;
   weeklyLog: WeeklyTimeLogState;
   selectedLog: WeeklyLogItem | null;
 };
 
-function TimeEntryModal({
+function WeeklyTimeLogModal({
   opened,
   close,
   weeklyLog,
   selectedLog,
-}: TimeEntryModalProps) {
+}: WeeklyTimeLogModalProps) {
   return (
     <Modal
       opened={opened}
@@ -143,12 +144,23 @@ function TimeEntryModal({
                     {formatDateToDayMonthYear(selectedLog.log_date)}
                   </Table.Td>
 
-                  <Table.Td>
-                    <Badge variant="outline">00:00:00</Badge>
+                  <Table.Td ta="center">
+                    <Stack align="center" gap={6}>
+                      {selectedLog?.log?.MMI?.map((time, index) => (
+                        <Badge key={index} variant="outline">
+                          {time}
+                        </Badge>
+                      ))}
+                    </Stack>
                   </Table.Td>
-
-                  <Table.Td>
-                    <Badge variant="outline">00:00:00</Badge>
+                  <Table.Td ta="center">
+                    <Stack align="center" gap={6}>
+                      {selectedLog?.log?.MMO?.map((time, index) => (
+                        <Badge key={index} variant="outline">
+                          {time}
+                        </Badge>
+                      ))}
+                    </Stack>
                   </Table.Td>
 
                   <Table.Td>
@@ -172,4 +184,4 @@ function TimeEntryModal({
   );
 }
 
-export default TimeEntryModal;
+export default WeeklyTimeLogModal;

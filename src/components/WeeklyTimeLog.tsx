@@ -118,7 +118,7 @@ function WeeklyTimeLog({
                     <Paper
                       withBorder
                       radius="xs"
-                      bg="dark.6"
+                      bg="#212529"
                       component="button"
                       type="button"
                       onClick={() => handleOpenModal(item)}
@@ -136,8 +136,8 @@ function WeeklyTimeLog({
                         {/* Date Block */}
                         <Box
                           px="md"
-                          py={8}
-                          bg="dark.4"
+                          py={12}
+                          bg="#343A40"
                           c="white"
                           ta="center"
                           fz={18}
@@ -154,7 +154,9 @@ function WeeklyTimeLog({
                           pr="md"
                           fz={20}
                           fw={600}
-                          c={item.total_duration === "0" ? "cyan.4" : "green.5"}
+                          c={
+                            item.total_duration === "0" ? "#1098AD" : "#37B24D"
+                          }
                         >
                           {item.total_duration}
                         </Flex>
@@ -168,7 +170,7 @@ function WeeklyTimeLog({
                   <Paper
                     withBorder
                     radius="xs"
-                    bg="dark.4"
+                    bg="#343A40"
                     h="100%"
                     style={(theme) => ({ borderColor: theme.colors.dark[4] })}
                   >

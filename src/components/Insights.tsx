@@ -13,7 +13,6 @@ function Card({ image }: CardProps) {
   return (
     <Paper
       shadow="md"
-      radius="md"
       style={{
         backgroundImage: `url(${image})`,
       }}

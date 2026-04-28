@@ -23,4 +23,6 @@ export const theme: any = createTheme({
   },
   primaryColor: "myColor",
   fontFamily: "Open Sans, sans-serif",
+  defaultRadius: "sm",
+  primaryShade: 6,
 });

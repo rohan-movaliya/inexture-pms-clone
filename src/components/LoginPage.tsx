@@ -98,7 +98,6 @@ function LoginPage() {
               type="submit"
               fullWidth
               size="md"
-              radius="md"
               mt="xs"
               style={{ color: "white", fontWeight: 600 }}
             >

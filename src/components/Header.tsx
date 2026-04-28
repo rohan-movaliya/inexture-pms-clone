@@ -95,7 +95,6 @@ export function Header() {
                   <Paper
                     p="md"
                     withBorder
-                    radius="md"
                     className={classes.quickCard}
                   >
                     <Center>
@@ -119,7 +118,6 @@ export function Header() {
                   <Paper
                     p="md"
                     withBorder
-                    radius="md"
                     className={classes.quickCard}
                   >
                     <Center>
@@ -143,7 +141,6 @@ export function Header() {
                   <Paper
                     p="md"
                     withBorder
-                    radius="md"
                     className={classes.quickCard}
                   >
                     <Center>
@@ -167,7 +164,6 @@ export function Header() {
                   <Paper
                     p="md"
                     withBorder
-                    radius="md"
                     className={classes.quickCard}
                   >
                     <Center>
@@ -199,7 +195,7 @@ export function Header() {
           >
             <Menu.Target>
               <UnstyledButton className={classes.user}>
-                <Avatar color="cyan" radius="xl" size={40}>
+                <Avatar color="cyan" size={40}>
                   R
                 </Avatar>
               </UnstyledButton>

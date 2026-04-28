@@ -16,20 +16,11 @@ import {
 } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 import { useGetWeeklyWorkLogQuery } from "../services/dashboard/dashboard.service";
-import { mapWeeklyTimeLog } from "../utils/functions";
+import { mapWeeklyTimeLog, formatDateToDayMonth } from "../utils/functions";
 import TimeEntryModal from "./TimeEntryModal";
 import classes from "./WeeklyTimeLog.module.css";
 
-export type WeeklyLogItem = {
-  date: string;
-  day: string;
-  time: string;
-};
-
-export type WeeklyTimeLogState = {
-  items: WeeklyLogItem[];
-  totalTime: string;
-};
+import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
 
 interface WeeklyTimeLogProps {
   title?: string;
@@ -46,24 +37,31 @@ function WeeklyTimeLog({
     weekly: true,
     previous_week: previousWeek,
   });
-  console.log(data);
 
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedLog, setSelectedLog] = useState<WeeklyLogItem | null>(null);
 
-  const workLog = useMemo(() => {
+  const workLog: WeeklyTimeLogState = useMemo(() => {
     return (
       mapWeeklyTimeLog(data) || {
         items: [],
-        totalTime: "0h 0m",
+        labels: {
+          last_day: 0,
+          this_week: "0h 0m",
+          this_month_average: "0h 0m",
+        },
       }
     );
   }, [data]);
 
-  const handleOpenModal = (item: WeeklyLogItem) => {
-    setSelectedLog(item);
-    open();
-  };
+const handleOpenModal = (item: WeeklyLogItem) => {
+  if (item.total_duration === "0") {
+    return; // modal will not open if time is zero
+  }
+
+  setSelectedLog(item);
+  open();
+};
 
   return (
     <>
@@ -74,7 +72,7 @@ function WeeklyTimeLog({
         close={close}
       />
 
-      <Paper withBorder radius="xs" className={classes.card}>
+      <Paper withBorder className={classes.card}>
         <Box px="md" pt="xs" pb="xs" className={classes.header}>
           <Text size="lg" fw={700} className={classes.title}>
             <HeaderIcon size={24} />
@@ -115,25 +113,28 @@ function WeeklyTimeLog({
               <>
                 {workLog.items.map((item) => (
                   <Grid.Col
-                    key={item.date}
+                    key={item.log_date}
                     span={{ base: 12, xs: 4 }}
                     onClick={() => handleOpenModal(item)}
-                    style={{ cursor: "pointer" }}
+                    style={{
+                      cursor:
+                        item.total_duration === "0" ? "default" : "pointer",
+                    }}
                   >
                     <Box className={classes.logItem}>
                       <Box className={classes.dateBlock}>
-                        <Box>{item.date}</Box>
+                        <Box>{formatDateToDayMonth(item.log_date)}</Box>
                         <Box className={classes.day}>{item.day}</Box>
                       </Box>
 
                       <Box
-                        c={item.time === "0" ? "#1098ad" : "#37b24d"}
+                        c={item.total_duration === "0" ? "#1098ad" : "#37b24d"}
                         fz="20px"
                         fw={600}
                         pr="md"
                         className={classes.time}
                       >
-                        {item.time}
+                        {item.total_duration}
                       </Box>
                     </Box>
                   </Grid.Col>
@@ -141,7 +142,9 @@ function WeeklyTimeLog({
 
                 <Grid.Col span={{ base: 12, xs: 4 }}>
                   <Box className={classes.totalCard}>
-                    <Box className={classes.totalTime}>{workLog.totalTime}</Box>
+                    <Box className={classes.totalTime}>
+                      {workLog.labels.this_week}
+                    </Box>
                     <Box className={classes.totalLabel}>Total</Box>
                   </Box>
                 </Grid.Col>

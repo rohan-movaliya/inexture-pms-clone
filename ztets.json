@@ -1,0 +1,350 @@
+API RESPONSE
+{
+  "data": {
+    "count": 5,
+    "next": null,
+    "previous": null,
+    "results": [
+      {
+        "id": 69994,
+        "log_date": "2026-04-20",
+        "total_duration": "08:03:25",
+        "employee_code": "INXSD490",
+        "employee_name": "Rohan Movaliya",
+        "log": [
+          {
+            "device": "MMI",
+            "time": "10:27:46",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "18:31:11",
+            "punch": "OUT"
+          }
+        ],
+        "duration": ["08:03:25"],
+        "gamezone_duration": "00:00:00",
+        "config": {
+          "isInDanger": false,
+          "isHoliday": false,
+          "isWfh": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "leave": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "compensation": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          }
+        }
+      },
+      {
+        "id": 70074,
+        "log_date": "2026-04-21",
+        "total_duration": "10:28:25",
+        "employee_code": "INXSD490",
+        "employee_name": "Rohan Movaliya",
+        "log": [
+          {
+            "device": "MMI",
+            "time": "10:05:10",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "11:28:14",
+            "punch": "OUT"
+          },
+          {
+            "device": "MMI",
+            "time": "11:28:47",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "14:45:50",
+            "punch": "OUT"
+          },
+          {
+            "device": "MMI",
+            "time": "14:46:41",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "20:34:59",
+            "punch": "OUT"
+          }
+        ],
+        "duration": ["01:23:04", "03:17:03", "05:48:18"],
+        "gamezone_duration": "00:00:00",
+        "config": {
+          "isInDanger": false,
+          "isHoliday": false,
+          "isWfh": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "leave": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "compensation": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          }
+        }
+      },
+      {
+        "id": 70177,
+        "log_date": "2026-04-22",
+        "total_duration": "09:22:29",
+        "employee_code": "INXSD490",
+        "employee_name": "Rohan Movaliya",
+        "log": [
+          {
+            "device": "MMI",
+            "time": "10:18:18",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "19:40:47",
+            "punch": "OUT"
+          }
+        ],
+        "duration": ["09:22:29"],
+        "gamezone_duration": "00:00:00",
+        "config": {
+          "isInDanger": false,
+          "isHoliday": false,
+          "isWfh": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "leave": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "compensation": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          }
+        }
+      },
+      {
+        "id": 70271,
+        "log_date": "2026-04-23",
+        "total_duration": "08:27:53",
+        "employee_code": "INXSD490",
+        "employee_name": "Rohan Movaliya",
+        "log": [
+          {
+            "device": "MMI",
+            "time": "10:13:05",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "18:40:58",
+            "punch": "OUT"
+          }
+        ],
+        "duration": ["08:27:53"],
+        "gamezone_duration": "00:00:00",
+        "config": {
+          "isInDanger": false,
+          "isHoliday": false,
+          "isWfh": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "leave": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "compensation": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          }
+        }
+      },
+      {
+        "id": 70350,
+        "log_date": "2026-04-24",
+        "total_duration": "08:03:23",
+        "employee_code": "INXSD490",
+        "employee_name": "Rohan Movaliya",
+        "log": [
+          {
+            "device": "MMI",
+            "time": "10:00:14",
+            "punch": "IN"
+          },
+          {
+            "device": "MMO",
+            "time": "18:03:37",
+            "punch": "OUT"
+          }
+        ],
+        "duration": ["08:03:23"],
+        "gamezone_duration": "00:00:00",
+        "config": {
+          "isInDanger": false,
+          "isHoliday": false,
+          "isWfh": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "leave": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          },
+          "compensation": {
+            "full": false,
+            "first_half": false,
+            "second_half": false
+          }
+        }
+      }
+    ]
+  },
+  "labels": {
+    "last_day": 0,
+    "this_week": "44h 25m 35s",
+    "this_month_average": "8h 10m 58s"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+NEED FORMAT
+
+
+
+{    
+    "items": [
+        {
+            "log_date": "2026-04-20",
+            "day": "Mon",
+            "total_duration": "10:28:25",
+            "log": [
+                "MMI" [
+                    "10:05:10",
+                    "11:28:47",
+                    "14:46:41"
+                ],
+                "MMO" [
+                    "11:28:14",
+                    "14:45:50",
+                    "20:34:59"
+                ]
+                
+            ]
+        },
+        {
+            "log_date": "2026-04-21",
+            "day": "Tue",
+            "total_duration": "0",
+             "log": [
+                "MMI" [
+                    "10:05:10",
+                    "11:28:47",
+                    "14:46:41"
+                ],
+                "MMO" [
+                    "11:28:14",
+                    "14:45:50",
+                    "20:34:59"
+                ]
+                
+            ]
+        },
+        {
+            "log_date": "2026-04-22",
+            "day": "Wed",
+            "total_duration": "0",
+             "log": [
+                "MMI" [
+                    "10:05:10",
+                    "11:28:47",
+                    "14:46:41"
+                ],
+                "MMO" [
+                    "11:28:14",
+                    "14:45:50",
+                    "20:34:59"
+                ]
+                
+            ]
+        },
+        {
+            "log_date": "2026-04-23",
+            "day": "Thu",
+            "total_duration": "0",
+             "log": [
+                "MMI" [
+                    "10:05:10",
+                    "11:28:47",
+                    "14:46:41"
+                ],
+                "MMO" [
+                    "11:28:14",
+                    "14:45:50",
+                    "20:34:59"
+                ]
+                
+            ]
+        },
+        {
+            "log_date": "2026-04-24",
+            "day": "Fri",
+            "total_duration": "0",
+             "log": [
+                "MMI" [
+                    "10:05:10",
+                    "11:28:47",
+                    "14:46:41"
+                ],
+                "MMO" [
+                    "11:28:14",
+                    "14:45:50",
+                    "20:34:59"
+                ]
+                
+            ]
+        },
+    ],
+    "labels": {
+    "last_day": 0,
+    "this_week": "44h 25m 35s",
+    "this_month_average": "8h 10m 58s"
+  }
+}

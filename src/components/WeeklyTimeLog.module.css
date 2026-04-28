@@ -27,6 +27,8 @@
 
 .previousButton:hover {
   color: var(--mantine-color-gray-3);
+  background-color: var(--mantine-color-dark-4);
+  border-radius: 2px;
 }
 
 .grid {

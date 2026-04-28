@@ -1,11 +1,13 @@
 import {
+  ActionIcon,
   Box,
   Paper,
   Divider,
   Grid,
   Loader,
   Text,
-  UnstyledButton,
+  Group,
+  Flex,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import {
@@ -17,7 +19,6 @@ import {
 import { useMemo, useState } from "react";
 import { useGetWeeklyWorkLogQuery } from "../services/dashboard/dashboard.service";
 import { mapWeeklyTimeLog, formatDateToDayMonth } from "../utils/functions";
-import classes from "./WeeklyTimeLog.module.css";
 
 import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
 import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
@@ -54,14 +55,14 @@ function WeeklyTimeLog({
     );
   }, [data]);
 
-const handleOpenModal = (item: WeeklyLogItem) => {
-  if (item.total_duration === "0") {
-    return; // modal will not open if time is zero
-  }
+  const handleOpenModal = (item: WeeklyLogItem) => {
+    if (item.total_duration === "0") {
+      return; // modal will not open if time is zero
+    }
 
-  setSelectedLog(item);
-  open();
-};
+    setSelectedLog(item);
+    open();
+  };
 
   return (
     <>
@@ -72,81 +73,120 @@ const handleOpenModal = (item: WeeklyLogItem) => {
         close={close}
       />
 
-      <Paper withBorder className={classes.card}>
-        <Box px="md" pt="xs" pb="xs" className={classes.header}>
-          <Text size="lg" fw={700} className={classes.title}>
+      <Paper withBorder mt="md">
+        <Group px="md" py="xs" justify="space-between" align="center">
+          <Group gap={8}>
             <HeaderIcon size={24} />
-            {title}
-          </Text>
+            <Text size="lg" fw={700}>
+              {title}
+            </Text>
+          </Group>
 
-          <UnstyledButton
-            type="button"
-            aria-label="Previous week"
-            className={classes.previousButton}
+          <ActionIcon
+            variant="subtle"
+            color="gray"
+            radius="xs"
             onClick={() => setPreviousWeek((current) => !current)}
+            aria-label={previousWeek ? "Next week" : "Previous week"}
           >
             {previousWeek ? (
-              <IconChevronRight size={26} />
+              <IconChevronRight size={20} />
             ) : (
-              <IconChevronLeft size={26} />
+              <IconChevronLeft size={20} />
             )}
-          </UnstyledButton>
-        </Box>
+          </ActionIcon>
+        </Group>
 
         <Divider />
 
         <Box px="md" pb="md">
-          <Grid my="md" className={classes.grid}>
+          <Grid my="md">
             {isLoading ? (
               <Grid.Col span={12}>
-                <Box className={classes.totalCard}>
+                <Group justify="center">
                   <Loader size="sm" />
-                </Box>
+                </Group>
               </Grid.Col>
             ) : isError ? (
               <Grid.Col span={12}>
-                <Box className={classes.totalCard}>
-                  <Text size="sm">Failed to load weekly work log.</Text>
-                </Box>
+                <Text size="sm">Failed to load weekly work log.</Text>
               </Grid.Col>
             ) : (
               <>
                 {workLog.items.map((item) => (
-                  <Grid.Col
-                    key={item.log_date}
-                    span={{ base: 12, xs: 4 }}
-                    onClick={() => handleOpenModal(item)}
-                    style={{
-                      cursor:
-                        item.total_duration === "0" ? "default" : "pointer",
-                    }}
-                  >
-                    <Box className={classes.logItem}>
-                      <Box className={classes.dateBlock}>
-                        <Box>{formatDateToDayMonth(item.log_date)}</Box>
-                        <Box className={classes.day}>{item.day}</Box>
-                      </Box>
+                  <Grid.Col key={item.log_date} span={{ base: 12, xs: 4 }}>
+                    <Paper
+                      withBorder
+                      radius="xs"
+                      bg="dark.6"
+                      component="button"
+                      type="button"
+                      onClick={() => handleOpenModal(item)}
+                      disabled={item.total_duration === "0"}
+                      p={0}
+                      w="100%"
+                      style={(theme) => ({
+                        overflow: "hidden",
+                        cursor:
+                          item.total_duration === "0" ? "default" : "pointer",
+                        borderColor: theme.colors.dark[4],
+                      })}
+                    >
+                      <Flex>
+                        {/* Date Block */}
+                        <Box
+                          px="md"
+                          py={8}
+                          bg="dark.4"
+                          c="white"
+                          ta="center"
+                          fz={18}
+                        >
+                          <Box>{formatDateToDayMonth(item.log_date)}</Box>
+                          <Box fw={500}>{item.day}</Box>
+                        </Box>
 
-                      <Box
-                        c={item.total_duration === "0" ? "#1098ad" : "#37b24d"}
-                        fz="20px"
-                        fw={600}
-                        pr="md"
-                        className={classes.time}
-                      >
-                        {item.total_duration}
-                      </Box>
-                    </Box>
+                        {/* Time */}
+                        <Flex
+                          flex={1}
+                          justify="flex-end"
+                          align="center"
+                          pr="md"
+                          fz={20}
+                          fw={600}
+                          c={item.total_duration === "0" ? "cyan.4" : "green.5"}
+                        >
+                          {item.total_duration}
+                        </Flex>
+                      </Flex>
+                    </Paper>
                   </Grid.Col>
                 ))}
 
+                {/* Total Card */}
                 <Grid.Col span={{ base: 12, xs: 4 }}>
-                  <Box className={classes.totalCard}>
-                    <Box className={classes.totalTime}>
-                      {workLog.labels.this_week}
-                    </Box>
-                    <Box className={classes.totalLabel}>Total</Box>
-                  </Box>
+                  <Paper
+                    withBorder
+                    radius="xs"
+                    bg="dark.4"
+                    h="100%"
+                    style={(theme) => ({ borderColor: theme.colors.dark[4] })}
+                  >
+                    <Flex
+                      direction="column"
+                      align="center"
+                      justify="center"
+                      h="100%"
+                      c="gray.2"
+                    >
+                      <Box fz={24} fw={500}>
+                        {workLog.labels.this_week}
+                      </Box>
+                      <Text size="sm" fw={600} c="gray.5">
+                        Total
+                      </Text>
+                    </Flex>
+                  </Paper>
                 </Grid.Col>
               </>
             )}

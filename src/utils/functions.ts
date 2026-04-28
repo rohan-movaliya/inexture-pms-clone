@@ -1,3 +1,34 @@
+// ================ Common Mapping Function ================
+
+export function formatDateToDayMonth(dateString: string): string {
+  const parsed = new Date(dateString);
+
+  return parsed.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+  });
+}
+
+export function formatDateToDayMonthYear(dateString: string): string {
+  const parsed = new Date(dateString);
+
+  return parsed.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+}
+// ================ Common Mapping Function ================
+
+
+
+
+
+
+
+
+
+// ================ Weekly Time Log Mapping Function ================
 type WeeklyTimeLogApiResult = {
   log_date?: string;
   total_duration?: string;
@@ -61,21 +92,72 @@ export function mapWeeklyTimeLog(payload: WeeklyTimeLogApiPayload | undefined) {
   };
 }
 
-export function formatDateToDayMonth(dateString: string): string {
-  const parsed = new Date(dateString);
+// ================ Weekly Time Log Mapping Function ================
 
-  return parsed.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
+
+
+
+
+
+
+
+// ================ Weekly Work Log Mapping Function ================
+
+type WeeklyWorkLogApiResult = {
+  log_date?: string;
+  workLog?: string;
+  log_hours?: number;
+  config?: {
+    isInDanger?: boolean;
+    isHoliday?: boolean;
+    isWfh?: {
+      full?: boolean;
+      first_half?: boolean;
+      second_half?: boolean;
+    };
+    leave?: {
+      full?: boolean;
+      first_half?: boolean;
+      second_half?: boolean;
+    };
+    compensation?: {
+      full?: boolean;
+      first_half?: boolean;
+      second_half?: boolean;
+    };
+  };
+};
+
+type WeeklyWorkLogApiPayload = {
+  results?: {
+    data?: WeeklyWorkLogApiResult[];
+    total_worklog?: string;
+  };
+};
+
+export function mapWeeklyWorkLog(payload: WeeklyWorkLogApiPayload | undefined) {
+  const results = payload?.results?.data ?? [];
+
+  const items = results.map((item) => {
+    const rawDate = item.log_date ?? "";
+    const parsed = new Date(rawDate);
+
+    const day = parsed.toLocaleDateString("en-GB", {
+      weekday: "short",
+    });
+
+    return {
+      log_date: rawDate,
+      day,
+      workLog: item.workLog && item.workLog.trim() !== "" ? item.workLog : "0",
+    };
   });
-}
 
-export function formatDateToDayMonthYear(dateString: string): string {
-  const parsed = new Date(dateString);
-
-  return parsed.toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  return {
+    items,
+    labels: {
+      total_worklog: payload?.results?.total_worklog ?? "0",
+    },
+  };
 }
+// ================ Weekly Work Log Mapping Function ================

@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import { Box, Container, Grid } from "@mantine/core";
-import { IconClipboardList } from "@tabler/icons-react";
 import WeeklyTimeLog from "./WeeklyTimeLog";
 import DefaulterStatus from "./DefaulterStatus";
 import TeamStatus from "./TeamStatus";
@@ -8,6 +7,7 @@ import MyLeaves from "./MyLeaves";
 import Insights from "./Insights";
 import BirthDays from "./BirthDays";
 import classes from "./Dashboard.module.css";
+import WeeklyWorkLog from "./WeeklyWorkLog";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -25,10 +25,7 @@ function Dashboard() {
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
           <DashboardCell>
-            <WeeklyTimeLog
-              title="Weekly Work Log"
-              headerIcon={IconClipboardList}
-            />
+            <WeeklyWorkLog />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 8 }} className={classes.column}>

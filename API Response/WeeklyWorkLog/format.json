@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "log_date": "2026-04-20",
+      "day": "Mon",
+      "workLog": "9.25"
+    },
+    {
+      "log_date": "2026-04-21",
+      "day": "Tue",
+      "workLog": "0"
+    },
+    {
+      "log_date": "2026-04-22",
+      "day": "Wed",
+      "workLog": "0"
+    },
+    {
+      "log_date": "2026-04-23",
+      "day": "Thu",
+      "workLog": "0"
+    },
+    {
+      "log_date": "2026-04-24",
+      "day": "Fri",
+      "workLog": "0"
+    }
+  ],
+  "labels": {
+    "total_worklog": "9.25"
+  }
+}

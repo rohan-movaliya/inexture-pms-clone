@@ -14,5 +14,6 @@ export const API_URL = {
   },
   DASHBOARD: {
     WEEK_TIME_ENTRY: `${env?.API_URL}/time-entry`,
+    WEEK_WORK_LOG: `${env?.API_URL}/work-entry`,
   },
 };

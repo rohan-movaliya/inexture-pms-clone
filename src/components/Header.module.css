@@ -81,13 +81,13 @@
   font-size: 12px;
 }
 
-.iconButton {
+/* .iconButton {
   color: #c1c2c5;
-}
+} */
 
-.iconButton:hover {
+/* .iconButton:hover {
   background-color: rgba(255, 255, 255, 0.06);
-}
+} */
 
 .card {
   background: #2b2b2b;

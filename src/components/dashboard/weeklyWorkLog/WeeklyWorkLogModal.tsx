@@ -11,10 +11,9 @@ import {
 } from "@mantine/core";
 import { IconBriefcase } from "@tabler/icons-react";
 import { useMemo } from "react";
-import { formatDateToDayMonthYear } from "../utils/functions";
-import { mapDateWiseWorkLog } from "../utils/functions";
-import { useGetDateWiseWorkLogQuery } from "../services/dashboard/dashboard.service";
-import type { WeeklyWorkLogItem } from "../types/weeklyWorkLog";
+import type { WeeklyWorkLogItem } from "../../../types/weeklyWorkLog";
+import { useGetDateWiseWorkLogQuery } from "../../../services/dashboard/dashboard.service";
+import { formatDateToDayMonthYear, mapDateWiseWorkLog } from "../../../utils/functions";
 
 type WeeklyWorkLogModalProps = {
   opened: boolean;

@@ -72,15 +72,15 @@ export function Header() {
           >
             <Menu.Target>
               <ActionIcon
-                className={classes.iconButton}
                 variant="subtle"
                 size="lg"
+                // bg={theme.colors.myColor[0]}
                 aria-label="Quick links"
               >
                 <IconLayoutGridAdd
                   style={{ transform: "rotate(270deg)" }}
                   size={22}
-                  stroke={1.5}
+                  color="white"
                 />
               </ActionIcon>
             </Menu.Target>

@@ -9,54 +9,57 @@ import {
   Group,
   Flex,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import {
-  IconFileTime,
+  IconChecklist,
   IconChevronLeft,
   IconChevronRight,
   type TablerIcon,
 } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
-import { useGetWeeklyTimeLogQuery } from "../services/dashboard/dashboard.service";
-import { mapWeeklyTimeLog, formatDateToDayMonth } from "../utils/functions";
+import { useGetWeeklyWorkLogQuery } from "../../../services/dashboard/dashboard.service";
+import {
+  mapWeeklyWorkLog,
+  formatDateToDayMonth,
+} from "../../../utils/functions";
+import type {
+  WeeklyWorkLogState,
+  WeeklyWorkLogItem,
+} from "../../../types/weeklyWorkLog";
+import { useDisclosure } from "@mantine/hooks";
+import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
 
-import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
-import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
-
-interface WeeklyTimeLogProps {
+interface WeeklyWorkLogProps {
   title?: string;
   headerIcon?: TablerIcon;
 }
 
-function WeeklyTimeLog({
-  title = "Weekly Time Log",
-  headerIcon: HeaderIcon = IconFileTime,
-}: WeeklyTimeLogProps) {
-  const [previousWeek, setPreviousWeek] = useState(false);
+function WeeklyWorkLog({
+  title = "Weekly Work Log",
+  headerIcon: HeaderIcon = IconChecklist,
+}: WeeklyWorkLogProps) {
+  const [previousWeek, setPreviousWeek] = useState(0);
+  const [opened, { open, close }] = useDisclosure(false);
+  const [selectedLog, setSelectedLog] = useState<WeeklyWorkLogItem | null>(
+    null,
+  );
 
-  const { data, isLoading, isError } = useGetWeeklyTimeLogQuery({
-    weekly: true,
-    previous_week: previousWeek,
+  const { data, isLoading, isError } = useGetWeeklyWorkLogQuery({
+    count: previousWeek,
   });
 
-  const [opened, { open, close }] = useDisclosure(false);
-  const [selectedLog, setSelectedLog] = useState<WeeklyLogItem | null>(null);
-
-  const timeLog: WeeklyTimeLogState = useMemo(() => {
+  const workLog: WeeklyWorkLogState = useMemo(() => {
     return (
-      mapWeeklyTimeLog(data) || {
+      mapWeeklyWorkLog(data) || {
         items: [],
         labels: {
-          last_day: 0,
-          this_week: "0h 0m",
-          this_month_average: "0h 0m",
+          total_worklog: "0",
         },
       }
     );
   }, [data]);
 
-  const handleOpenModal = (item: WeeklyLogItem) => {
-    if (item.total_duration === "0") {
+  const handleOpenModal = (item: WeeklyWorkLogItem) => {
+    if (item.workLog === "0") {
       return; // modal will not open if time is zero
     }
 
@@ -66,8 +69,7 @@ function WeeklyTimeLog({
 
   return (
     <>
-      <WeeklyTimeLogModal
-        weeklyLog={timeLog}
+      <WeeklyWorkLogModal
         selectedLog={selectedLog}
         opened={opened}
         close={close}
@@ -86,7 +88,7 @@ function WeeklyTimeLog({
             variant="subtle"
             color="gray"
             radius="xs"
-            onClick={() => setPreviousWeek((current) => !current)}
+            onClick={() => setPreviousWeek((current) => (current ? 0 : 1))}
             aria-label={previousWeek ? "Next week" : "Previous week"}
           >
             {previousWeek ? (
@@ -113,7 +115,7 @@ function WeeklyTimeLog({
               </Grid.Col>
             ) : (
               <>
-                {timeLog.items.map((item) => (
+                {workLog.items.map((item) => (
                   <Grid.Col key={item.log_date} span={{ base: 12, xs: 4 }}>
                     <Paper
                       withBorder
@@ -121,15 +123,14 @@ function WeeklyTimeLog({
                       bg="#212529"
                       component="button"
                       type="button"
-                      onClick={() => handleOpenModal(item)}
-                      disabled={item.total_duration === "0"}
                       p={0}
                       w="100%"
+                      onClick={() => handleOpenModal(item)}
+                      disabled={item.workLog === "0"}
                       style={(theme) => ({
                         overflow: "hidden",
-                        cursor:
-                          item.total_duration === "0" ? "default" : "pointer",
                         borderColor: theme.colors.dark[4],
+                        cursor: item.workLog === "0" ? "default" : "pointer",
                       })}
                     >
                       <Flex>
@@ -154,11 +155,9 @@ function WeeklyTimeLog({
                           pr="md"
                           fz={20}
                           fw={600}
-                          c={
-                            item.total_duration === "0" ? "#1098AD" : "#37B24D"
-                          }
+                          c={item.workLog === "0" ? "#1098AD" : "#37B24D"}
                         >
-                          {item.total_duration}
+                          {item.workLog}
                         </Flex>
                       </Flex>
                     </Paper>
@@ -182,7 +181,7 @@ function WeeklyTimeLog({
                       c="gray.2"
                     >
                       <Box fz={24} fw={500}>
-                        {timeLog.labels.this_week}
+                        {workLog.labels.total_worklog}
                       </Box>
                       <Text size="sm" fw={600} c="gray.5">
                         Total
@@ -199,4 +198,4 @@ function WeeklyTimeLog({
   );
 }
 
-export default WeeklyTimeLog;
+export default WeeklyWorkLog;

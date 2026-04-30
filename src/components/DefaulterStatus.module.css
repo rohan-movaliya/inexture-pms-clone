@@ -43,7 +43,6 @@
   align-items: center;
   justify-content: center;
   border: 1px solid var(--mantine-color-dark-4);
-  border-radius: var(--mantine-radius-md);
   padding-block: 24px;
 }
 

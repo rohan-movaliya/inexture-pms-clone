@@ -10,8 +10,8 @@ import {
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setToken } from "../store/authSlice.ts";
-import type { AppDispatch } from "../store/index.ts";
+import { setToken } from "../../store/authSlice.ts";
+import type { AppDispatch } from "../../store/index.ts";
 
 type FormData = {
   refreshToken: string;
@@ -21,7 +21,7 @@ function LoginPage() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const {
+  const { 
     register,
     handleSubmit,
     formState: { errors },

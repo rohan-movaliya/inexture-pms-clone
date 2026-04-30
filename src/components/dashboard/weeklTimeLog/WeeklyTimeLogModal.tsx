@@ -10,8 +10,11 @@ import {
   Stack,
 } from "@mantine/core";
 
-import type { WeeklyLogItem, WeeklyTimeLogState } from "../types/weeklyTimeLog";
-import { formatDateToDayMonthYear } from "../utils/functions";
+import type {
+  WeeklyLogItem,
+  WeeklyTimeLogState,
+} from "../../../types/weeklyTimeLog";
+import { formatDateToDayMonthYear } from "../../../utils/functions";
 
 type WeeklyTimeLogModalProps = {
   opened: boolean;
@@ -32,6 +35,10 @@ function WeeklyTimeLogModal({
       onClose={close}
       centered
       size="xl"
+      overlayProps={{
+        // opacity: 0.9,
+        blur: 3,
+      }}
       title={
         <Box
           w="100%"

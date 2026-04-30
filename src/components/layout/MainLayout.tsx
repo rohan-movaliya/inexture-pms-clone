@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { AppShell } from "@mantine/core";
-import { Header } from "./Header";
-import Sidebar from "./Sidebar";
-import type { RootState } from "../store/index.ts";
+import Sidebar from "../Sidebar";
+import { Header } from "../Header";
+import type { RootState } from "../../store/index.ts";
+
 
 function MainLayout() {
   

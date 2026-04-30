@@ -1,8 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import MainLayout from "./components/MainLayout.tsx";
 import Dashboard from "./components/Dashboard.tsx";
-import LoginPage from "./components/LoginPage.tsx";
-
+import LoginPage from "./pages/auth/LoginPage.tsx";
+import MainLayout from "./components/layout/MainLayout.tsx";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +55,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
 
 const RootApp: React.FC = () => <RouterProvider router={router} />;
 

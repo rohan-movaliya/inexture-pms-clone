@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { Box, Container, Grid } from "@mantine/core";
-import WeeklyTimeLog from "./WeeklyTimeLog";
+import WeeklyTimeLog from "./dashboard/weeklTimeLog/WeeklyTimeLog";
 import DefaulterStatus from "./DefaulterStatus";
 import TeamStatus from "./TeamStatus";
 import MyLeaves from "./MyLeaves";
 import Insights from "./Insights";
 import BirthDays from "./BirthDays";
 import classes from "./Dashboard.module.css";
-import WeeklyWorkLog from "./WeeklyWorkLog";
+import WeeklyWorkLog from "./dashboard/weeklyWorkLog/WeeklyWorkLog";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {

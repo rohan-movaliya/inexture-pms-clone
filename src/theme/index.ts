@@ -19,7 +19,8 @@ export const theme: any = createTheme({
     myColor,
   },
   other: {
-    blue: "#f59e0b",
+    green: "#37B24D",
+    skyBlue: "#1098AD",
   },
   primaryColor: "myColor",
   fontFamily: "Open Sans, sans-serif",

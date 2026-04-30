@@ -24,7 +24,7 @@ function BlackLightTheme() {
       aria-label="Toggle theme"
     >
       <IconMoon className={cx(classes.icon, classes.light)} />
-      <IconSunLow className={cx(classes.icon, classes.dark)} />
+      <IconSunLow className={cx(classes.icon, classes.dark)} color="white" />
     </ActionIcon>
   );
 }

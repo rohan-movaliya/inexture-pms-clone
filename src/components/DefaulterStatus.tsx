@@ -1,15 +1,13 @@
 import { Text, Divider, Box } from "@mantine/core";
-import { IconFileTime } from "@tabler/icons-react";
+import { IconClockRecord } from "@tabler/icons-react";
 import classes from "./DefaulterStatus.module.css";
 
 const data = [
   { count: 0, label: "Working Hours & Flexibility" },
-  { count: 0, label: "Work From Home" },
+  { count: 0, label: "Business Continuity (WFH)" },
   { count: 0, label: "Time Entries" },
-  { count: 0, label: "Worklog (EOD)" },
-  { count: 0, label: "Leaves" },
-  { count: 0, label: "Game Zone" },
-  { count: 0, label: "Others" },
+  { count: 0, label: "Worklog (End of Day - EOD)" },
+  { count: 0, label: "Leave Management" },
   { count: 0, label: "Total" },
 ];
 
@@ -18,8 +16,8 @@ function DefaulterStatus() {
     <Box className={classes.card}>
       <Box className={classes.header}>
         <Text size="lg" fw={700} className={classes.title}>
-          <IconFileTime size={24} />
-          Your Defaulter Status
+          <IconClockRecord size={24} />
+          Your Non Compliance Status
         </Text>
       </Box>
 

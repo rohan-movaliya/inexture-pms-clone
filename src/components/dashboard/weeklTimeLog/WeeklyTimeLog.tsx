@@ -160,7 +160,7 @@ function WeeklyTimeLog({
                               : theme.other.green
                           }
                         >
-                          {item.total_duration}
+                          {item.total_duration === "00:00:00" ? "0" : item.total_duration}
                         </Flex>
                       </Flex>
                     </Paper>

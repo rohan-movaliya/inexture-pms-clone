@@ -112,11 +112,11 @@ function WeeklyWorkLog({
                       p={0}
                       w="100%"
                       onClick={() => handleOpenModal(item)}
-                      disabled={item.workLog === "0"}
+                      disabled={item.workLog === ""}
                       style={(theme) => ({
                         overflow: "hidden",
                         borderColor: theme.colors.dark[4],
-                        cursor: item.workLog === "0" ? "default" : "pointer",
+                        cursor: item.workLog === "" ? "default" : "pointer",
                       })}
                     >
                       <Flex>
@@ -143,9 +143,9 @@ function WeeklyWorkLog({
                           pr="md"
                           fz={20}
                           fw={600}
-                          c={item.workLog === "0" ? "#1098AD" : "#37B24D"}
+                          c={item.workLog === "" ? "#1098AD" : "#37B24D"}
                         >
-                          {item.workLog}
+                          {item.workLog === "" ? "0" : item.workLog}
                         </Flex>
                       </Flex>
                     </Paper>

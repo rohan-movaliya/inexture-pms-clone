@@ -16,14 +16,7 @@ export type WeeklyLogItem = {
   gamezone_duration?: string;
 };
 
-export type WeeklyTimeLogState = {
-  items: WeeklyLogItem[];
-  labels: {
-    last_day: number;
-    this_week: string;
-    this_month_average: string;
-  };
-};
+
 
 export type WeeklyTimeLogResponse = {
   results: WeeklyLogItem[];

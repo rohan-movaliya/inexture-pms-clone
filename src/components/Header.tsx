@@ -213,7 +213,6 @@ export function Header() {
               </Menu.Item>
               <Menu.Item
                 onClick={() => {
-                  console.log("Click on Logout.");
                   dispatch(logout());
                   navigate("/login"); // redirect after logout
                 }}

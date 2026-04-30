@@ -53,7 +53,6 @@ function LoginPage() {
       }
 
       const result = await response.json();
-      console.log("Login response:", result);
 
       // dispatch full object (matches your fixed slice)
       dispatch(setToken(result));

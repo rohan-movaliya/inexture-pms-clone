@@ -1,32 +1,127 @@
 {
-  "items": [
+  "results": [
     {
-      "log_date": "2026-04-20",
-      "day": "Mon",
-      "workLog": "9.25"
+      "log_date": "2026-04-27",
+      "log_hours": 9.416666666666666,
+      "workLog": "9.25",
+      "config": {
+        "isInDanger": false,
+        "isHoliday": false,
+        "isWfh": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "leave": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "compensation": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        }
+      }
     },
     {
-      "log_date": "2026-04-21",
-      "day": "Tue",
-      "workLog": "0"
+      "log_date": "2026-04-28",
+      "log_hours": 8,
+      "workLog": "8.00",
+      "config": {
+        "isInDanger": false,
+        "isHoliday": false,
+        "isWfh": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "leave": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "compensation": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        }
+      }
     },
     {
-      "log_date": "2026-04-22",
-      "day": "Wed",
-      "workLog": "0"
+      "log_date": "2026-04-29",
+      "log_hours": 8,
+      "workLog": "8.00",
+      "config": {
+        "isInDanger": false,
+        "isHoliday": false,
+        "isWfh": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "leave": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "compensation": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        }
+      }
     },
     {
-      "log_date": "2026-04-23",
-      "day": "Thu",
-      "workLog": "0"
+      "log_date": "2026-04-30",
+      "workLog": "",
+      "log_hours": 0,
+      "config": {
+        "isInDanger": true,
+        "isHoliday": false,
+        "isWfh": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "leave": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "compensation": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        }
+      }
     },
     {
-      "log_date": "2026-04-24",
-      "day": "Fri",
-      "workLog": "0"
+      "log_date": "2026-05-01",
+      "workLog": "",
+      "log_hours": 0,
+      "config": {
+        "isInDanger": true,
+        "isHoliday": false,
+        "isWfh": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "leave": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        },
+        "compensation": {
+          "full": false,
+          "first_half": false,
+          "second_half": false
+        }
+      }
     }
   ],
-  "labels": {
-    "total_worklog": "9.25"
+  "summary": {
+    "total_worklog": "25.25"
   }
 }

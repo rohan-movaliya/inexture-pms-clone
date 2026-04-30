@@ -1,5 +1,6 @@
 // ================ Common Mapping Function ================
-import type { WeeklyLogPunch } from "../types/weeklyTimeLog";
+
+import type { WeeklyTimeLogPunch } from "../types/weeklyTimeLog";
 
 // 2026-04-30 -> 30 Apr
 export function formatDateToDayMonth(dateString: string): string {
@@ -32,15 +33,14 @@ export function formatDateToDayName(dateString: string): string {
 }
 // ================ Common Mapping Function ================
 
-
 type PunchPair = {
   in: string;
   out?: string;
 };
 
-export function getPunchPairs(logs: WeeklyLogPunch[]): PunchPair[] {
+export function getPunchPairs(logs: WeeklyTimeLogPunch[]): PunchPair[] {
   const pairs: PunchPair[] = [];
-  let currentIn: WeeklyLogPunch | null = null;
+  let currentIn: WeeklyTimeLogPunch | null = null;
 
   for (const log of logs) {
     if (log.punch === "IN") {
@@ -63,68 +63,6 @@ export function getPunchPairs(logs: WeeklyLogPunch[]): PunchPair[] {
 
   return pairs;
 }
-
-
-// ================ Weekly Work Log Mapping Function ================
-
-type WeeklyWorkLogApiResult = {
-  log_date?: string;
-  workLog?: string;
-  log_hours?: number;
-  config?: {
-    isInDanger?: boolean;
-    isHoliday?: boolean;
-    isWfh?: {
-      full?: boolean;
-      first_half?: boolean;
-      second_half?: boolean;
-    };
-    leave?: {
-      full?: boolean;
-      first_half?: boolean;
-      second_half?: boolean;
-    };
-    compensation?: {
-      full?: boolean;
-      first_half?: boolean;
-      second_half?: boolean;
-    };
-  };
-};
-
-type WeeklyWorkLogApiPayload = {
-  results?: {
-    data?: WeeklyWorkLogApiResult[];
-    total_worklog?: string;
-  };
-};
-
-export function mapWeeklyWorkLog(payload: WeeklyWorkLogApiPayload | undefined) {
-  const results = payload?.results?.data ?? [];
-
-  const items = results.map((item) => {
-    const rawDate = item.log_date ?? "";
-    const parsed = new Date(rawDate);
-
-    const day = parsed.toLocaleDateString("en-GB", {
-      weekday: "short",
-    });
-
-    return {
-      log_date: rawDate,
-      day,
-      workLog: item.workLog && item.workLog.trim() !== "" ? item.workLog : "0",
-    };
-  });
-
-  return {
-    items,
-    labels: {
-      total_worklog: payload?.results?.total_worklog ?? "0",
-    },
-  };
-}
-// ================ Weekly Work Log Mapping Function ================
 
 // ================ Date-wise Work Log Mapping Function ================
 type WorkLogApiItem = {

@@ -1,13 +1,18 @@
 export type WeeklyWorkLogItem = {
   log_date: string;
-  day: string;
   workLog: string;
 };
 
-export type WeeklyWorkLogState = {
-  items: WeeklyWorkLogItem[];
-  labels: {
+export type WeeklyWorkLogResponse = {
+  results: WeeklyWorkLogItem[];
+  summary: {
     total_worklog: string;
   };
 };
 
+export type RawWeeklyWorkLogResponse = {
+  results: {
+    data: WeeklyWorkLogItem[];
+    total_worklog: string;
+  };
+};

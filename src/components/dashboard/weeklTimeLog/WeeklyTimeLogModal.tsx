@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 
 import type {
-  WeeklyLogItem,
+  WeeklyTimeLogItem,
   WeeklyTimeLogResponse,
 } from "../../../types/weeklyTimeLog";
 import {
@@ -23,7 +23,7 @@ type WeeklyTimeLogModalProps = {
   opened: boolean;
   close: () => void;
   weeklyLog?: WeeklyTimeLogResponse;
-  selectedLog: WeeklyLogItem | null;
+  selectedLog: WeeklyTimeLogItem | null;
 };
 
 function WeeklyTimeLogModal({

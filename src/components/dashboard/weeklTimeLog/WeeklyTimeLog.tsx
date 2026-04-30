@@ -23,7 +23,7 @@ import {
   formatDateToDayName,
 } from "../../../utils/functions";
 
-import type { WeeklyLogItem } from "../../../types/weeklyTimeLog";
+import type { WeeklyTimeLogItem } from "../../../types/weeklyTimeLog";
 import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
 import { theme } from "../../../theme";
 
@@ -44,9 +44,9 @@ function WeeklyTimeLog({
   });
 
   const [opened, { open, close }] = useDisclosure(false);
-  const [selectedLog, setSelectedLog] = useState<WeeklyLogItem | null>(null);
+  const [selectedLog, setSelectedLog] = useState<WeeklyTimeLogItem | null>(null);
 
-  const handleOpenModal = (item: WeeklyLogItem) => {
+  const handleOpenModal = (item: WeeklyTimeLogItem) => {
     if (item.total_duration === "00:00:00") {
       return; // modal will not open if time is zero
     }

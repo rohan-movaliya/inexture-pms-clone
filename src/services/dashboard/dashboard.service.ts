@@ -4,6 +4,10 @@ import type {
   WeeklyTimeLogResponse,
   RawWeeklyTimeLogResponse,
 } from "../../types/weeklyTimeLog";
+import type {
+  WeeklyWorkLogResponse,
+  RawWeeklyWorkLogResponse,
+} from "../../types/weeklyWorkLog";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -23,7 +27,7 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
-    getWeeklyWorkLog: build.query({
+    getWeeklyWorkLog: build.query<WeeklyWorkLogResponse, { count: number }>({
       query: ({ count }) => ({
         url: API_URL.DASHBOARD.WEEK_WORK_LOG,
         method: "GET",
@@ -31,6 +35,14 @@ const dashboardService = apiService.injectEndpoints({
           count: count,
         },
       }),
+      transformResponse: (response: RawWeeklyWorkLogResponse) => {
+        return {
+          results: response.results.data,
+          summary: {
+            total_worklog: response.results.total_worklog,
+          },
+        };
+      },
     }),
     getDateWiseWorkLog: build.query({
       query: ({ date }) => ({

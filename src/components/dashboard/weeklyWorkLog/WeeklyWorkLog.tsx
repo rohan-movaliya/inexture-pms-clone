@@ -15,16 +15,13 @@ import {
   IconChevronRight,
   type TablerIcon,
 } from "@tabler/icons-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useGetWeeklyWorkLogQuery } from "../../../services/dashboard/dashboard.service";
 import {
-  mapWeeklyWorkLog,
   formatDateToDayMonth,
+  formatDateToDayName,
 } from "../../../utils/functions";
-import type {
-  WeeklyWorkLogState,
-  WeeklyWorkLogItem,
-} from "../../../types/weeklyWorkLog";
+import type { WeeklyWorkLogItem } from "../../../types/weeklyWorkLog";
 import { useDisclosure } from "@mantine/hooks";
 import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
 
@@ -46,17 +43,7 @@ function WeeklyWorkLog({
   const { data, isLoading, isError } = useGetWeeklyWorkLogQuery({
     count: previousWeek,
   });
-
-  const workLog: WeeklyWorkLogState = useMemo(() => {
-    return (
-      mapWeeklyWorkLog(data) || {
-        items: [],
-        labels: {
-          total_worklog: "0",
-        },
-      }
-    );
-  }, [data]);
+  console.log("Weekly Work Log Data:", data);
 
   const handleOpenModal = (item: WeeklyWorkLogItem) => {
     if (item.workLog === "0") {
@@ -115,7 +102,7 @@ function WeeklyWorkLog({
               </Grid.Col>
             ) : (
               <>
-                {workLog.items.map((item) => (
+                {data?.results.map((item) => (
                   <Grid.Col key={item.log_date} span={{ base: 12, xs: 4 }}>
                     <Paper
                       withBorder
@@ -144,7 +131,9 @@ function WeeklyWorkLog({
                           fz={18}
                         >
                           <Box>{formatDateToDayMonth(item.log_date)}</Box>
-                          <Box fw={500}>{item.day}</Box>
+                          <Box fw={500}>
+                            {formatDateToDayName(item.log_date)}
+                          </Box>
                         </Box>
 
                         {/* Time */}
@@ -181,7 +170,7 @@ function WeeklyWorkLog({
                       c="gray.2"
                     >
                       <Box fz={24} fw={500}>
-                        {workLog.labels.total_worklog}
+                        {data?.summary?.total_worklog}
                       </Box>
                       <Text size="sm" fw={600} c="gray.5">
                         Total

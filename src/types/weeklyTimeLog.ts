@@ -1,25 +1,22 @@
-export type WeeklyLogDevice = "MMI" | "MMO";
+export type WeeklyTimeLogDevice = "MMI" | "MMO";
 
-export type WeeklyLogPunch = {
-  device: WeeklyLogDevice;
+export type WeeklyTimeLogPunch = {
+  device: WeeklyTimeLogDevice;
   time: string;
   punch: "IN" | "OUT";
 };
 
-export type WeeklyLogItem = {
+export type WeeklyTimeLogItem = {
   id?: string | number;
   log_date: string;
-  day?: string;
   total_duration: string;
-  log?: WeeklyLogPunch[];
-  duration?: string[];
-  gamezone_duration?: string;
+  log?: WeeklyTimeLogPunch[];
 };
 
 
 
 export type WeeklyTimeLogResponse = {
-  results: WeeklyLogItem[];
+  results: WeeklyTimeLogItem[];
   labels: {
     last_day: number;
     this_week: string;
@@ -29,7 +26,7 @@ export type WeeklyTimeLogResponse = {
 
 export type RawWeeklyTimeLogResponse = {
   data: {
-    results: WeeklyLogItem[];
+    results: WeeklyTimeLogItem[];
   };
   labels: {
     last_day: number;

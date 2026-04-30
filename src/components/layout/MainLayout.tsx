@@ -2,24 +2,20 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
 import { AppShell } from "@mantine/core";
-import Sidebar from "../Sidebar";
-import { Header } from "../Header";
+import Sidebar from "../sidebar/Sidebar.tsx";
+import { Header } from "../header/Header.tsx";
 import type { RootState } from "../../store/index.ts";
 
-
 function MainLayout() {
-  
   const [expanded, setExpanded] = useState(false); // desktop expand/collapse
-  
+
   const isAuthenticated = useSelector(
-    (state: RootState) => state.auth.isAuthenticated
+    (state: RootState) => state.auth.isAuthenticated,
   );
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
-
-
 
   return (
     <>
@@ -50,4 +46,3 @@ function MainLayout() {
 }
 
 export default MainLayout;
-

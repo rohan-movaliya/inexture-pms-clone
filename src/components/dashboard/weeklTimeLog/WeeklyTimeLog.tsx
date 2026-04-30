@@ -17,14 +17,11 @@ import {
   type TablerIcon,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import {
-  formatDateToDayMonth,
-  formatDateToDayName,
-} from "@/utils/functions";
+import { formatDateToDayMonth, formatDateToDayName } from "@/utils/functions";
 
 import WeeklyTimeLogModal from "@/components/dashboard/weeklTimeLog/WeeklyTimeLogModal";
 import { theme } from "@/theme";
-import { WeeklyTimeLogItem } from "@/components/dashboard/weeklTimeLog/weeklyTimeLog";
+import { WeeklyTimeLogItem } from "@/components/dashboard/weeklTimeLog/type/weeklyTimeLog";
 import { useGetWeeklyTimeLogQuery } from "@/services/dashboard/dashboard.service";
 
 interface WeeklyTimeLogProps {
@@ -160,7 +157,9 @@ function WeeklyTimeLog({
                               : theme.other.green
                           }
                         >
-                          {item.total_duration === "00:00:00" ? "0" : item.total_duration}
+                          {item.total_duration === "00:00:00"
+                            ? "0"
+                            : item.total_duration}
                         </Flex>
                       </Flex>
                     </Paper>

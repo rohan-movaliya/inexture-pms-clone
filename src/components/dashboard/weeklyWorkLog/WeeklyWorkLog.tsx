@@ -16,14 +16,11 @@ import {
   type TablerIcon,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import { useGetWeeklyWorkLogQuery } from "../../../services/dashboard/dashboard.service";
-import {
-  formatDateToDayMonth,
-  formatDateToDayName,
-} from "../../../utils/functions";
-import type { WeeklyWorkLogItem } from "./weeklyWorkLog";
 import { useDisclosure } from "@mantine/hooks";
+import { WeeklyWorkLogItem } from "./type/weeklyWorkLog";
+import { useGetWeeklyWorkLogQuery } from "@/services/dashboard/dashboard.service";
 import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
+import { formatDateToDayMonth, formatDateToDayName } from "@/utils/functions";
 
 interface WeeklyWorkLogProps {
   title?: string;

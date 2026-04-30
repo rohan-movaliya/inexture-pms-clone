@@ -3,12 +3,12 @@ import { apiService } from "../api.services";
 import type {
   WeeklyTimeLogResponse,
   RawWeeklyTimeLogResponse,
-} from "../../components/dashboard/weeklTimeLog/weeklyTimeLog";
+} from "../../components/dashboard/weeklTimeLog/type/weeklyTimeLog";
 import type {
   WeeklyWorkLogResponse,
   RawWeeklyWorkLogResponse,
-} from "../../components/dashboard/weeklyWorkLog/weeklyWorkLog";
-import type { DateWiseWorkLogApiResponse } from "../../components/dashboard/weeklyWorkLog/dateWiseWorkLog";
+} from "../../components/dashboard/weeklyWorkLog/type/weeklyWorkLog";
+import type { DateWiseWorkLogApiResponse } from "../../components/dashboard/weeklyWorkLog/type/dateWiseWorkLog";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({

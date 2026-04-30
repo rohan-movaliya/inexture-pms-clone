@@ -10,9 +10,9 @@ import {
   Loader,
 } from "@mantine/core";
 import { IconBriefcase } from "@tabler/icons-react";
-import type { WeeklyWorkLogItem } from "./weeklyWorkLog";
-import { useGetDateWiseWorkLogQuery } from "../../../services/dashboard/dashboard.service";
-import { formatDateToDayMonthYear } from "../../../utils/functions";
+import { WeeklyWorkLogItem } from "./type/weeklyWorkLog";
+import { useGetDateWiseWorkLogQuery } from "@/services/dashboard/dashboard.service";
+import { formatDateToDayMonthYear } from "@/utils/functions";
 
 type WeeklyWorkLogModalProps = {
   opened: boolean;

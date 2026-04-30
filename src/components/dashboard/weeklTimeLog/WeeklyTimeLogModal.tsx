@@ -9,12 +9,9 @@ import {
   Box,
   Stack,
 } from "@mantine/core";
+import { WeeklyTimeLogItem, WeeklyTimeLogResponse } from "./type/weeklyTimeLog";
+import { formatDateToDayMonthYear, getPunchPairs } from "@/utils/functions";
 
-import type { WeeklyTimeLogItem, WeeklyTimeLogResponse } from "./weeklyTimeLog";
-import {
-  formatDateToDayMonthYear,
-  getPunchPairs,
-} from "../../../utils/functions";
 
 type WeeklyTimeLogModalProps = {
   opened: boolean;

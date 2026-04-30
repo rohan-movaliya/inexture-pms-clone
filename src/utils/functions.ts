@@ -1,6 +1,6 @@
 // ================ Common Mapping Function ================
 
-import type { WeeklyTimeLogPunch } from "../components/dashboard/weeklTimeLog/weeklyTimeLog";
+import type { WeeklyTimeLogPunch } from "../components/dashboard/weeklTimeLog/type/weeklyTimeLog";
 
 // 2026-04-30 -> 30 Apr
 export function formatDateToDayMonth(dateString: string): string {

@@ -25,18 +25,18 @@ import {
 } from "@tabler/icons-react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../store/authSlice.ts";
-import type { AppDispatch } from "../store/index.ts";
-import BlackLightTheme from "./BlackLightTheme";
-import classes from "./Header.module.css";
+import classes from "@components/header/Header.module.css";
 import { useDisclosure } from "@mantine/hooks";
-import SearchModal from "./SearchModal.tsx";
+import SearchModal from "@components/header/SearchModal";
+import BlackLightTheme from "@components/common/BlackLightTheme";
+import { AppDispatch } from "@/store/index.ts";
+import { logout } from "@/store/authSlice";
 
 export function Header() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
-  
+
   return (
     <>
       <SearchModal opened={opened} close={close} />
@@ -92,11 +92,7 @@ export function Header() {
               <Menu.Divider />
               <Grid gutter="xs">
                 <Grid.Col span={6}>
-                  <Paper
-                    p="md"
-                    withBorder
-                    className={classes.quickCard}
-                  >
+                  <Paper p="md" withBorder className={classes.quickCard}>
                     <Center>
                       <Stack align="center" gap={6}>
                         <IconBriefcase
@@ -115,11 +111,7 @@ export function Header() {
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <Paper
-                    p="md"
-                    withBorder
-                    className={classes.quickCard}
-                  >
+                  <Paper p="md" withBorder className={classes.quickCard}>
                     <Center>
                       <Stack align="center" gap={6}>
                         <IconCalendarTime
@@ -138,11 +130,7 @@ export function Header() {
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <Paper
-                    p="md"
-                    withBorder
-                    className={classes.quickCard}
-                  >
+                  <Paper p="md" withBorder className={classes.quickCard}>
                     <Center>
                       <Stack align="center" gap={6}>
                         <IconChecklist
@@ -161,11 +149,7 @@ export function Header() {
                 </Grid.Col>
 
                 <Grid.Col span={6}>
-                  <Paper
-                    p="md"
-                    withBorder
-                    className={classes.quickCard}
-                  >
+                  <Paper p="md" withBorder className={classes.quickCard}>
                     <Center>
                       <Stack align="center" gap={6}>
                         <IconDeviceGamepad

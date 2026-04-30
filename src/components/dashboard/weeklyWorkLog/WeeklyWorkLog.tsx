@@ -21,7 +21,7 @@ import {
   formatDateToDayMonth,
   formatDateToDayName,
 } from "../../../utils/functions";
-import type { WeeklyWorkLogItem } from "../../../types/weeklyWorkLog";
+import type { WeeklyWorkLogItem } from "./weeklyWorkLog";
 import { useDisclosure } from "@mantine/hooks";
 import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
 
@@ -43,7 +43,6 @@ function WeeklyWorkLog({
   const { data, isLoading, isError } = useGetWeeklyWorkLogQuery({
     count: previousWeek,
   });
-  console.log("Weekly Work Log Data:", data);
 
   const handleOpenModal = (item: WeeklyWorkLogItem) => {
     if (item.workLog === "0") {

@@ -3,11 +3,12 @@ import { apiService } from "../api.services";
 import type {
   WeeklyTimeLogResponse,
   RawWeeklyTimeLogResponse,
-} from "../../types/weeklyTimeLog";
+} from "../../components/dashboard/weeklTimeLog/weeklyTimeLog";
 import type {
   WeeklyWorkLogResponse,
   RawWeeklyWorkLogResponse,
-} from "../../types/weeklyWorkLog";
+} from "../../components/dashboard/weeklyWorkLog/weeklyWorkLog";
+import type { DateWiseWorkLogApiResponse } from "../../components/dashboard/weeklyWorkLog/dateWiseWorkLog";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -44,7 +45,10 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
-    getDateWiseWorkLog: build.query({
+    getDateWiseWorkLog: build.query<
+      DateWiseWorkLogApiResponse,
+      { date: string }
+    >({
       query: ({ date }) => ({
         url: API_URL.DASHBOARD.DATE_WISE_WORK_LOG,
         method: "GET",
@@ -52,6 +56,12 @@ const dashboardService = apiService.injectEndpoints({
           date: date,
         },
       }),
+      transformResponse: (response: DateWiseWorkLogApiResponse) => {
+        return {
+          data: response.data,
+          labels: response.labels,
+        };
+      },
     }),
   }),
 });

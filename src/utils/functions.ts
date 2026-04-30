@@ -1,6 +1,6 @@
 // ================ Common Mapping Function ================
 
-import type { WeeklyTimeLogPunch } from "../types/weeklyTimeLog";
+import type { WeeklyTimeLogPunch } from "../components/dashboard/weeklTimeLog/weeklyTimeLog";
 
 // 2026-04-30 -> 30 Apr
 export function formatDateToDayMonth(dateString: string): string {
@@ -63,49 +63,3 @@ export function getPunchPairs(logs: WeeklyTimeLogPunch[]): PunchPair[] {
 
   return pairs;
 }
-
-// ================ Date-wise Work Log Mapping Function ================
-type WorkLogApiItem = {
-  task?: {
-    project_code?: string;
-    project_name?: string;
-    task_name?: string;
-  };
-  log_hours?: string;
-  work_description?: string;
-};
-
-type WorkLogApiPayload = {
-  data?: WorkLogApiItem[];
-  labels?: {
-    total_hours?: string;
-  };
-};
-
-type MappedDateWiseWorkLogItem = {
-  project_code: string;
-  project_name: string;
-  task_name: string;
-  log_hours: string;
-  work_description: string;
-};
-
-type MappedDateWiseWorkLogPayload = {
-  items: MappedDateWiseWorkLogItem[];
-};
-
-export function mapDateWiseWorkLog(
-  payload: WorkLogApiPayload,
-): MappedDateWiseWorkLogPayload {
-  return {
-    items:
-      payload.data?.map((item) => ({
-        project_code: item.task?.project_code ?? "",
-        project_name: item.task?.project_name ?? "",
-        task_name: item.task?.task_name ?? "",
-        log_hours: item.log_hours ?? "",
-        work_description: item.work_description ?? "",
-      })) ?? [],
-  };
-}
-// ================ Date-wise Work Log Mapping Function ================

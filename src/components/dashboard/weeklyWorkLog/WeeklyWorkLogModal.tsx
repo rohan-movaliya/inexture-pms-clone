@@ -10,10 +10,9 @@ import {
   Loader,
 } from "@mantine/core";
 import { IconBriefcase } from "@tabler/icons-react";
-import { useMemo } from "react";
-import type { WeeklyWorkLogItem } from "../../../types/weeklyWorkLog";
+import type { WeeklyWorkLogItem } from "./weeklyWorkLog";
 import { useGetDateWiseWorkLogQuery } from "../../../services/dashboard/dashboard.service";
-import { formatDateToDayMonthYear, mapDateWiseWorkLog } from "../../../utils/functions";
+import { formatDateToDayMonthYear } from "../../../utils/functions";
 
 type WeeklyWorkLogModalProps = {
   opened: boolean;
@@ -26,14 +25,16 @@ function WeeklyWorkLogModal({
   close,
   selectedLog,
 }: WeeklyWorkLogModalProps) {
-  const { data, isLoading, isError } = useGetDateWiseWorkLogQuery(
-    { date: selectedLog?.log_date ?? "" },
-    { skip: !selectedLog?.log_date },
+  const selectedDate = selectedLog?.log_date;
+  const {
+    data: response,
+    isLoading,
+    isError,
+  } = useGetDateWiseWorkLogQuery(
+    { date: selectedDate ?? "" },
+    { skip: !opened || !selectedDate },
   );
-
-  const dateWorkLog = useMemo(() => {
-    return mapDateWiseWorkLog((data as any) ?? {});
-  }, [data]);
+  const items = response?.data ?? [];
 
   return (
     <Modal
@@ -68,7 +69,11 @@ function WeeklyWorkLogModal({
     >
       <ScrollArea h={400} scrollbarSize={6}>
         <Stack gap="md">
-          {isLoading ? (
+          {!selectedLog ? (
+            <Text size="sm" c="dimmed">
+              Select a work log date to view details.
+            </Text>
+          ) : isLoading ? (
             <Group justify="center" py="md">
               <Loader size="sm" />
             </Group>
@@ -76,12 +81,12 @@ function WeeklyWorkLogModal({
             <Text size="sm" c="dimmed">
               Failed to load work log for this date.
             </Text>
-          ) : dateWorkLog.items.length === 0 ? (
+          ) : items.length === 0 ? (
             <Text size="sm" c="dimmed">
               No work log found for this date.
             </Text>
           ) : (
-            dateWorkLog.items.map((item, index) => (
+            items.map((item, index) => (
               <Card
                 key={index}
                 withBorder
@@ -105,7 +110,7 @@ function WeeklyWorkLogModal({
                     <Group gap="xs">
                       <IconBriefcase size={18} />
                       <Text fw={600}>
-                        {item.project_code} - {item.project_name}
+                        {item.task?.project_code} - {item.task?.project_name}
                       </Text>
                     </Group>
 
@@ -130,7 +135,7 @@ function WeeklyWorkLogModal({
                     Task Name -{" "}
                     <Text span fw={400}>
                       {" "}
-                      {item.task_name}{" "}
+                      {item.task?.task_name ?? "-"}{" "}
                     </Text>{" "}
                   </Text>{" "}
                   <Box
@@ -141,7 +146,9 @@ function WeeklyWorkLogModal({
                       wordBreak: "break-word",
                       whiteSpace: "normal",
                     }}
-                    dangerouslySetInnerHTML={{ __html: item.work_description }}
+                    dangerouslySetInnerHTML={{
+                      __html: item.work_description ?? "",
+                    }}
                   />
                 </Box>
               </Card>

@@ -10,10 +10,7 @@ import {
   Stack,
 } from "@mantine/core";
 
-import type {
-  WeeklyTimeLogItem,
-  WeeklyTimeLogResponse,
-} from "../../../types/weeklyTimeLog";
+import type { WeeklyTimeLogItem, WeeklyTimeLogResponse } from "./weeklyTimeLog";
 import {
   formatDateToDayMonthYear,
   getPunchPairs,

@@ -17,15 +17,15 @@ import {
   type TablerIcon,
 } from "@tabler/icons-react";
 import { useState } from "react";
-import { useGetWeeklyTimeLogQuery } from "../../../services/dashboard/dashboard.service";
 import {
   formatDateToDayMonth,
   formatDateToDayName,
-} from "../../../utils/functions";
+} from "@/utils/functions";
 
-import type { WeeklyTimeLogItem } from "./weeklyTimeLog";
-import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
-import { theme } from "../../../theme";
+import WeeklyTimeLogModal from "@/components/dashboard/weeklTimeLog/WeeklyTimeLogModal";
+import { theme } from "@/theme";
+import { WeeklyTimeLogItem } from "@/components/dashboard/weeklTimeLog/weeklyTimeLog";
+import { useGetWeeklyTimeLogQuery } from "@/services/dashboard/dashboard.service";
 
 interface WeeklyTimeLogProps {
   title?: string;

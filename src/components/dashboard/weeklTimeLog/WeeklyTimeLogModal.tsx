@@ -12,14 +12,17 @@ import {
 
 import type {
   WeeklyLogItem,
-  WeeklyTimeLogState,
+  WeeklyTimeLogResponse,
 } from "../../../types/weeklyTimeLog";
-import { formatDateToDayMonthYear } from "../../../utils/functions";
+import {
+  formatDateToDayMonthYear,
+  getPunchPairs,
+} from "../../../utils/functions";
 
 type WeeklyTimeLogModalProps = {
   opened: boolean;
   close: () => void;
-  weeklyLog: WeeklyTimeLogState;
+  weeklyLog?: WeeklyTimeLogResponse;
   selectedLog: WeeklyLogItem | null;
 };
 
@@ -29,6 +32,7 @@ function WeeklyTimeLogModal({
   weeklyLog,
   selectedLog,
 }: WeeklyTimeLogModalProps) {
+  const pairs = getPunchPairs(selectedLog?.log ?? []);
   return (
     <Modal
       opened={opened}
@@ -70,7 +74,7 @@ function WeeklyTimeLogModal({
           <Card bg="#343A4F" p="xs">
             <Group justify="center" gap={6}>
               <Text fw={600} c="white">
-                {weeklyLog.labels.last_day}
+                {weeklyLog?.labels.last_day ?? 0}
               </Text>
               <Text size="sm" c="gray.3">
                 Last Day
@@ -83,7 +87,7 @@ function WeeklyTimeLogModal({
           <Card bg="#503838" p="xs">
             <Group justify="center" gap={6}>
               <Text fw={600} c="white">
-                {weeklyLog.labels.this_week}
+                {weeklyLog?.labels.this_week ?? "0"}
               </Text>
               <Text size="sm" c="gray.3">
                 This Week
@@ -96,7 +100,7 @@ function WeeklyTimeLogModal({
           <Card bg="#324936" p="xs">
             <Group justify="center" gap={6}>
               <Text fw={600} c="white">
-                {weeklyLog.labels.this_month_average}
+                {weeklyLog?.labels.this_month_average ?? "0"}
               </Text>
               <Text size="sm" c="gray.3">
                 Month Average
@@ -153,18 +157,19 @@ function WeeklyTimeLogModal({
 
                   <Table.Td ta="center">
                     <Stack align="center" gap={6}>
-                      {selectedLog?.log?.MMI?.map((time, index) => (
+                      {pairs.map((pair, index) => (
                         <Badge key={index} variant="outline">
-                          {time}
+                          {pair.in}
                         </Badge>
                       ))}
                     </Stack>
                   </Table.Td>
+
                   <Table.Td ta="center">
                     <Stack align="center" gap={6}>
-                      {selectedLog?.log?.MMO?.map((time, index) => (
+                      {pairs.map((pair, index) => (
                         <Badge key={index} variant="outline">
-                          {time}
+                          {pair.out ?? "N/A"}
                         </Badge>
                       ))}
                     </Stack>

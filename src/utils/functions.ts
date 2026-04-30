@@ -1,5 +1,7 @@
 // ================ Common Mapping Function ================
+import type { WeeklyLogPunch } from "../types/weeklyTimeLog";
 
+// 2026-04-30 -> 30 Apr
 export function formatDateToDayMonth(dateString: string): string {
   const parsed = new Date(dateString);
 
@@ -9,6 +11,7 @@ export function formatDateToDayMonth(dateString: string): string {
   });
 }
 
+// 2026-04-30 -> 30/04/2026
 export function formatDateToDayMonthYear(dateString: string): string {
   const parsed = new Date(dateString);
 
@@ -18,73 +21,49 @@ export function formatDateToDayMonthYear(dateString: string): string {
     year: "numeric",
   });
 }
+
+// 2026-04-30 -> Fir
+export function formatDateToDayName(dateString: string): string {
+  const parsed = new Date(dateString);
+
+  return parsed.toLocaleDateString("en-GB", {
+    weekday: "short",
+  });
+}
 // ================ Common Mapping Function ================
 
-// ================ Weekly Time Log Mapping Function ================
-type WeeklyTimeLogApiResult = {
-  log_date?: string;
-  total_duration?: string;
-  log?: {
-    device?: string;
-    time?: string;
-    punch?: string;
-  }[];
+
+type PunchPair = {
+  in: string;
+  out?: string;
 };
 
-type WeeklyTimeLogApiPayload = {
-  data?: {
-    results?: WeeklyTimeLogApiResult[];
-  };
-  labels?: {
-    last_day?: number;
-    this_week?: string;
-    this_month_average?: string;
-  };
-};
+export function getPunchPairs(logs: WeeklyLogPunch[]): PunchPair[] {
+  const pairs: PunchPair[] = [];
+  let currentIn: WeeklyLogPunch | null = null;
 
-export function mapWeeklyTimeLog(payload: WeeklyTimeLogApiPayload | undefined) {
-  const results = payload?.data?.results ?? [];
+  for (const log of logs) {
+    if (log.punch === "IN") {
+      if (currentIn) {
+        pairs.push({ in: currentIn.time });
+      }
+      currentIn = log;
+    } else if (log.punch === "OUT" && currentIn) {
+      pairs.push({
+        in: currentIn.time,
+        out: log.time,
+      });
+      currentIn = null;
+    }
+  }
 
-  const items = results.map((item) => {
-    const rawDate = item.log_date ?? "";
-    const parsed = new Date(rawDate);
+  if (currentIn) {
+    pairs.push({ in: currentIn.time });
+  }
 
-    const day = parsed.toLocaleDateString("en-GB", {
-      weekday: "short",
-    });
-
-    const logs = item.log ?? [];
-
-    const formattedLog = {
-      MMI: logs
-        .filter((entry) => entry.device === "MMI")
-        .map((entry) => entry.time ?? ""),
-
-      MMO: logs
-        .filter((entry) => entry.device === "MMO")
-        .map((entry) => entry.time ?? ""),
-    };
-
-    return {
-      log_date: rawDate,
-      day,
-      total_duration:
-        item.total_duration === "00:00:00" ? "0" : (item.total_duration ?? "0"),
-      log: formattedLog,
-    };
-  });
-
-  return {
-    items,
-    labels: {
-      last_day: payload?.labels?.last_day ?? 0,
-      this_week: payload?.labels?.this_week ?? "0",
-      this_month_average: payload?.labels?.this_month_average ?? "0",
-    },
-  };
+  return pairs;
 }
 
-// ================ Weekly Time Log Mapping Function ================
 
 // ================ Weekly Work Log Mapping Function ================
 
@@ -146,9 +125,6 @@ export function mapWeeklyWorkLog(payload: WeeklyWorkLogApiPayload | undefined) {
   };
 }
 // ================ Weekly Work Log Mapping Function ================
-
-
-
 
 // ================ Date-wise Work Log Mapping Function ================
 type WorkLogApiItem = {

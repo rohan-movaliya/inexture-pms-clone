@@ -16,17 +16,14 @@ import {
   IconChevronRight,
   type TablerIcon,
 } from "@tabler/icons-react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useGetWeeklyTimeLogQuery } from "../../../services/dashboard/dashboard.service";
 import {
-  mapWeeklyTimeLog,
   formatDateToDayMonth,
+  formatDateToDayName,
 } from "../../../utils/functions";
 
-import type {
-  WeeklyLogItem,
-  WeeklyTimeLogState,
-} from "../../../types/weeklyTimeLog";
+import type { WeeklyLogItem } from "../../../types/weeklyTimeLog";
 import WeeklyTimeLogModal from "./WeeklyTimeLogModal";
 import { theme } from "../../../theme";
 
@@ -49,21 +46,8 @@ function WeeklyTimeLog({
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedLog, setSelectedLog] = useState<WeeklyLogItem | null>(null);
 
-  const timeLog: WeeklyTimeLogState = useMemo(() => {
-    return (
-      mapWeeklyTimeLog(data) || {
-        items: [],
-        labels: {
-          last_day: 0,
-          this_week: "0h 0m",
-          this_month_average: "0h 0m",
-        },
-      }
-    );
-  }, [data]);
-
   const handleOpenModal = (item: WeeklyLogItem) => {
-    if (item.total_duration === "0") {
+    if (item.total_duration === "00:00:00") {
       return; // modal will not open if time is zero
     }
 
@@ -74,7 +58,7 @@ function WeeklyTimeLog({
   return (
     <>
       <WeeklyTimeLogModal
-        weeklyLog={timeLog}
+        weeklyLog={data}
         selectedLog={selectedLog}
         opened={opened}
         close={close}
@@ -116,12 +100,15 @@ function WeeklyTimeLog({
               </Grid.Col>
             ) : isError ? (
               <Grid.Col span={12}>
-                <Text size="sm">Failed to load weekly work log.</Text>
+                <Text size="sm">Failed to load weekly time log.</Text>
               </Grid.Col>
             ) : (
               <>
-                {timeLog.items.map((item) => (
-                  <Grid.Col key={item.log_date} span={{ base: 12, xs: 4 }}>
+                {data?.results.map((item) => (
+                  <Grid.Col
+                    key={item.id ?? item.log_date}
+                    span={{ base: 12, xs: 4 }}
+                  >
                     <Paper
                       withBorder
                       radius="xs"
@@ -129,13 +116,15 @@ function WeeklyTimeLog({
                       component="button"
                       type="button"
                       onClick={() => handleOpenModal(item)}
-                      disabled={item.total_duration === "0"}
+                      disabled={item.total_duration === "00:00:00"}
                       p={0}
                       w="100%"
                       style={(theme) => ({
                         overflow: "hidden",
                         cursor:
-                          item.total_duration === "0" ? "default" : "pointer",
+                          item.total_duration === "00:00:00"
+                            ? "default"
+                            : "pointer",
                         borderColor: theme.colors.dark[4],
                       })}
                     >
@@ -150,7 +139,9 @@ function WeeklyTimeLog({
                           fz={18}
                         >
                           <Box>{formatDateToDayMonth(item.log_date)}</Box>
-                          <Box fw={500}>{item.day}</Box>
+                          <Box fw={500}>
+                            {formatDateToDayName(item.log_date)}
+                          </Box>
                         </Box>
 
                         {/* Time */}
@@ -162,7 +153,7 @@ function WeeklyTimeLog({
                           fz={20}
                           fw={600}
                           c={
-                            item.total_duration === "0"
+                            item.total_duration === "00:00:00"
                               ? theme.other.skyBlue
                               : theme.other.green
                           }
@@ -191,7 +182,7 @@ function WeeklyTimeLog({
                       c="gray.2"
                     >
                       <Box fz={24} fw={500}>
-                        {timeLog.labels.this_week}
+                        {data?.labels.this_week}
                       </Box>
                       <Text size="sm" fw={600} c="gray.5">
                         Total

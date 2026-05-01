@@ -13,6 +13,7 @@ import {
   DefaulterStatus,
   DefaulterStatusApiResponse,
 } from "@/components/dashboard/defaulterStatus/type/defaulterStatus";
+import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatisctics";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -83,6 +84,20 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getTeamStatistics: build.query<TeamStatusData, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.TEAM_STATISTICS,
+        method: "GET",
+      }),
+      transformResponse: (response: TeamStatusData): TeamStatusData => {
+        return {
+          data: response.data,
+          overall: response.overall,
+          total_employee: response.total_employee,
+        };
+      },
+    }),
   }),
 });
 
@@ -91,4 +106,5 @@ export const {
   useGetWeeklyWorkLogQuery,
   useGetDateWiseWorkLogQuery,
   useGetDefaulterStatusQuery,
+  useGetTeamStatisticsQuery,
 } = dashboardService;

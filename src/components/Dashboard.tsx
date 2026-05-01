@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Box, Container, Grid } from "@mantine/core";
 import WeeklyTimeLog from "./dashboard/weeklTimeLog/WeeklyTimeLog";
 import DefaulterStatus from "./dashboard/defaulterStatus/DefaulterStatus";
-import TeamStatus from "./TeamStatus";
+import TeamStatus from "./dashboard/teamStatistics/TeamStatus";
 import MyLeaves from "./MyLeaves";
 import Insights from "./Insights";
 import BirthDays from "./BirthDays";

@@ -17,7 +17,6 @@ function DefaulterStatus() {
     isLoading,
     isError,
   } = useGetDefaulterStatusQuery();
-  console.log(defaulterStatus)
 
   return (
     <Paper withBorder>

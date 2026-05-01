@@ -4,17 +4,13 @@ export const env = {
 
 export const API_URL = {
   AUTH: {
-    // LOGIN: `${env?.API_URL}/auth/login`,
-    // REGISTER: `${env?.API_URL}/auth/signup`,
-    // LOGOUT: `${env?.API_URL}/auth/logout`,
-    // RESET_PASSWORD: `${env?.API_URL}/auth/reset-password`,
-    // CHANGE_PASSWORD: `${env?.API_URL}/auth/change-password`,
-    // FORGOT_PASSWORD: `${env?.API_URL}/auth/forgot-password`,
     REFRESH_TOKEN: "/refresh",
   },
   DASHBOARD: {
     WEEK_TIME_ENTRY: `${env?.API_URL}/dashboard/time-entry`,
     WEEK_WORK_LOG: `${env?.API_URL}/dashboard/work-entry`,
     DATE_WISE_WORK_LOG: `${env?.API_URL}/dashboard/datewise-work-entry`,
+    DEFAULTER_STATUS: `${env?.API_URL}/dashboard/defaulter_count`,
+    TEAM_STATISTICS: `${env?.API_URL}/dashboard/team-statistics`,
   },
 };

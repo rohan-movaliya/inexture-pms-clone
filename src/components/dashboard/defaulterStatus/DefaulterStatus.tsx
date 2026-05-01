@@ -9,16 +9,16 @@ import {
   BackgroundImage,
 } from "@mantine/core";
 import { IconClockRecord } from "@tabler/icons-react";
-
-const data = [
-  { count: 0, label: "Working Hours and Flexibility" },
-  { count: 0, label: "Business Continuity (WFH)" },
-  { count: 0, label: "Time Entries" },
-  { count: 0, label: "Work logs (End of Day – EOD)" },
-  { count: 0, label: "Leave Management" },
-];
+import { useGetDefaulterStatusQuery } from "@/services/dashboard/dashboard.service";
 
 function DefaulterStatus() {
+  const {
+    data: defaulterStatus,
+    isLoading,
+    isError,
+  } = useGetDefaulterStatusQuery();
+  console.log(defaulterStatus)
+
   return (
     <Paper withBorder>
       {/* Header */}
@@ -31,11 +31,42 @@ function DefaulterStatus() {
 
       {/* Grid */}
       <Box p="md">
-        <Grid>
-          {data.map((item) => (
-            <Grid.Col key={item.label} span={{ base: 12, sm: 6, md: 4 }}>
+        {isLoading ? (
+          <Text c="gray.5">Loading...</Text>
+        ) : isError ? (
+          <Text c="red.6">Failed to load non-compliance status.</Text>
+        ) : (
+          <Grid>
+            {(defaulterStatus?.data ?? []).map((item) => (
+              <Grid.Col
+                key={item.category_id}
+                span={{ base: 12, sm: 6, md: 4 }}
+              >
+                <BackgroundImage
+                  src="/9_defaulter_bg.svg"
+                  radius="sm"
+                  style={{
+                    backgroundSize: "cover",
+                    backgroundPosition: "top right",
+                  }}
+                >
+                  <Paper withBorder ta="center" p="md" bg="rgba(36,36,36,0.9)">
+                    <Stack gap={2} align="center">
+                      <Text fz={40} fw={500} lh={1}>
+                        {item.count}
+                      </Text>
+
+                      <Text fz={14} fw={500}>
+                        {item.category_name}
+                      </Text>
+                    </Stack>
+                  </Paper>
+                </BackgroundImage>
+              </Grid.Col>
+            ))}
+            <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
               <BackgroundImage
-                src="9_defaulter_bg.svg"
+                src="/9_defaulter_bg.svg"
                 radius="sm"
                 style={{
                   backgroundSize: "cover",
@@ -44,41 +75,19 @@ function DefaulterStatus() {
               >
                 <Paper withBorder ta="center" p="md" bg="rgba(36,36,36,0.9)">
                   <Stack gap={2} align="center">
-                    <Text fz={40} fw={500} lh={1}>
-                      {item.count}
+                    <Text fz={40} fw={600} lh={1}>
+                      {defaulterStatus?.total ?? 0}
                     </Text>
 
-                    <Text fz={14} fw={500}>
-                      {item.label}
+                    <Text size="md" fw={500}>
+                      Total
                     </Text>
                   </Stack>
                 </Paper>
               </BackgroundImage>
             </Grid.Col>
-          ))}
-          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
-            <BackgroundImage
-              src="9_defaulter_bg.svg"
-              radius="sm"
-              style={{
-                backgroundSize: "cover",
-                backgroundPosition: "top right",
-              }}
-            >
-              <Paper withBorder ta="center" p="md" bg="rgba(36,36,36,0.9)">
-                <Stack gap={2} align="center">
-                  <Text fz={40} fw={600} lh={1}>
-                    0
-                  </Text>
-
-                  <Text size="md" fw={500}>
-                    Total
-                  </Text>
-                </Stack>
-              </Paper>
-            </BackgroundImage>
-          </Grid.Col>
-        </Grid>
+          </Grid>
+        )}
       </Box>
 
       <Divider />

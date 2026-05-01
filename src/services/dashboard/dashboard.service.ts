@@ -9,6 +9,10 @@ import type {
   RawWeeklyWorkLogResponse,
 } from "../../components/dashboard/weeklyWorkLog/type/weeklyWorkLog";
 import type { DateWiseWorkLogApiResponse } from "../../components/dashboard/weeklyWorkLog/type/dateWiseWorkLog";
+import {
+  DefaulterStatus,
+  DefaulterStatusApiResponse,
+} from "@/components/dashboard/defaulterStatus/type/defaulterStatus";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -28,6 +32,7 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
     getWeeklyWorkLog: build.query<WeeklyWorkLogResponse, { count: number }>({
       query: ({ count }) => ({
         url: API_URL.DASHBOARD.WEEK_WORK_LOG,
@@ -45,6 +50,7 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
     getDateWiseWorkLog: build.query<
       DateWiseWorkLogApiResponse,
       { date: string }
@@ -59,7 +65,21 @@ const dashboardService = apiService.injectEndpoints({
       transformResponse: (response: DateWiseWorkLogApiResponse) => {
         return {
           data: response.data,
-          labels: response.labels,
+        };
+      },
+    }),
+
+    getDefaulterStatus: build.query<DefaulterStatus, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.DEFAULTER_STATUS,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: DefaulterStatusApiResponse,
+      ): DefaulterStatus => {
+        return {
+          data: response.category_wise_counts,
+          total: response.total_defaulter_count,
         };
       },
     }),
@@ -70,4 +90,5 @@ export const {
   useGetWeeklyTimeLogQuery,
   useGetWeeklyWorkLogQuery,
   useGetDateWiseWorkLogQuery,
+  useGetDefaulterStatusQuery,
 } = dashboardService;

@@ -12,7 +12,4 @@ export type DateWiseWorkLogApiItem = {
 
 export type DateWiseWorkLogApiResponse = {
   data?: DateWiseWorkLogApiItem[];
-  labels?: {
-    total_hours?: string;
-  };
 };

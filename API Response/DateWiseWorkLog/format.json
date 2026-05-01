@@ -40,8 +40,5 @@
       "hour_counter": 8,
       "min_counter": 0
     }
-  ],
-  "labels": {
-    "total_hours": "8.00"
-  }
+  ]
 }

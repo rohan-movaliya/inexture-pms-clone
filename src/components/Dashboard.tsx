@@ -8,7 +8,7 @@ import Insights from "./Insights";
 import BirthDays from "./BirthDays";
 import classes from "./Dashboard.module.css";
 import WeeklyWorkLog from "./dashboard/weeklyWorkLog/WeeklyWorkLog";
-import TimeTracker from "./TimeTracker";
+import TimeTracker from "./dashboard/timeTracket/TimeTracker";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {

@@ -13,8 +13,8 @@ export const API_URL = {
     REFRESH_TOKEN: "/refresh",
   },
   DASHBOARD: {
-    WEEK_TIME_ENTRY: `${env?.API_URL}/time-entry`,
-    WEEK_WORK_LOG: `${env?.API_URL}/work-entry`,
-    DATE_WISE_WORK_LOG: `${env?.API_URL}/datewise-work-entry`,
+    WEEK_TIME_ENTRY: `${env?.API_URL}/dashboard/time-entry`,
+    WEEK_WORK_LOG: `${env?.API_URL}/dashboard/work-entry`,
+    DATE_WISE_WORK_LOG: `${env?.API_URL}/dashboard/datewise-work-entry`,
   },
 };

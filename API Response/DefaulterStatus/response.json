@@ -1,0 +1,35 @@
+{
+  "total_defaulter_count": 0,
+  "category_wise_counts": [
+    {
+      "category_id": 8,
+      "category_name": "Working Hours and Flexibility",
+      "count": 0,
+      "defaulter_data": []
+    },
+    {
+      "category_id": 9,
+      "category_name": "Business Continuity (WFH)",
+      "count": 0,
+      "defaulter_data": []
+    },
+    {
+      "category_id": 10,
+      "category_name": "Time Entries",
+      "count": 0,
+      "defaulter_data": []
+    },
+    {
+      "category_id": 11,
+      "category_name": "Work logs (End of Day – EOD)",
+      "count": 0,
+      "defaulter_data": []
+    },
+    {
+      "category_id": 12,
+      "category_name": "Leave Management",
+      "count": 0,
+      "defaulter_data": []
+    }
+  ]
+}

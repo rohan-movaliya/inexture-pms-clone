@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 import { Box, Container, Grid } from "@mantine/core";
 import WeeklyTimeLog from "./dashboard/weeklTimeLog/WeeklyTimeLog";
-import DefaulterStatus from "./DefaulterStatus";
+import DefaulterStatus from "./dashboard/defaulterStatus/DefaulterStatus";
 import TeamStatus from "./TeamStatus";
 import MyLeaves from "./MyLeaves";
 import Insights from "./Insights";
 import BirthDays from "./BirthDays";
 import classes from "./Dashboard.module.css";
 import WeeklyWorkLog from "./dashboard/weeklyWorkLog/WeeklyWorkLog";
+import TimeTracker from "./TimeTracker";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -17,6 +18,7 @@ function DashboardCell({ children }: { children: ReactNode }) {
 function Dashboard() {
   return (
     <Container fluid>
+      {/* ROW 1 */}
       <Grid align="stretch" grow>
         <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
           <DashboardCell>
@@ -28,9 +30,15 @@ function Dashboard() {
             <WeeklyWorkLog />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 8 }} className={classes.column}>
+        {/* ROW 2 */}
+        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
           <DashboardCell>
             <DefaulterStatus />
+          </DashboardCell>
+        </Grid.Col>
+        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+          <DashboardCell>
+            <TimeTracker/>
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
@@ -38,6 +46,7 @@ function Dashboard() {
             <TeamStatus />
           </DashboardCell>
         </Grid.Col>
+        {/* ROW 3 */}
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
             <MyLeaves
@@ -116,6 +125,7 @@ function Dashboard() {
             />
           </DashboardCell>
         </Grid.Col>
+        {/* ROW 4 */}
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
           <DashboardCell>
             <Insights />

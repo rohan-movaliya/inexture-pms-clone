@@ -1,9 +1,9 @@
-import { Avatar, Box, Container, Text } from "@mantine/core";
-import classes from "./LeaveAndAttendanceOverview.module.css";
+import { Avatar, Center, Text, Paper, Stack, Group } from "@mantine/core";
 
 export interface LeaveAndAttendanceOverviewProps {
   title: string;
   headline: string;
+  headline_color?: string;
   rows: { label: string; value: string }[];
   iconSrc?: string;
 }
@@ -11,37 +11,37 @@ export interface LeaveAndAttendanceOverviewProps {
 function LeaveAndAttendanceOverview({
   title,
   headline,
+  headline_color = "orange.6",
   rows,
   iconSrc = "/4_my_leaves.svg",
 }: LeaveAndAttendanceOverviewProps) {
   return (
-    <Box className={classes.card}>
-      <Container className={classes.iconWrap}>
-        <Avatar
-          variant="filled"
-          radius="xs"
-          size="lg"
-          src={iconSrc}
-        />
-      </Container>
-      <Text ta="center" size="xl" c="orange.6" fw={600}>
+    <Paper withBorder p={16}>
+      <Center>
+        <Avatar variant="filled" radius="xs" size="lg" src={iconSrc} />
+      </Center>
+      <Text mt={15} ta="center" fz={32} c={headline_color} fw={600}>
         {headline}
       </Text>
-      <Text ta="center" mt={4}>
+      <Text ta="center" fw={900} c="white">
         {title}
       </Text>
 
-      <Box className={classes.rows}>
+      <Stack mt="md" gap="sm">
         {rows.map((row) => (
-          <Box key={row.label} className={classes.row}>
-            <Text size="sm">{row.label}</Text>
-            <Text c="orange.6" fw={600}>
-              {row.value}
-            </Text>
-          </Box>
+          <Paper withBorder p={6} key={row.label}>
+            <Group justify="space-between" wrap="nowrap">
+              <Text fw={900} fz="sm">
+                {row.label}
+              </Text>
+              <Text c={headline_color} fw={600}>
+                {row.value}
+              </Text>
+            </Group>
+          </Paper>
         ))}
-      </Box>
-    </Box>
+      </Stack>
+    </Paper>
   );
 }
 

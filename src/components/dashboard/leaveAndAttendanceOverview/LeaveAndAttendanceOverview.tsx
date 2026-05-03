@@ -1,24 +1,23 @@
 import { Avatar, Box, Container, Text } from "@mantine/core";
-import classes from "./MyLeaves.module.css";
+import classes from "./LeaveAndAttendanceOverview.module.css";
 
-export interface MyLeavesProps {
+export interface LeaveAndAttendanceOverviewProps {
   title: string;
   headline: string;
   rows: { label: string; value: string }[];
   iconSrc?: string;
 }
 
-function MyLeaves({
+function LeaveAndAttendanceOverview({
   title,
   headline,
   rows,
   iconSrc = "/4_my_leaves.svg",
-}: MyLeavesProps) {
+}: LeaveAndAttendanceOverviewProps) {
   return (
     <Box className={classes.card}>
       <Container className={classes.iconWrap}>
         <Avatar
-          className={classes.avatar}
           variant="filled"
           radius="xs"
           size="lg"
@@ -46,4 +45,4 @@ function MyLeaves({
   );
 }
 
-export default MyLeaves;
+export default LeaveAndAttendanceOverview;

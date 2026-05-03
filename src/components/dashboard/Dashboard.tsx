@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 import { Box, Container, Grid } from "@mantine/core";
-import WeeklyTimeLog from "./dashboard/weeklTimeLog/WeeklyTimeLog";
-import DefaulterStatus from "./dashboard/defaulterStatus/DefaulterStatus";
-import TeamStatus from "./dashboard/teamStatistics/TeamStatus";
-import MyLeaves from "./MyLeaves";
-import Insights from "./Insights";
-import BirthDays from "./BirthDays";
 import classes from "./Dashboard.module.css";
-import WeeklyWorkLog from "./dashboard/weeklyWorkLog/WeeklyWorkLog";
-import TimeTracker from "./dashboard/timeTracket/TimeTracker";
+import WeeklyTimeLog from "./weeklTimeLog/WeeklyTimeLog";
+import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
+import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
+import TimeTracker from "./timeTracket/TimeTracker";
+import TeamStatus from "./teamStatistics/TeamStatus";
+import LeaveAndAttendanceOverview from "./leaveAndAttendanceOverview/LeaveAndAttendanceOverview";
+import Insights from "../Insights";
+import BirthDays from "../BirthDays";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -49,7 +49,7 @@ function Dashboard() {
         {/* ROW 3 */}
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="My Leaves"
               headline="17"
               rows={[
@@ -62,7 +62,7 @@ function Dashboard() {
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="Leaves today"
               headline="0"
               rows={[
@@ -75,53 +75,53 @@ function Dashboard() {
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="Upcoming leaves"
               headline="3"
               rows={[
                 { label: "This week", value: "1" },
                 { label: "Next week", value: "2" },
               ]}
-              iconSrc="6_upcoming_leaves.svg"
+              iconSrc="/6_upcoming_leaves.svg"
             />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="WFH today"
               headline="2"
               rows={[
                 { label: "Team WFH", value: "2" },
                 { label: "Capacity", value: "87%" },
               ]}
-              iconSrc="7_wfh_today.svg"
+              iconSrc="/7_wfh_today.svg"
             />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="Time log — previous day"
               headline="8h 00m"
               rows={[
                 { label: "Logged", value: "8h 00m" },
                 { label: "Status", value: "Complete" },
               ]}
-              iconSrc="7_prev_log_time.svg"
+              iconSrc="/7_prev_log_time.svg"
             />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves
+            <LeaveAndAttendanceOverview
               title="My leave compensation"
               headline="0"
               rows={[
                 { label: "Pending", value: "0" },
                 { label: "Approved", value: "0" },
               ]}
-              iconSrc="8_time_compensation.png"
+              iconSrc="/8_time_compensation.png"
             />
           </DashboardCell>
         </Grid.Col>

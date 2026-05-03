@@ -34,7 +34,7 @@ function LoginPage() {
     const controller = new AbortController();
 
     try {
-      const response = await fetch("http://localhost:8000/login", {
+      const response = await fetch("http://localhost:8000/auth/login", {
         method: "POST",
         headers: {
           Accept: "application/json",

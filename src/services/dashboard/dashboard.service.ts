@@ -14,6 +14,7 @@ import {
   DefaulterStatusApiResponse,
 } from "@/components/dashboard/defaulterStatus/type/defaulterStatus";
 import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatisctics";
+import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleaves";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -98,6 +99,19 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getMyLeaves: build.query<LeaveResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.MY_LEAVES,
+        method: "GET",
+      }),
+      transformResponse: (response: LeaveResponse): LeaveResponse => {
+        return {
+          results: response.results,
+          labels: response.labels,
+        };
+      },
+    }),
   }),
 });
 
@@ -107,4 +121,5 @@ export const {
   useGetDateWiseWorkLogQuery,
   useGetDefaulterStatusQuery,
   useGetTeamStatisticsQuery,
+  useGetMyLeavesQuery,
 } = dashboardService;

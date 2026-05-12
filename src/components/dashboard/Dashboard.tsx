@@ -6,9 +6,9 @@ import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
 import TimeTracker from "./timeTracker/TimeTracker";
 import TeamStatus from "./teamStatistics/TeamStatus";
-import LeaveAndAttendanceOverview from "./leaveAndAttendanceOverview/LeaveAndAttendanceOverview";
 import Insights from "../Insights";
 import BirthDays from "../BirthDays";
+import MyLeaves from "./myLeaves/MyLeaves";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -49,60 +49,7 @@ function Dashboard() {
         {/* ROW 3 */}
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <LeaveAndAttendanceOverview
-              title="My Leaves"
-              headline="17"
-              headline_color="green.6"
-              rows={[
-                { label: "Used leave", value: "5" },
-                { label: "Remaining", value: "17" },
-              ]}
-              iconSrc="/4_my_leaves.svg"
-              modalContent={{
-                title: "My Leaves Details",
-                overview: [
-                  { label: "Used Leave", value: "5", color: "red.6" },
-                  { label: "Remaining", value: "17", color: "green.6" },
-                  { label: "Total", value: "22", color: "blue.6" },
-                ],
-                tabledata: {
-                  headers: [
-                    "Requested On",
-                    "From",
-                    "To",
-                    "Days",
-                    "Type",
-                    "Status",
-                  ],
-                  rows: [
-                    [
-                      "2026-01-10",
-                      "2026-01-15",
-                      "2026-01-16",
-                      "2",
-                      "Sick Leave",
-                      "Approved",
-                    ],
-                    [
-                      "2026-02-05",
-                      "2026-02-20",
-                      "2026-02-22",
-                      "3",
-                      "Casual Leave",
-                      "Approved",
-                    ],
-                    [
-                      "2026-03-01",
-                      "2026-03-10",
-                      "2026-03-12",
-                      "3",
-                      "Vacation",
-                      "Pending",
-                    ],
-                  ],
-                },
-              }}
-            />
+            <MyLeaves/>
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>

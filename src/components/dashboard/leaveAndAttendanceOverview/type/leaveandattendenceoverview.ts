@@ -5,7 +5,7 @@ type TableData = {
 
 type OverviewItem = {
   label: string;
-  value: string;
+  value: number;
   color?: string;
 };
 
@@ -17,12 +17,12 @@ export type ModalContentProps = {
 
 type RowItem = {
   label: string;
-  value: string;
+  value: number;
 };
 
 export type LeaveAndAttendanceOverviewProps = {
   title: string;
-  headline: string;
+  headline: number;
   headline_color?: string;
   rows: RowItem[];
   iconSrc: string;

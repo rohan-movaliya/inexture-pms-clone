@@ -153,8 +153,8 @@ function WeeklyTimeLog({
                           fw={600}
                           c={
                             item.total_duration === "00:00:00"
-                              ? theme.other.skyBlue
-                              : theme.other.green
+                              ? theme.other?.skyBlue ?? "#1098AD"
+                              : theme.other?.green ?? "#37B24D"
                           }
                         >
                           {item.total_duration === "00:00:00"

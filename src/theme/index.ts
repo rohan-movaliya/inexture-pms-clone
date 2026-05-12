@@ -14,13 +14,17 @@ const myColor: MantineColorsTuple = [
   "#a86900",
 ];
 
-export const theme: any = createTheme({
+export const theme = createTheme({
   colors: {
     myColor,
   },
   other: {
     green: "#37B24D",
     skyBlue: "#1098AD",
+    orange: "#E8590C",
+    pink: "#C2255C",
+    blue: "#1971C2",
+    yellow: "#F08C00",
   },
   primaryColor: "myColor",
   fontFamily: "Open Sans, sans-serif",

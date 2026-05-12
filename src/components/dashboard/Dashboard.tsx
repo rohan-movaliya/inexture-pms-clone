@@ -4,7 +4,7 @@ import classes from "./Dashboard.module.css";
 import WeeklyTimeLog from "./weeklTimeLog/WeeklyTimeLog";
 import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
-import TimeTracker from "./timeTracket/TimeTracker";
+import TimeTracker from "./timeTracker/TimeTracker";
 import TeamStatus from "./teamStatistics/TeamStatus";
 import LeaveAndAttendanceOverview from "./leaveAndAttendanceOverview/LeaveAndAttendanceOverview";
 import Insights from "../Insights";
@@ -38,7 +38,7 @@ function Dashboard() {
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <TimeTracker/>
+            <TimeTracker />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
@@ -52,16 +52,61 @@ function Dashboard() {
             <LeaveAndAttendanceOverview
               title="My Leaves"
               headline="17"
+              headline_color="green.6"
               rows={[
-                { label: "Used leave", value: "0" },
+                { label: "Used leave", value: "5" },
                 { label: "Remaining", value: "17" },
               ]}
               iconSrc="/4_my_leaves.svg"
+              modalContent={{
+                title: "My Leaves Details",
+                overview: [
+                  { label: "Used Leave", value: "5", color: "red.6" },
+                  { label: "Remaining", value: "17", color: "green.6" },
+                  { label: "Total", value: "22", color: "blue.6" },
+                ],
+                tabledata: {
+                  headers: [
+                    "Requested On",
+                    "From",
+                    "To",
+                    "Days",
+                    "Type",
+                    "Status",
+                  ],
+                  rows: [
+                    [
+                      "2026-01-10",
+                      "2026-01-15",
+                      "2026-01-16",
+                      "2",
+                      "Sick Leave",
+                      "Approved",
+                    ],
+                    [
+                      "2026-02-05",
+                      "2026-02-20",
+                      "2026-02-22",
+                      "3",
+                      "Casual Leave",
+                      "Approved",
+                    ],
+                    [
+                      "2026-03-01",
+                      "2026-03-10",
+                      "2026-03-12",
+                      "3",
+                      "Vacation",
+                      "Pending",
+                    ],
+                  ],
+                },
+              }}
             />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="Leaves today"
               headline="0"
@@ -71,10 +116,10 @@ function Dashboard() {
               ]}
               iconSrc="/5_leave_today.svg"
             />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="Upcoming leaves"
               headline="3"
@@ -84,10 +129,10 @@ function Dashboard() {
               ]}
               iconSrc="/6_upcoming_leaves.svg"
             />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="WFH today"
               headline="2"
@@ -97,10 +142,10 @@ function Dashboard() {
               ]}
               iconSrc="/7_wfh_today.svg"
             />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="Time log — previous day"
               headline="8h 00m"
@@ -110,10 +155,10 @@ function Dashboard() {
               ]}
               iconSrc="/7_prev_log_time.svg"
             />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="My leave compensation"
               headline="0"
@@ -123,7 +168,7 @@ function Dashboard() {
               ]}
               iconSrc="/8_time_compensation.png"
             />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         {/* ROW 4 */}
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>

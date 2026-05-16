@@ -9,6 +9,7 @@ import TeamStatus from "./teamStatistics/TeamStatus";
 import Insights from "../Insights";
 import BirthDays from "../BirthDays";
 import MyLeaves from "./myLeaves/MyLeaves";
+import LeaveToday from "./leaveToday/LeaveToday";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -53,17 +54,9 @@ function Dashboard() {
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          {/* <DashboardCell>
-            <LeaveAndAttendanceOverview
-              title="Leaves today"
-              headline="0"
-              rows={[
-                { label: "On leave", value: "0" },
-                { label: "Half day", value: "0" },
-              ]}
-              iconSrc="/5_leave_today.svg"
-            />
-          </DashboardCell> */}
+          <DashboardCell>
+            <LeaveToday/>
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           {/* <DashboardCell>

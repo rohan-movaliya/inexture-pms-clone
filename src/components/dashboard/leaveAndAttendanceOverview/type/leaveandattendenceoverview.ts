@@ -1,6 +1,6 @@
 type TableData = {
   headers: string[];
-  rows: string[][];
+  rows: React.ReactNode[][];
 };
 
 type OverviewItem = {
@@ -28,4 +28,3 @@ export type LeaveAndAttendanceOverviewProps = {
   iconSrc: string;
   modalContent: ModalContentProps;
 };
-

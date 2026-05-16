@@ -15,6 +15,7 @@ import {
 } from "@/components/dashboard/defaulterStatus/type/defaulterStatus";
 import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatisctics";
 import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleaves";
+import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leavetoday";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -112,6 +113,19 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getLeaveToday: build.query<TodayLeaveResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.LEAVES_TODAY,
+        method: "GET",
+      }),
+      transformResponse: (response: TodayLeaveResponse): TodayLeaveResponse => {
+        return {
+          results: response.results,
+          labels: response.labels,
+        };
+      },
+    }),
   }),
 });
 
@@ -122,4 +136,5 @@ export const {
   useGetDefaulterStatusQuery,
   useGetTeamStatisticsQuery,
   useGetMyLeavesQuery,
+  useGetLeaveTodayQuery,
 } = dashboardService;

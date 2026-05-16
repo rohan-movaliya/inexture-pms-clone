@@ -18,7 +18,7 @@ export const API_URL = {
     
     // Row-3
     MY_LEAVES: `${env?.API_URL}/dashboard/my-leave`,
-    LEAVES_TODAY: `${env?.API_URL}/dashboard/dashboard/leave-today`,
+    LEAVES_TODAY: `${env?.API_URL}/dashboard/leave-today`,
     UPCOMING_LEAVES: `${env?.API_URL}/dashboard/upcoming-leave`,
     WORK_FROM_HOME_TODAY: `${env?.API_URL}/dashboard/work-from-home-today`,
     LEAVE_COMPENSATION: `${env?.API_URL}/dashboard/leave-compensation`,

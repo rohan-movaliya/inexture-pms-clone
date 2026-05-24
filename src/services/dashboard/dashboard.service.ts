@@ -16,6 +16,7 @@ import {
 import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatisctics";
 import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleaves";
 import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leavetoday";
+import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave/type/upcomingLeave";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -126,6 +127,21 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getUpcomingLeaves: build.query<UpcomingLeaveResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.UPCOMING_LEAVES,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: UpcomingLeaveResponse,
+      ): UpcomingLeaveResponse => {
+        return {
+          results: response.results,
+          labels: response.labels,
+        };
+      },
+    }),
   }),
 });
 
@@ -137,4 +153,5 @@ export const {
   useGetTeamStatisticsQuery,
   useGetMyLeavesQuery,
   useGetLeaveTodayQuery,
+  useGetUpcomingLeavesQuery,
 } = dashboardService;

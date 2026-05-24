@@ -6,10 +6,9 @@ import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
 import TimeTracker from "./timeTracker/TimeTracker";
 import TeamStatus from "./teamStatistics/TeamStatus";
-import Insights from "../Insights";
-import BirthDays from "../BirthDays";
 import MyLeaves from "./myLeaves/MyLeaves";
 import LeaveToday from "./leaveToday/LeaveToday";
+import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
 
 /** Fills the stretched Mantine Grid.Col so child cards share the row height. */
 function DashboardCell({ children }: { children: ReactNode }) {
@@ -50,26 +49,18 @@ function Dashboard() {
         {/* ROW 3 */}
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <MyLeaves/>
+            <MyLeaves />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           <DashboardCell>
-            <LeaveToday/>
+            <LeaveToday />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
-          {/* <DashboardCell>
-            <LeaveAndAttendanceOverview
-              title="Upcoming leaves"
-              headline="3"
-              rows={[
-                { label: "This week", value: "1" },
-                { label: "Next week", value: "2" },
-              ]}
-              iconSrc="/6_upcoming_leaves.svg"
-            />
-          </DashboardCell> */}
+          <DashboardCell>
+            <UpcomingLeave />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
           {/* <DashboardCell>
@@ -112,34 +103,34 @@ function Dashboard() {
         </Grid.Col>
         {/* ROW 4 */}
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <Insights />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <Insights title="Employee of the month" />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <BirthDays />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <Insights title="Today's work anniversary" />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <Insights title="New joiners" />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
         <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
-          <DashboardCell>
+          {/* <DashboardCell>
             <BirthDays variant="holidays" />
-          </DashboardCell>
+          </DashboardCell> */}
         </Grid.Col>
       </Grid>
     </Container>

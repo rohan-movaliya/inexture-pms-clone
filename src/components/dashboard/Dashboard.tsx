@@ -8,6 +8,7 @@ import MyLeaves from "./myLeaves/MyLeaves";
 import LeaveToday from "./leaveToday/LeaveToday";
 import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
 import WFHToday from "./wfhToday/WFHToday";
+import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -120,17 +121,9 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <LeaveAndAttendanceOverview
-              title="Time log — previous day"
-              headline="8h 00m"
-              rows={[
-                { label: "Logged", value: "8h 00m" },
-                { label: "Status", value: "Complete" },
-              ]}
-              iconSrc="/7_prev_log_time.svg"
-            />
-          </DashboardCell> */}
+          <DashboardCell>
+            <PrevDayTimeLog />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 2 }}

@@ -7,7 +7,6 @@ import { LeaveRequest } from "./wfhToday";
 function WFHToday() {
   const { data: wfhData } = useGetWFHTodayQuery();
 
-  console.log("WFH Data: ", wfhData);
 
   const totalWFH = wfhData?.labels.total ?? 0;
   const fullDayWFH = wfhData?.labels.full_day_count ?? 0;

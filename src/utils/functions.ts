@@ -37,7 +37,6 @@ type PunchPair = {
   in: string;
   out?: string;
 };
-
 export function getPunchPairs(logs: WeeklyTimeLogPunch[]): PunchPair[] {
   const pairs: PunchPair[] = [];
   let currentIn: WeeklyTimeLogPunch | null = null;
@@ -63,3 +62,4 @@ export function getPunchPairs(logs: WeeklyTimeLogPunch[]): PunchPair[] {
 
   return pairs;
 }
+

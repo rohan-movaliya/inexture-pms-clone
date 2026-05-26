@@ -11,6 +11,7 @@ export type WeeklyTimeLogItem = {
   log_date: string;
   total_duration: string;
   log?: WeeklyTimeLogPunch[];
+  gamezone_duration?: string;
 };
 
 

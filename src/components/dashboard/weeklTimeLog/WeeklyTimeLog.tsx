@@ -63,7 +63,7 @@ function WeeklyTimeLog({
         close={close}
       />
 
-      <Paper withBorder mt="md">
+      <Paper withBorder h="100%" mt="md">
         <Group px="md" py="xs" justify="space-between" align="center">
           <Group gap={8}>
             <HeaderIcon size={24} />
@@ -153,8 +153,8 @@ function WeeklyTimeLog({
                           fw={600}
                           c={
                             item.total_duration === "00:00:00"
-                              ? theme.other?.skyBlue ?? "#1098AD"
-                              : theme.other?.green ?? "#37B24D"
+                              ? (theme.other?.skyBlue ?? "#1098AD")
+                              : (theme.other?.green ?? "#37B24D")
                           }
                         >
                           {item.total_duration === "00:00:00"

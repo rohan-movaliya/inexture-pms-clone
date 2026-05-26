@@ -58,7 +58,7 @@ function WeeklyWorkLog({
         close={close}
       />
 
-      <Paper withBorder mt="md">
+      <Paper withBorder h="100%" mt="md">
         <Group px="md" py="xs" justify="space-between" align="center">
           <Group gap={8}>
             <HeaderIcon size={24} />

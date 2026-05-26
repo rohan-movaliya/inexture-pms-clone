@@ -5,7 +5,7 @@ import { IconUsersGroup } from "@tabler/icons-react";
 function TeamStatus() {
   const { data: teamData } = useGetTeamStatisticsQuery();
   return (
-    <Paper withBorder>
+    <Paper withBorder h="100%">
       <Group px="md" py="xs" justify="space-between" align="center">
         <Group gap={8}>
           <IconUsersGroup size={24} />
@@ -49,7 +49,9 @@ function TeamStatus() {
       <Divider />
 
       <Box p="md">
-        <Text c="gray.5">Your overall team attendance is {teamData?.overall ?? 0}%.</Text>
+        <Text c="gray.5">
+          Your overall team attendance is {teamData?.overall ?? 0}%.
+        </Text>
       </Box>
     </Paper>
   );

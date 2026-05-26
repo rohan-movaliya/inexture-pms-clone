@@ -1,6 +1,4 @@
-import type { ReactNode } from "react";
-import { Box, Container, Grid } from "@mantine/core";
-import classes from "./Dashboard.module.css";
+import { Flex, Container, Grid } from "@mantine/core";
 import WeeklyTimeLog from "./weeklTimeLog/WeeklyTimeLog";
 import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
@@ -11,9 +9,12 @@ import LeaveToday from "./leaveToday/LeaveToday";
 import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
 import WFHToday from "./wfhToday/WFHToday";
 
-/** Fills the stretched Mantine Grid.Col so child cards share the row height. */
-function DashboardCell({ children }: { children: ReactNode }) {
-  return <Box className={classes.cell}>{children}</Box>;
+function DashboardCell({ children }: { children: React.ReactNode }) {
+  return (
+    <Flex direction="column" flex={1} h="100%" mih={0}>
+      {children}
+    </Flex>
+  );
 }
 
 function Dashboard() {
@@ -21,54 +22,104 @@ function Dashboard() {
     <Container fluid>
       {/* ROW 1 */}
       <Grid align="stretch" grow>
-        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 6 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <WeeklyTimeLog />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 6 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <WeeklyWorkLog />
           </DashboardCell>
         </Grid.Col>
         {/* ROW 2 */}
-        <Grid.Col span={{ base: 12, xs: 6 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 6 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <DefaulterStatus />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <TimeTracker />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <TeamStatus />
           </DashboardCell>
         </Grid.Col>
         {/* ROW 3 */}
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <MyLeaves />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <LeaveToday />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
             <UpcomingLeave />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           <DashboardCell>
-            <WFHToday />  
+            <WFHToday />
           </DashboardCell>
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="Time log — previous day"
@@ -81,7 +132,12 @@ function Dashboard() {
             />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 2 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 2 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <LeaveAndAttendanceOverview
               title="My leave compensation"
@@ -95,32 +151,62 @@ function Dashboard() {
           </DashboardCell> */}
         </Grid.Col>
         {/* ROW 4 */}
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <Insights />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <Insights title="Employee of the month" />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <BirthDays />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <Insights title="Today's work anniversary" />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <Insights title="New joiners" />
           </DashboardCell> */}
         </Grid.Col>
-        <Grid.Col span={{ base: 12, xs: 4 }} className={classes.column}>
+        <Grid.Col
+          span={{ base: 12, xs: 4 }}
+          style={{
+            display: "flex",
+          }}
+        >
           {/* <DashboardCell>
             <BirthDays variant="holidays" />
           </DashboardCell> */}

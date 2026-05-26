@@ -3,7 +3,7 @@ import { IconFileTime } from "@tabler/icons-react";
 
 function TimeTracker() {
   return (
-    <Paper withBorder>
+    <Paper withBorder h="100%">
       <Group px="md" py="xs" justify="space-between" align="center">
         <Group gap={8}>
           <IconFileTime size={24} />
@@ -15,9 +15,7 @@ function TimeTracker() {
 
       <Divider />
 
-      <Box p="md">
-        
-      </Box>
+      <Box p="md"></Box>
     </Paper>
   );
 }

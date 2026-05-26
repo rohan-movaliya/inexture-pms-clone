@@ -18,7 +18,7 @@ function LeaveAndAttendanceOverview({
     <>
       <LeaveAndAttendanceOverviewModal opened={opened} close={close} modalContent={modalContent} />
 
-      <Paper withBorder p={16} onClick={open}>
+      <Paper withBorder h="100%" p={16} onClick={open}>
         <Center>
           <Avatar variant="filled" radius="xs" size="lg" src={iconSrc} />
         </Center>

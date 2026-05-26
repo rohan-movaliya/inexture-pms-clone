@@ -19,7 +19,7 @@ function DefaulterStatus() {
   } = useGetDefaulterStatusQuery();
 
   return (
-    <Paper withBorder>
+    <Paper withBorder h="100%">
       {/* Header */}
       <Group px="md" py="xs" gap={8}>
         <IconClockRecord size={22} />

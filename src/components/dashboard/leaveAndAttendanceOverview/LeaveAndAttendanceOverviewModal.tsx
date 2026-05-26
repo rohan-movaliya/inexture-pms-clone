@@ -73,42 +73,50 @@ function LeaveAndAttendanceOverviewModal({
       >
         {/* Scrollable container */}
         <Box style={{ height: "300px", overflowY: "auto" }}>
-          <Table
-            striped
-            withColumnBorders
-            withTableBorder
-            w="100%"
-            styles={{
-              th: {
-                textAlign: "center",
-                paddingTop: 12,
-                paddingBottom: 12,
-              },
-              td: {
-                textAlign: "center",
-                paddingTop: 14,
-                paddingBottom: 14,
-              },
-            }}
-          >
-            <Table.Thead>
-              <Table.Tr>
-                {modalContent.tabledata.headers.map((header) => (
-                  <Table.Th key={header}>{header}</Table.Th>
-                ))}
-              </Table.Tr>
-            </Table.Thead>
-
-            <Table.Tbody>
-              {modalContent.tabledata.rows.map((row, index) => (
-                <Table.Tr key={index}>
-                  {row.map((cell, cellIndex) => (
-                    <Table.Td key={cellIndex}>{cell}</Table.Td>
+          {modalContent.tabledata.rows.length === 0 ? (
+            <Box p="md">
+              <Text c="dimmed" ta="center">
+                No records to display.
+              </Text>
+            </Box>
+          ) : (
+            <Table
+              striped
+              withColumnBorders
+              withTableBorder
+              w="100%"
+              styles={{
+                th: {
+                  textAlign: "center",
+                  paddingTop: 12,
+                  paddingBottom: 12,
+                },
+                td: {
+                  textAlign: "center",
+                  paddingTop: 14,
+                  paddingBottom: 14,
+                },
+              }}
+            >
+              <Table.Thead>
+                <Table.Tr>
+                  {modalContent.tabledata.headers.map((header) => (
+                    <Table.Th key={header}>{header}</Table.Th>
                   ))}
                 </Table.Tr>
-              ))}
-            </Table.Tbody>
-          </Table>
+              </Table.Thead>
+
+              <Table.Tbody>
+                {modalContent.tabledata.rows.map((row, index) => (
+                  <Table.Tr key={index}>
+                    {row.map((cell, cellIndex) => (
+                      <Table.Td key={cellIndex}>{cell}</Table.Td>
+                    ))}
+                  </Table.Tr>
+                ))}
+              </Table.Tbody>
+            </Table>
+          )}
         </Box>
       </Box>
     </Modal>

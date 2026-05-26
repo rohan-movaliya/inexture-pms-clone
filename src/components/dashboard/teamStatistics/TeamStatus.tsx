@@ -4,7 +4,6 @@ import { IconUsersGroup } from "@tabler/icons-react";
 
 function TeamStatus() {
   const { data: teamData } = useGetTeamStatisticsQuery();
-  console.log(teamData);
   return (
     <Paper withBorder>
       <Group px="md" py="xs" justify="space-between" align="center">

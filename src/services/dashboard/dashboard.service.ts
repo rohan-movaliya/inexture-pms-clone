@@ -17,6 +17,7 @@ import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamS
 import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleaves";
 import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leavetoday";
 import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave/type/upcomingLeave";
+import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -142,6 +143,21 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getWFHToday: build.query<WFHTodayAPIResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.WORK_FROM_HOME_TODAY,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: WFHTodayAPIResponse,
+      ): WFHTodayAPIResponse => {
+        return {
+          result: response.result,
+          labels: response.labels,
+        };
+      },
+    }),
   }),
 });
 
@@ -154,4 +170,5 @@ export const {
   useGetMyLeavesQuery,
   useGetLeaveTodayQuery,
   useGetUpcomingLeavesQuery,
+  useGetWFHTodayQuery,
 } = dashboardService;

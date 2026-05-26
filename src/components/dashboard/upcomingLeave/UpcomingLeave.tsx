@@ -6,7 +6,6 @@ import { Avatar } from "@mantine/core";
 function UpcomingLeave() {
   const { data: leaveData } = useGetUpcomingLeavesQuery();
 
-  console.log("Leave Data: ", leaveData);
 
   const totalLeave = leaveData?.labels.total ?? 0;
   const fullDayLeave = leaveData?.labels.full_day_count ?? 0;

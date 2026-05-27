@@ -18,6 +18,7 @@ import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleave
 import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leavetoday";
 import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave/type/upcomingLeave";
 import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
+import { LeaveCompensationAPIResponse } from "@/components/dashboard/leaveCompensation/type/leaveCompensation";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -158,6 +159,21 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getLeaveCompensation: build.query<LeaveCompensationAPIResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.LEAVE_COMPENSATION,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: LeaveCompensationAPIResponse,
+      ): LeaveCompensationAPIResponse => {
+        return {
+          results: response.results,
+          labels: response.labels,
+        };
+      },
+    }),
   }),
 });
 
@@ -171,4 +187,5 @@ export const {
   useGetLeaveTodayQuery,
   useGetUpcomingLeavesQuery,
   useGetWFHTodayQuery,
+  useGetLeaveCompensationQuery,
 } = dashboardService;

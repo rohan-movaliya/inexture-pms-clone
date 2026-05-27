@@ -9,6 +9,7 @@ import LeaveToday from "./leaveToday/LeaveToday";
 import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
 import WFHToday from "./wfhToday/WFHToday";
 import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
+import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -131,17 +132,9 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <LeaveAndAttendanceOverview
-              title="My leave compensation"
-              headline="0"
-              rows={[
-                { label: "Pending", value: "0" },
-                { label: "Approved", value: "0" },
-              ]}
-              iconSrc="/8_time_compensation.png"
-            />
-          </DashboardCell> */}
+          <DashboardCell>
+            <LeaveCompensation />
+          </DashboardCell>
         </Grid.Col>
         {/* ROW 4 */}
         <Grid.Col

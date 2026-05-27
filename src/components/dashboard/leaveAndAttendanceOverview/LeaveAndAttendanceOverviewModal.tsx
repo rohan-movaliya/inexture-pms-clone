@@ -46,9 +46,9 @@ function LeaveAndAttendanceOverviewModal({
       }
     >
       {/* Stats */}
-      <Grid mb="sm">
+      <Grid mb="sm" gutter="sm">
         {modalContent.overview.map((item, index) => (
-          <Grid.Col span={4} key={index}>
+          <Grid.Col key={index} span="auto">
             <Card bg={item.color} p="xs">
               <Group justify="center" gap={6}>
                 <Text fw={600} c="white">
@@ -73,50 +73,54 @@ function LeaveAndAttendanceOverviewModal({
       >
         {/* Scrollable container */}
         <Box style={{ height: "300px", overflowY: "auto" }}>
-          {modalContent.tabledata.rows.length === 0 ? (
-            <Box p="md">
-              <Text c="dimmed" ta="center">
-                No records to display.
-              </Text>
-            </Box>
-          ) : (
-            <Table
-              striped
-              withColumnBorders
-              withTableBorder
-              w="100%"
-              styles={{
-                th: {
-                  textAlign: "center",
-                  paddingTop: 12,
-                  paddingBottom: 12,
-                },
-                td: {
-                  textAlign: "center",
-                  paddingTop: 14,
-                  paddingBottom: 14,
-                },
-              }}
-            >
-              <Table.Thead>
-                <Table.Tr>
-                  {modalContent.tabledata.headers.map((header) => (
-                    <Table.Th key={header}>{header}</Table.Th>
-                  ))}
-                </Table.Tr>
-              </Table.Thead>
+          <Table
+            striped
+            withColumnBorders
+            withTableBorder
+            w="100%"
+            styles={{
+              th: {
+                textAlign: "center",
+                paddingTop: 12,
+                paddingBottom: 12,
+              },
+              td: {
+                textAlign: "center",
+                paddingTop: 14,
+                paddingBottom: 14,
+              },
+            }}
+          >
+            <Table.Thead>
+              <Table.Tr>
+                {modalContent.tabledata.headers.map((header) => (
+                  <Table.Th key={header}>{header}</Table.Th>
+                ))}
+              </Table.Tr>
+            </Table.Thead>
 
-              <Table.Tbody>
-                {modalContent.tabledata.rows.map((row, index) => (
+            <Table.Tbody>
+              {modalContent.tabledata.rows.length === 0 ? (
+                <Table.Tr style={{ height: 220 }}>
+                  <Table.Td
+                    colSpan={modalContent.tabledata.headers.length}
+                    ta="center"
+                    style={{ verticalAlign: "middle" }}
+                  >
+                    No records to display.
+                  </Table.Td>
+                </Table.Tr>
+              ) : (
+                modalContent.tabledata.rows.map((row, index) => (
                   <Table.Tr key={index}>
                     {row.map((cell, cellIndex) => (
                       <Table.Td key={cellIndex}>{cell}</Table.Td>
                     ))}
                   </Table.Tr>
-                ))}
-              </Table.Tbody>
-            </Table>
-          )}
+                ))
+              )}
+            </Table.Tbody>
+          </Table>
         </Box>
       </Box>
     </Modal>

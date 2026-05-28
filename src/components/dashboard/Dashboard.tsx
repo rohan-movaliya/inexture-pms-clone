@@ -10,6 +10,7 @@ import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
 import WFHToday from "./wfhToday/WFHToday";
 import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
 import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
+import WorkAnniversary from "./workAnniversary/WorkAnniversary";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -136,6 +137,7 @@ function Dashboard() {
             <LeaveCompensation />
           </DashboardCell>
         </Grid.Col>
+
         {/* ROW 4 */}
         <Grid.Col
           span={{ base: 12, xs: 4 }}
@@ -143,9 +145,9 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <Insights />
-          </DashboardCell> */}
+          <DashboardCell>
+            <WorkAnniversary />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 4 }}

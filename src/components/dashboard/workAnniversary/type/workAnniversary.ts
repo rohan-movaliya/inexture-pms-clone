@@ -1,41 +1,41 @@
-type TabType = "today" | "upcoming";
+// type TabType = "today" | "upcoming";
 
-interface TabConfig {
-  label: string;
-  icon: React.ReactNode;
-}
+// interface TabConfig {
+//   label: string;
+//   icon: React.ReactNode;
+// }
 
-interface EmptyState {
-  image: string;
-  message: string;
-}
+// interface EmptyState {
+//   image: string;
+//   message: string;
+// }
 
-interface CardItem {
-  id: number;
-  name?: string;
-  role?: string;
-  date?: string;
-  image?: string;
-  banner?: string;
-}
+// interface CardItem {
+//   id: number;
+//   name?: string;
+//   role?: string;
+//   date?: string;
+//   image?: string;
+//   banner?: string;
+// }
 
-interface CommonWidgetProps {
-  title: string;
+// interface CommonWidgetProps {
+//   title: string;
 
-  tabs: {
-    today: TabConfig;
-    upcoming: TabConfig;
-  };
+//   tabs: {
+//     today: TabConfig;
+//     upcoming: TabConfig;
+//   };
 
-  activeTab: TabType;
-  onTabChange: (value: TabType) => void;
+//   activeTab: TabType;
+//   onTabChange: (value: TabType) => void;
 
-  data: CardItem[];
+//   data: CardItem[];
 
-  emptyState: {
-    today: EmptyState;
-    upcoming: EmptyState;
-  };
+//   emptyState: {
+//     today: EmptyState;
+//     upcoming: EmptyState;
+//   };
 
-  renderItem: (item: CardItem) => React.ReactNode;
-}
+//   renderItem: (item: CardItem) => React.ReactNode;
+// }

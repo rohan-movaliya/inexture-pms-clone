@@ -1,41 +1,38 @@
-// type TabType = "today" | "upcoming";
+export interface AnniversaryItem {
+  id: number;
+  name: string;
+  image: string | null;
+  team: string;
+  experience: number;
+  gender: string;
+}
 
-// interface TabConfig {
-//   label: string;
-//   icon: React.ReactNode;
-// }
+export interface WorkAnniversaryResponse {
+  today: AnniversaryItem[];
+  upcoming: AnniversaryItem[];
+}
 
-// interface EmptyState {
-//   image: string;
-//   message: string;
-// }
+export interface RawAnniversaryItem {
+  id: number;
+  first_name: string;
+  last_name: string;
+  image: string | null;
+  userdetails: {
+    id: number;
+    joining_date: string;
+    team: string;
+    exp_year_val: number;
+  };
+  gender: string;
+}
 
-// interface CardItem {
-//   id: number;
-//   name?: string;
-//   role?: string;
-//   date?: string;
-//   image?: string;
-//   banner?: string;
-// }
-
-// interface CommonWidgetProps {
-//   title: string;
-
-//   tabs: {
-//     today: TabConfig;
-//     upcoming: TabConfig;
-//   };
-
-//   activeTab: TabType;
-//   onTabChange: (value: TabType) => void;
-
-//   data: CardItem[];
-
-//   emptyState: {
-//     today: EmptyState;
-//     upcoming: EmptyState;
-//   };
-
-//   renderItem: (item: CardItem) => React.ReactNode;
-// }
+export interface RawAnniversaryResponse {
+  today: {
+    count: number;
+    data: RawAnniversaryItem[];
+  };
+  upcoming: {
+    count: number;
+    data: RawAnniversaryItem[];
+  };
+}

@@ -5,8 +5,6 @@ import { theme } from "@/theme";
 function LeaveCompensation() {
   const { data: compensationData } = useGetLeaveCompensationQuery();
 
-  console.log("Leave Compensation Data", compensationData);
-
   const allocatedCompensation = Number(
     compensationData?.labels?.total_allocated_compensation ?? 0,
   );

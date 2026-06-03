@@ -155,6 +155,7 @@ function Dashboard() {
           span={{ base: 12, xs: 4 }}
           style={{
             display: "flex",
+            minWidth: 0,
           }}
         >
           <DashboardCell>

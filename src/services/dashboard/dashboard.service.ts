@@ -20,6 +20,7 @@ import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave
 import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
 import { LeaveCompensationAPIResponse } from "@/components/dashboard/leaveCompensation/type/leaveCompensation";
 import { EmployeeAnniversaryResponse } from "@/components/dashboard/workAnniversary/type/workAnniversary";
+import { TodayBirthDayAPIResponse } from "@/components/dashboard/birthDays/type/birthDays";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -190,6 +191,38 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getTodayBirthDay: build.query<TodayBirthDayAPIResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.TODAY_BIRTHDAY,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: TodayBirthDayAPIResponse,
+      ): TodayBirthDayAPIResponse => {
+        return {
+          count: response.count,
+          data: response.data,
+          message: response.message,
+        };
+      },
+    }),
+
+    getUpcomingBirthDay: build.query<TodayBirthDayAPIResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.UPCOMING_BIRTHDAYS,
+        method: "GET",
+      }),
+      transformResponse: (
+        response: TodayBirthDayAPIResponse,
+      ): TodayBirthDayAPIResponse => {
+        return {
+          count: response.count,
+          data: response.data,
+          message: response.message,
+        };
+      },
+    }),
   }),
 });
 
@@ -205,4 +238,6 @@ export const {
   useGetWFHTodayQuery,
   useGetLeaveCompensationQuery,
   useGetWorkAnniversaryQuery,
+  useGetTodayBirthDayQuery,
+  useGetUpcomingBirthDayQuery,
 } = dashboardService;

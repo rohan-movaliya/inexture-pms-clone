@@ -11,6 +11,7 @@ import WFHToday from "./wfhToday/WFHToday";
 import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
 import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
 import WorkAnniversary from "./workAnniversary/WorkAnniversary";
+import BirthDays from "./birthDays/BirthDays";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -156,9 +157,9 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <Insights title="Employee of the month" />
-          </DashboardCell> */}
+          <DashboardCell>
+            <BirthDays />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 4 }}

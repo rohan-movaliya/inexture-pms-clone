@@ -14,11 +14,15 @@ import type { ReactNode } from "react";
 import { IconFileTime } from "@tabler/icons-react";
 import { Carousel } from "@mantine/carousel";
 import { useGetWorkAnniversaryQuery } from "@/services/dashboard/dashboard.service";
-import { AnniversaryItem } from "./type/workAnniversary";
+import { EmployeeAnniversaryUser } from "./type/workAnniversary";
 
-type CardProps = AnniversaryItem;
-
-function CarouselCard({ image, name, team, experience, gender }: CardProps) {
+function CarouselCard({
+  image,
+  first_name,
+  last_name,
+  userdetails,
+  gender,
+}: EmployeeAnniversaryUser) {
   const fallbackImage =
     gender === "female" ? "/female-DbdA0NF7.svg" : "/male-CckHfSFM.svg";
 
@@ -48,16 +52,16 @@ function CarouselCard({ image, name, team, experience, gender }: CardProps) {
         <Box flex={1}>
           <Group justify="space-between" align="center" wrap="nowrap">
             <Text c="white" fw={700} size="sm">
-              {name}
+              {first_name} {last_name}
             </Text>
 
             <Text c="orange" fw={700} size="sm">
-              {experience} yr
+              {userdetails.exp_year_val} yr
             </Text>
           </Group>
 
           <Text c="gray.4" size="sm" mt={2}>
-            {team}
+            {userdetails.team}
           </Text>
         </Box>
       </Group>
@@ -90,7 +94,7 @@ function WorkAnniversary() {
   }
 
   const todaySlides =
-    workAnniversaryData?.today.map((item) => (
+    workAnniversaryData?.today.data.map((item) => (
       <Carousel.Slide key={item.id}>
         <Box px={5} h="100%">
           <CarouselCard {...item} />
@@ -99,7 +103,7 @@ function WorkAnniversary() {
     )) || [];
 
   const upcomingSlides =
-    workAnniversaryData?.upcoming.map((item) => (
+    workAnniversaryData?.upcoming.data.map((item) => (
       <Carousel.Slide key={item.id}>
         <Box px={5} h="100%">
           <CarouselCard {...item} />
@@ -177,7 +181,7 @@ function WorkAnniversary() {
 
         <Tabs.Panel value="today">
           <Box flex={1} w="100%" py="xs" px={5} style={{ overflow: "hidden" }}>
-            {workAnniversaryData?.today.length ? (
+            {workAnniversaryData?.today.data.length ? (
               renderCarousel(todaySlides, "100%")
             ) : (
               <EmptyState message="No Anniversary Today" />
@@ -187,7 +191,7 @@ function WorkAnniversary() {
 
         <Tabs.Panel value="upcoming">
           <Box flex={1} w="100%" py="xs" px={5} style={{ overflow: "hidden" }}>
-            {workAnniversaryData?.upcoming.length ? (
+            {workAnniversaryData?.upcoming.data.length ? (
               renderCarousel(upcomingSlides)
             ) : (
               <EmptyState message="No upcoming work anniversaries" />

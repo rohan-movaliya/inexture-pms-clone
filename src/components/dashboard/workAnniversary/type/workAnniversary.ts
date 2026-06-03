@@ -1,38 +1,25 @@
-export interface AnniversaryItem {
+export interface EmployeeAnniversaryUserDetails {
   id: number;
-  name: string;
-  image: string | null;
+  joining_date: string;
   team: string;
-  experience: number;
-  gender: string;
+  exp_year_val: number;
 }
 
-export interface WorkAnniversaryResponse {
-  today: AnniversaryItem[];
-  upcoming: AnniversaryItem[];
-}
-
-export interface RawAnniversaryItem {
+export interface EmployeeAnniversaryUser {
   id: number;
   first_name: string;
   last_name: string;
   image: string | null;
-  userdetails: {
-    id: number;
-    joining_date: string;
-    team: string;
-    exp_year_val: number;
-  };
-  gender: string;
+  userdetails: EmployeeAnniversaryUserDetails;
+  gender: "male" | "female" | string;
 }
 
-export interface RawAnniversaryResponse {
-  today: {
-    count: number;
-    data: RawAnniversaryItem[];
-  };
-  upcoming: {
-    count: number;
-    data: RawAnniversaryItem[];
-  };
+export interface EmployeeAnniversarySection {
+  count: number;
+  data: EmployeeAnniversaryUser[];
+}
+
+export interface EmployeeAnniversaryResponse {
+  today: EmployeeAnniversarySection;
+  upcoming: EmployeeAnniversarySection;
 }

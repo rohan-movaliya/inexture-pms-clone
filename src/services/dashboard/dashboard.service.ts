@@ -19,7 +19,7 @@ import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leave
 import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave/type/upcomingLeave";
 import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
 import { LeaveCompensationAPIResponse } from "@/components/dashboard/leaveCompensation/type/leaveCompensation";
-import { WorkAnniversaryResponse, RawAnniversaryResponse, RawAnniversaryItem } from "@/components/dashboard/workAnniversary/type/workAnniversary";
+import { EmployeeAnniversaryResponse } from "@/components/dashboard/workAnniversary/type/workAnniversary";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -176,26 +176,17 @@ const dashboardService = apiService.injectEndpoints({
       },
     }),
 
-    getWorkAnniversary: build.query<WorkAnniversaryResponse, void>({
+    getWorkAnniversary: build.query<EmployeeAnniversaryResponse, void>({
       query: () => ({
         url: API_URL.DASHBOARD.WORK_ANNIVERSARY,
         method: "GET",
       }),
       transformResponse: (
-        response: RawAnniversaryResponse,
-      ): WorkAnniversaryResponse => {
-        const mapItem = (item: RawAnniversaryItem) => ({
-          id: item.id,
-          name: `${item.first_name} ${item.last_name}`,
-          image: item.image,
-          team: item.userdetails.team,
-          experience: item.userdetails.exp_year_val,
-          gender: item.gender,
-        });
-
+        response: EmployeeAnniversaryResponse,
+      ): EmployeeAnniversaryResponse => {
         return {
-          today: response.today.data.map(mapItem),
-          upcoming: response.upcoming.data.map(mapItem),
+          today: response.today,
+          upcoming: response.upcoming,
         };
       },
     }),

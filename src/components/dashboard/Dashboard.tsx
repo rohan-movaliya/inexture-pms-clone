@@ -13,6 +13,7 @@ import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
 import WorkAnniversary from "./workAnniversary/WorkAnniversary";
 import BirthDays from "./birthDays/BirthDays";
 import HoliDays from "./holiDays/HoliDays";
+import Insights from "./insights/Insights";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -178,11 +179,12 @@ function Dashboard() {
           span={{ base: 12, xs: 4 }}
           style={{
             display: "flex",
+            minWidth: 0,
           }}
         >
-          {/* <DashboardCell>
-            <Insights title="Today's work anniversary" />
-          </DashboardCell> */}
+          <DashboardCell>
+            <Insights />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 4 }}

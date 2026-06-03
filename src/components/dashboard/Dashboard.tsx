@@ -14,7 +14,7 @@ import WorkAnniversary from "./workAnniversary/WorkAnniversary";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
-    <Flex direction="column" flex={1} h="100%" mih={0}>
+    <Flex direction="column" flex={1} h="100%" mih={0} miw={0}>
       {children}
     </Flex>
   );
@@ -143,6 +143,7 @@ function Dashboard() {
           span={{ base: 12, xs: 4 }}
           style={{
             display: "flex",
+            minWidth: 0,
           }}
         >
           <DashboardCell>

@@ -14,7 +14,15 @@ import type { ReactNode } from "react";
 import { IconFileTime } from "@tabler/icons-react";
 import { Carousel } from "@mantine/carousel";
 
-const data = {
+interface AnniversaryItem {
+  id: number;
+  name: string;
+  image: string | null;
+  team: string;
+  experience: number;
+}
+
+const data: Record<"today" | "upcoming", AnniversaryItem[]> = {
   today: [
     {
       id: 312,
@@ -49,30 +57,24 @@ const data = {
       team: "Frontend Team",
       experience: 5,
     },
-    // {
-    //   id: 133,
-    //   name: "Bharat Chaudhari",
-    //   image: null,
-    //   team: "Java Team",
-    //   experience: 3,
-    // },
-    // {
-    //   id: 307,
-    //   name: "Faizan Chundarigar",
-    //   image: null,
-    //   team: "Python Team",
-    //   experience: 1,
-    // },
+    {
+      id: 133,
+      name: "Bharat Chaudhari",
+      image: null,
+      team: "Java Team",
+      experience: 3,
+    },
+    {
+      id: 307,
+      name: "Faizan Chundarigar",
+      image: null,
+      team: "Python Team",
+      experience: 1,
+    },
   ],
 };
 
-interface CardProps {
-  id: number;
-  name: string;
-  image: string | null;
-  team: string;
-  experience: number;
-}
+type CardProps = AnniversaryItem;
 
 function CarouselCard({ image, name, team, experience }: CardProps) {
   return (
@@ -146,17 +148,22 @@ function WorkAnniversary() {
     </Carousel.Slide>
   ));
 
-  const renderCarousel = (slides: ReactNode[], count: number) => (
+  const renderCarousel = (slides: ReactNode[], slideSize: string = "50%") => (
     <Carousel
-      slideSize={count === 1 ? "100%" : "50%"}
-      emblaOptions={{ align: "start" }}
+      slideSize={slideSize}
+      emblaOptions={{ align: "start", loop: true }}
+      withIndicators={false}
+      withControls={slides.length > 1}
+      controlsOffset={24}
+      w="100%"
+      style={{ flex: 1, minWidth: 0 }}
     >
       {slides}
     </Carousel>
   );
 
   return (
-    <Paper withBorder h="100%" mt="md">
+    <Paper withBorder h="100%" mt="md" miw={0} style={{ overflow: "hidden" }}>
       <Group px="md" py="xs" justify="space-between" align="center">
         <Group gap={8}>
           <IconFileTime size={24} />
@@ -170,23 +177,27 @@ function WorkAnniversary() {
 
       <Tabs
         color="yellow"
-        defaultValue="first"
+        defaultValue="today"
         styles={{
           root: {
             display: "flex",
             flex: 1,
             flexDirection: "column",
             minHeight: 0,
+            minWidth: 0,
+            overflow: "hidden",
           },
           panel: {
             display: "flex",
             flex: 1,
             flexDirection: "column",
+            minWidth: 0,
+            overflow: "hidden",
           },
         }}
       >
         <Tabs.List grow>
-          <Tabs.Tab value="first">
+          <Tabs.Tab value="today">
             <Group gap={8} justify="center">
               <IconFileTime size={24} />
               <Text size="lg" fw={400}>
@@ -195,7 +206,7 @@ function WorkAnniversary() {
             </Group>
           </Tabs.Tab>
 
-          <Tabs.Tab value="second">
+          <Tabs.Tab value="upcoming">
             <Group gap={8} justify="center">
               <IconFileTime size={24} />
               <Text size="lg" fw={400}>
@@ -205,17 +216,17 @@ function WorkAnniversary() {
           </Tabs.Tab>
         </Tabs.List>
 
-        <Tabs.Panel value="first">
+        <Tabs.Panel value="today">
           {data?.today.length ? (
-            renderCarousel(todaySlides, data.today.length)
+            renderCarousel(todaySlides, "100%")
           ) : (
             <EmptyState message="No Anniversary Today" />
           )}
         </Tabs.Panel>
 
-        <Tabs.Panel value="second">
+        <Tabs.Panel value="upcoming">
           {data?.upcoming.length ? (
-            renderCarousel(upcomingSlides, data.upcoming.length)
+            renderCarousel(upcomingSlides)
           ) : (
             <EmptyState message="No upcoming work anniversaries" />
           )}

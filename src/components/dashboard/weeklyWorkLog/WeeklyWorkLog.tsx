@@ -4,7 +4,6 @@ import {
   Paper,
   Divider,
   Grid,
-  Loader,
   Text,
   Group,
   Flex,
@@ -21,6 +20,7 @@ import { WeeklyWorkLogItem } from "./type/weeklyWorkLog";
 import { useGetWeeklyWorkLogQuery } from "@/services/dashboard/dashboard.service";
 import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
 import { formatDateToDayMonth, formatDateToDayName } from "@/utils/functions";
+import WeeklyTimeLogSkeleton from "../weeklTimeLog/WeeklyTimeLogSkeleton";
 
 interface WeeklyWorkLogProps {
   title?: string;
@@ -49,6 +49,10 @@ function WeeklyWorkLog({
     setSelectedLog(item);
     open();
   };
+
+  if (isLoading) {
+    return <WeeklyTimeLogSkeleton />;
+  }
 
   return (
     <>
@@ -86,13 +90,7 @@ function WeeklyWorkLog({
 
         <Box px="md" pb="md">
           <Grid my="md">
-            {isLoading ? (
-              <Grid.Col span={12}>
-                <Group justify="center">
-                  <Loader size="sm" />
-                </Group>
-              </Grid.Col>
-            ) : isError ? (
+            {isError ? (
               <Grid.Col span={12}>
                 <Text size="sm">Failed to load weekly work log.</Text>
               </Grid.Col>

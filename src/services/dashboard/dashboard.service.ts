@@ -21,6 +21,7 @@ import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
 import { LeaveCompensationAPIResponse } from "@/components/dashboard/leaveCompensation/type/leaveCompensation";
 import { EmployeeAnniversaryResponse } from "@/components/dashboard/workAnniversary/type/workAnniversary";
 import { TodayBirthDayAPIResponse } from "@/components/dashboard/birthDays/type/birthDays";
+import { HolidayAPIResponse } from "@/components/dashboard/holiDays/type/holiDays";
 
 const dashboardService = apiService.injectEndpoints({
   endpoints: (build) => ({
@@ -223,6 +224,19 @@ const dashboardService = apiService.injectEndpoints({
         };
       },
     }),
+
+    getHolidays: build.query<HolidayAPIResponse, void>({
+      query: () => ({
+        url: API_URL.DASHBOARD.HOLIDAYS,
+        method: "GET",
+      }),
+      transformResponse: (response: HolidayAPIResponse): HolidayAPIResponse => {
+        return {
+          today: response.today,
+          upcoming: response.upcoming,
+        };
+      },
+    }),
   }),
 });
 
@@ -240,4 +254,5 @@ export const {
   useGetWorkAnniversaryQuery,
   useGetTodayBirthDayQuery,
   useGetUpcomingBirthDayQuery,
+  useGetHolidaysQuery,
 } = dashboardService;

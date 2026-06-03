@@ -12,6 +12,7 @@ import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
 import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
 import WorkAnniversary from "./workAnniversary/WorkAnniversary";
 import BirthDays from "./birthDays/BirthDays";
+import HoliDays from "./holiDays/HoliDays";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -166,11 +167,12 @@ function Dashboard() {
           span={{ base: 12, xs: 4 }}
           style={{
             display: "flex",
+            minWidth: 0,
           }}
         >
-          {/* <DashboardCell>
-            <BirthDays />
-          </DashboardCell> */}
+          <DashboardCell>
+            <HoliDays />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 4 }}

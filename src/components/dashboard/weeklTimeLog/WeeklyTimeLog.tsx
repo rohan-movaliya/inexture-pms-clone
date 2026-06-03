@@ -4,7 +4,6 @@ import {
   Paper,
   Divider,
   Grid,
-  Loader,
   Text,
   Group,
   Flex,
@@ -23,6 +22,7 @@ import WeeklyTimeLogModal from "@/components/dashboard/weeklTimeLog/WeeklyTimeLo
 import { theme } from "@/theme";
 import { WeeklyTimeLogItem } from "@/components/dashboard/weeklTimeLog/type/weeklyTimeLog";
 import { useGetWeeklyTimeLogQuery } from "@/services/dashboard/dashboard.service";
+import WeeklyTimeLogSkeleton from "./WeeklyTimeLogSkeleton";
 
 interface WeeklyTimeLogProps {
   title?: string;
@@ -53,6 +53,10 @@ function WeeklyTimeLog({
     setSelectedLog(item);
     open();
   };
+
+  if (isLoading) {
+    return <WeeklyTimeLogSkeleton />;
+  }
 
   return (
     <>
@@ -91,13 +95,7 @@ function WeeklyTimeLog({
 
         <Box px="md" pb="md">
           <Grid my="md">
-            {isLoading ? (
-              <Grid.Col span={12}>
-                <Group justify="center">
-                  <Loader size="sm" />
-                </Group>
-              </Grid.Col>
-            ) : isError ? (
+            {isError ? (
               <Grid.Col span={12}>
                 <Text size="sm">Failed to load weekly time log.</Text>
               </Grid.Col>

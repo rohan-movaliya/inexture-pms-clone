@@ -1,4 +1,4 @@
-import { Flex, Container, Grid } from "@mantine/core";
+import { Flex, Container, Grid, Paper } from "@mantine/core";
 import WeeklyTimeLog from "./weeklTimeLog/WeeklyTimeLog";
 import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
@@ -203,9 +203,15 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <BirthDays variant="holidays" />
-          </DashboardCell> */}
+          <DashboardCell>
+            <Paper
+              withBorder
+              h="100%"
+              mt="md"
+              miw={0}
+              style={{ overflow: "hidden" }}
+            ></Paper>
+          </DashboardCell>
         </Grid.Col>
       </Grid>
     </Container>

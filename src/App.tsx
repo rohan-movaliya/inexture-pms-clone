@@ -2,7 +2,7 @@ import RootApp from "./RootApp";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./store/index.ts";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, MantineTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
 import { theme } from "./theme/index.ts";
@@ -15,7 +15,7 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <MantineProvider defaultColorScheme="dark" theme={theme}
         
-          cssVariablesResolver={(theme: any) => ({
+          cssVariablesResolver={(theme: MantineTheme) => ({
             variables: {
               "--mantine-color-blue-500": theme.other.blue,
               
@@ -23,7 +23,7 @@ function App() {
             dark: {},
             light: {},
           })}>
-          <RootApp />;
+          <RootApp />
         </MantineProvider>
       </PersistGate>
     </Provider>

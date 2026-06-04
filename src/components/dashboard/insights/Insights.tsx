@@ -68,7 +68,7 @@ function Insights() {
         <Group gap={8}>
           <IconFileTime size={24} />
           <Text size="lg" fw={700}>
-            Work Anniversary
+            Insights
           </Text>
         </Group>
       </Group>

@@ -17,6 +17,10 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
+        path: "resource-management",
+        element: <div>Resource Management</div>,
+      },
+      {
         path: "daily-tasks",
         element: <div>Daily Tasks</div>,
       },

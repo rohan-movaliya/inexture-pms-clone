@@ -11,6 +11,7 @@ import {
   IconChecklist,
   IconFileTime,
   IconLayoutDashboard,
+  IconUsers,
 } from "@tabler/icons-react";
 import {
   Box,
@@ -69,6 +70,7 @@ function NavbarLink({
 
 const mockdata = [
   { icon: IconLayoutDashboard, label: "Dashboard", to: "/" },
+  { icon: IconUsers, label: "Resource Management", to: "/resource-management" },
   { icon: IconChecklist, label: "Daily Tasks", to: "/daily-tasks" },
   { icon: IconBriefcase2, label: "Projects", to: "/projects" },
   { icon: IconCalendarTime, label: "Leaves", to: "/leaves" },

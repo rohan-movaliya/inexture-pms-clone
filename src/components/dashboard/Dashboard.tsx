@@ -14,6 +14,7 @@ import WorkAnniversary from "./workAnniversary/WorkAnniversary";
 import BirthDays from "./birthDays/BirthDays";
 import HoliDays from "./holiDays/HoliDays";
 import Insights from "./insights/Insights";
+import NewEmployee from "./newEmployee/NewEmployee";
 
 function DashboardCell({ children }: { children: React.ReactNode }) {
   return (
@@ -192,9 +193,9 @@ function Dashboard() {
             display: "flex",
           }}
         >
-          {/* <DashboardCell>
-            <Insights title="New joiners" />
-          </DashboardCell> */}
+          <DashboardCell>
+            <NewEmployee />
+          </DashboardCell>
         </Grid.Col>
         <Grid.Col
           span={{ base: 12, xs: 4 }}

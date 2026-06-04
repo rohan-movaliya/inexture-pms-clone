@@ -20,7 +20,13 @@ import { Insight } from "./type/insights";
 
 function CarouselCard({ featured_media }: Pick<Insight, "featured_media">) {
   return (
-    <Card shadow="md" withBorder p={0} w="100%" h="100%">
+    <Card
+      shadow="md"
+      withBorder
+      p={0}
+      style={{ width: 550, height: 250 }}
+      mx="auto"
+    >
       <Card.Section>
         <AspectRatio ratio={16 / 9} pos="relative">
           <Image
@@ -70,7 +76,7 @@ function Insights() {
       <Divider />
 
       <Box
-        mt="md"
+        mt={0}
         flex={1}
         w="100%"
         py="xs"

@@ -2,7 +2,7 @@ import { useGetWFHTodayQuery } from "@/services/dashboard/dashboard.service";
 import { Avatar } from "@mantine/core";
 import LeaveAndAttendanceOverview from "../leaveAndAttendanceOverview/LeaveAndAttendanceOverview";
 import { theme } from "@/theme";
-import { LeaveRequest } from "./wfhToday";
+import { LeaveRequest } from "./type/wfhToday";
 
 function WFHToday() {
   const { data: wfhData } = useGetWFHTodayQuery();

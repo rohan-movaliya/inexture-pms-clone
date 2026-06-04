@@ -1,18 +1,18 @@
 import { Flex, Container, Grid, Paper } from "@mantine/core";
-import WeeklyTimeLog from "./weeklTimeLog/WeeklyTimeLog";
+import WeeklyTimeLog from "./weeklyTimeLog/WeeklyTimeLog";
 import WeeklyWorkLog from "./weeklyWorkLog/WeeklyWorkLog";
 import DefaulterStatus from "./defaulterStatus/DefaulterStatus";
 import TimeTracker from "./timeTracker/TimeTracker";
-import TeamStatus from "./teamStatistics/TeamStatus";
+import TeamStatistics from "./teamStatistics/TeamStatistics";
 import MyLeaves from "./myLeaves/MyLeaves";
 import LeaveToday from "./leaveToday/LeaveToday";
-import UpcomingLeave from "./upcomingLeave/UpcomingLeave";
+import UpcomingLeaves from "./upcomingLeaves/UpcomingLeaves";
 import WFHToday from "./wfhToday/WFHToday";
 import PrevDayTimeLog from "./prevDayTimeLog/PrevDayTimeLog";
 import LeaveCompensation from "./leaveCompensation/LeaveCompensation";
 import WorkAnniversary from "./workAnniversary/WorkAnniversary";
-import BirthDays from "./birthDays/BirthDays";
-import HoliDays from "./holiDays/HoliDays";
+import Birthdays from "./birthdays/Birthdays";
+import Holidays from "./holidays/Holidays";
 import Insights from "./insights/Insights";
 import NewEmployee from "./newEmployee/NewEmployee";
 
@@ -77,7 +77,7 @@ function Dashboard() {
           }}
         >
           <DashboardCell>
-            <TeamStatus />
+            <TeamStatistics />
           </DashboardCell>
         </Grid.Col>
         {/* ROW 3 */}
@@ -108,7 +108,7 @@ function Dashboard() {
           }}
         >
           <DashboardCell>
-            <UpcomingLeave />
+            <UpcomingLeaves />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col
@@ -162,7 +162,7 @@ function Dashboard() {
           }}
         >
           <DashboardCell>
-            <BirthDays />
+            <Birthdays />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col
@@ -173,7 +173,7 @@ function Dashboard() {
           }}
         >
           <DashboardCell>
-            <HoliDays />
+            <Holidays />
           </DashboardCell>
         </Grid.Col>
         <Grid.Col

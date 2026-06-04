@@ -20,7 +20,7 @@ import { WeeklyWorkLogItem } from "./type/weeklyWorkLog";
 import { useGetWeeklyWorkLogQuery } from "@/services/dashboard/dashboard.service";
 import WeeklyWorkLogModal from "./WeeklyWorkLogModal";
 import { formatDateToDayMonth, formatDateToDayName } from "@/utils/functions";
-import WeeklyTimeLogSkeleton from "../weeklTimeLog/WeeklyTimeLogSkeleton";
+import WeeklyTimeLogSkeleton from "../weeklyTimeLog/WeeklyTimeLogSkeleton";
 
 interface WeeklyWorkLogProps {
   title?: string;

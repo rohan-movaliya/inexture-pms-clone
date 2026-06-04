@@ -2,7 +2,7 @@ import { useGetTeamStatisticsQuery } from "@/services/dashboard/dashboard.servic
 import { Text, Divider, Box, Paper, Group, Grid, Stack } from "@mantine/core";
 import { IconUsersGroup } from "@tabler/icons-react";
 
-function TeamStatus() {
+function TeamStatistics() {
   const { data: teamData } = useGetTeamStatisticsQuery();
   return (
     <Paper withBorder h="100%">
@@ -57,4 +57,4 @@ function TeamStatus() {
   );
 }
 
-export default TeamStatus;
+export default TeamStatistics;

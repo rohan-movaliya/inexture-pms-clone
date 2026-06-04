@@ -3,7 +3,7 @@ import LeaveAndAttendanceOverview from "../leaveAndAttendanceOverview/LeaveAndAt
 import { useGetUpcomingLeavesQuery } from "@/services/dashboard/dashboard.service";
 import { Avatar } from "@mantine/core";
 
-function UpcomingLeave() {
+function UpcomingLeaves() {
   const { data: leaveData } = useGetUpcomingLeavesQuery();
 
 
@@ -69,4 +69,4 @@ function UpcomingLeave() {
   );
 }
 
-export default UpcomingLeave;
+export default UpcomingLeaves;

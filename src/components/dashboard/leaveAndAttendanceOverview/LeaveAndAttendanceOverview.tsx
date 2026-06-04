@@ -1,7 +1,7 @@
 import { Avatar, Center, Text, Paper, Stack, Group } from "@mantine/core";
 import LeaveAndAttendanceOverviewModal from "./LeaveAndAttendanceOverviewModal";
 import { useDisclosure } from "@mantine/hooks";
-import { LeaveAndAttendanceOverviewProps } from "./type/leaveandattendenceoverview";
+import { LeaveAndAttendanceOverviewProps } from "./type/leaveAndAttendanceOverview";
 
 
 function LeaveAndAttendanceOverview({

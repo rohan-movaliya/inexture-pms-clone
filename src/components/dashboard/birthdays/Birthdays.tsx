@@ -17,7 +17,7 @@ import {
   useGetTodayBirthDayQuery,
   useGetUpcomingBirthDayQuery,
 } from "@/services/dashboard/dashboard.service";
-import { BirthdayEmployee } from "./type/birthDays";
+import { BirthdayEmployee } from "./type/birthdays";
 
 function CarouselCard({
   image,
@@ -84,7 +84,7 @@ function EmptyState({ message }: { message: string }) {
   );
 }
 
-function BirthDays() {
+function Birthdays() {
   const { data: todayData, isLoading: isTodayLoading } =
     useGetTodayBirthDayQuery();
   const { data: upcomingData, isLoading: isUpcomingLoading } =
@@ -210,4 +210,4 @@ function BirthDays() {
   );
 }
 
-export default BirthDays;
+export default Birthdays;

@@ -8,7 +8,6 @@ import {
   Group,
   Flex,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import {
   IconFileTime,
   IconChevronLeft,
@@ -18,11 +17,12 @@ import {
 import { useState } from "react";
 import { formatDateToDayMonth, formatDateToDayName } from "@/utils/functions";
 
-import WeeklyTimeLogModal from "@/components/dashboard/weeklTimeLog/WeeklyTimeLogModal";
-import { theme } from "@/theme";
-import { WeeklyTimeLogItem } from "@/components/dashboard/weeklTimeLog/type/weeklyTimeLog";
+import WeeklyTimeLogModal from "@/components/dashboard/weeklyTimeLog/WeeklyTimeLogModal";
+import { useDisclosure } from "@mantine/hooks";
+import { WeeklyTimeLogItem } from "@/components/dashboard/weeklyTimeLog/type/weeklyTimeLog";
 import { useGetWeeklyTimeLogQuery } from "@/services/dashboard/dashboard.service";
 import WeeklyTimeLogSkeleton from "./WeeklyTimeLogSkeleton";
+import { theme } from "@/theme";
 
 interface WeeklyTimeLogProps {
   title?: string;

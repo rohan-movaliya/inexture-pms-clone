@@ -3,7 +3,7 @@ import { apiService } from "../api.services";
 import type {
   WeeklyTimeLogResponse,
   RawWeeklyTimeLogResponse,
-} from "../../components/dashboard/weeklTimeLog/type/weeklyTimeLog";
+} from "../../components/dashboard/weeklyTimeLog/type/weeklyTimeLog";
 import type {
   WeeklyWorkLogResponse,
   RawWeeklyWorkLogResponse,
@@ -13,15 +13,15 @@ import {
   DefaulterStatus,
   DefaulterStatusApiResponse,
 } from "@/components/dashboard/defaulterStatus/type/defaulterStatus";
-import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatisctics";
-import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myleaves";
-import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leavetoday";
-import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeave/type/upcomingLeave";
-import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/wfhToday";
+import { TeamStatusData } from "@/components/dashboard/teamStatistics/type/teamStatistics";
+import type { LeaveResponse } from "@/components/dashboard/myLeaves/type/myLeaves";
+import { TodayLeaveResponse } from "@/components/dashboard/leaveToday/type/leaveToday";
+import type { UpcomingLeaveResponse } from "@/components/dashboard/upcomingLeaves/type/upcomingLeaves";
+import { WFHTodayAPIResponse } from "@/components/dashboard/wfhToday/type/wfhToday";
 import { LeaveCompensationAPIResponse } from "@/components/dashboard/leaveCompensation/type/leaveCompensation";
 import { EmployeeAnniversaryResponse } from "@/components/dashboard/workAnniversary/type/workAnniversary";
-import { TodayBirthDayAPIResponse } from "@/components/dashboard/birthDays/type/birthDays";
-import { HolidayAPIResponse } from "@/components/dashboard/holiDays/type/holiDays";
+import { TodayBirthDayAPIResponse } from "@/components/dashboard/birthdays/type/birthdays";
+import { HolidayAPIResponse } from "@/components/dashboard/holidays/type/holidays";
 import { Insight } from "@/components/dashboard/insights/type/insights";
 
 const dashboardService = apiService.injectEndpoints({

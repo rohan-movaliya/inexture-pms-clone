@@ -1,5 +1,5 @@
 import { Modal, Box, Text, Grid, Card, Group, Table } from "@mantine/core";
-import { ModalContentProps } from "./type/leaveandattendenceoverview";
+import { ModalContentProps } from "./type/leaveAndAttendanceOverview";
 
 function LeaveAndAttendanceOverviewModal({
   opened,

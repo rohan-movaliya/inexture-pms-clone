@@ -14,7 +14,7 @@ import type { ReactNode } from "react";
 import { IconFileTime } from "@tabler/icons-react";
 import { Carousel } from "@mantine/carousel";
 import { useGetHolidaysQuery } from "@/services/dashboard/dashboard.service";
-import { Holiday } from "./type/holiDays";
+import { Holiday } from "./type/holidays";
 
 function CarouselCard({ holiday_image, name, date }: Holiday) {
   const fallbackImage = "/holiday_fallback.png";
@@ -68,7 +68,7 @@ function EmptyState({ message }: { message: string }) {
   );
 }
 
-function HoliDays() {
+function Holidays() {
   const { data: holidays, isLoading } = useGetHolidaysQuery();
 
   if (isLoading) {
@@ -191,4 +191,4 @@ function HoliDays() {
   );
 }
 
-export default HoliDays;
+export default Holidays;

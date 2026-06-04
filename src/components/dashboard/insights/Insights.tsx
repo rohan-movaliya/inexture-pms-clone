@@ -1,24 +1,43 @@
-import { Box, Text, Divider, Paper } from "@mantine/core";
+import {
+  Box,
+  Text,
+  Divider,
+  Card,
+  Image,
+  Center,
+  Avatar,
+  Paper,
+  Group,
+  Overlay,
+  AspectRatio,
+} from "@mantine/core";
 import { IconFileTime } from "@tabler/icons-react";
 import { Carousel } from "@mantine/carousel";
 import classes from "./Insights.module.css";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { useGetInsightsQuery } from "@/services/dashboard/dashboard.service";
+import { Insight } from "./type/insights";
 
-interface CardProps {
-  image: string;
-}
-
-function Card({ image }: CardProps) {
+function CarouselCard({ featured_media }: Pick<Insight, "featured_media">) {
   return (
-    <Paper
-      shadow="md"
-      style={{
-        backgroundImage: `url(${image})`,
-      }}
-      className={classes.card}
-    />
+    <Card shadow="md" withBorder p={0} w="100%" h="100%">
+      <Card.Section>
+        <AspectRatio ratio={16 / 9} pos="relative">
+          <Image
+            src={featured_media || "/default-avatar.png"}
+            alt="Employee"
+            fit="cover"
+          />
+
+          <Overlay color="dark" backgroundOpacity={0.1} blur={100} zIndex={0} />
+
+          <Center pos="absolute" inset={0}>
+            <Avatar src={featured_media} size={160} radius="md" />
+          </Center>
+        </AspectRatio>
+      </Card.Section>
+    </Card>
   );
 }
 
@@ -28,23 +47,29 @@ function Insights() {
 
   const slides = insightsData?.map((item) => (
     <Carousel.Slide key={item.id}>
-      <Card image={item.featured_media} />
+      <CarouselCard featured_media={item.featured_media} />
     </Carousel.Slide>
   ));
   const autoplay = useRef(Autoplay({ delay: 3000 }));
 
   return (
-    <Box className={classes.cardShell}>
-      <Box className={classes.header}>
-        <Text size="lg" fw={700} className={classes.heading}>
+    <Paper withBorder h="100%" mt="md" miw={0} style={{ overflow: "hidden" }}>
+      <Group px="md" py="xs" justify="space-between" align="center">
+        <Group gap={8}>
           <IconFileTime size={24} />
-          Insights
-        </Text>
-      </Box>
+          <Text size="lg" fw={700}>
+            Work Anniversary
+          </Text>
+        </Group>
+      </Group>
 
-      <Divider className={classes.divider} />
-
+      <Divider />
       <Box
+        flex={1}
+        w="100%"
+        py="xs"
+        px={5}
+        style={{ overflow: "hidden" }}
         className={classes.carouselWrap}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={() => autoplay.current.play()}
@@ -61,7 +86,7 @@ function Insights() {
           {slides}
         </Carousel>
       </Box>
-    </Box>
+    </Paper>
   );
 }
 

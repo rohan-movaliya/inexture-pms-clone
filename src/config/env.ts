@@ -33,4 +33,8 @@ export const API_URL = {
     BLOG_POSTS: `${env?.API_URL}/dashboard/blog-posts`,
     NEW_EMPLLOYEES: `${env?.API_URL}/dashboard/new-employees`,
   },
+
+  RESOURCE_MANAGEMENT: {
+    EMPLOYEES_DETAILS: `${env?.API_URL}/users`,
+  },
 };

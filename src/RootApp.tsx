@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "@/pages/auth/LoginPage.tsx";
 import MainLayout from "@/components/layout/MainLayout.tsx";
 import Dashboard from "@/components/dashboard/Dashboard.tsx";
+import ResourceManagement from "./components/resourceManagement/ResourceManagement";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       },
       {
         path: "resource-management",
-        element: <div>Resource Management</div>,
+        element: <ResourceManagement />,
       },
       {
         path: "daily-tasks",

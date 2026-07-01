@@ -11,7 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authSlice from "./authSlice";
-import { apiService } from "../services/api.services";
+import { apiService, publicApiService } from "../services/api.services";
 
 const authPersistConfig = {
   key: "pms-auth",
@@ -36,13 +36,16 @@ const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     [apiService.reducerPath]: apiService.reducer,
+    [publicApiService.reducerPath]: publicApiService.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(apiService.middleware),
+    })
+      .concat(apiService.middleware)
+      .concat(publicApiService.middleware),
 });
 
 export const persistor = persistStore(store);
